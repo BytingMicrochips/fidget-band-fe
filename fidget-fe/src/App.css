@@ -2,6 +2,8 @@
   margin: 0 auto;
   text-align: center;
   background-color: red;
+  width: 100%;
+  height: 100%;
 }
 
 .splashLogo img{
@@ -20,3 +22,35 @@
   margin-bottom: 1vh;
 }
 
+.splashWrapper {
+ background-color: orange;
+ margin-top: 18vh;
+ margin-bottom: 18vh;
+}
+
+.logoRedWrapper{
+  background-color: aquamarine;
+}
+
+.logoRedWrapper img{
+width: 100vw;
+display: block;
+}
+
+.logoRedWrapper h1{
+  width: 100%;
+  font-size: 24px;
+}
+
+.page-main h2{
+  background-color: purple;
+}
+.page-main h3{
+  background-color: orange;
+}
+
+.socialFeed{
+height: 50vh;
+width: 340px;
+margin-bottom: 2vh;
+}

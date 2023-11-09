@@ -1,17 +1,16 @@
-import './App.css'
-import  logo  from './assets/logo.jpg'
+import "./App.css";
+import Splash from "./components/page-splash.jsx";
+import Main from "./components/page-main.jsx";
+import Gigs from "./components/page-gigs.jsx";
+
+
 function App() {
+
   return (
-    <>
-      <div className='splashLogo'>
-        <img src={logo}/>
-      </div>
-      <div className='splashButtons'>
-      <button>Enter site</button>
-      <button>Join mailing list</button>
-      </div>
+    <> 
+      <Main />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
