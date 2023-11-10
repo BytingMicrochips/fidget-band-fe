@@ -45,12 +45,42 @@ display: block;
 .page-main h2{
   background-color: purple;
 }
-.page-main h3{
-  background-color: orange;
-}
+
 
 .socialFeed{
 height: 50vh;
 width: 340px;
 margin-bottom: 2vh;
+}
+
+.gigButton{
+  position: absolute;
+  width: 85%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background-color: black;
+  opacity: 0.75;
+}
+
+.buttonFlier{
+  position: relative;
+  width: 98%;
+  margin-bottom: 1vh;
+}
+
+.nextGigBanner{
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nextGigBanner a{
+  font-size: large;
+  background-color: rgb(5, 33, 135);
+  width: fit-content;
+  margin: auto;
+  padding: 0.5em;
 }

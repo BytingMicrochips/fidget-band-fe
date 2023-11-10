@@ -7,7 +7,7 @@ import Gigs from "./components/page-gigs.jsx";
 function App() {
 
   return (
-    <> 
+    <>
       <Main />
     </>
   );
