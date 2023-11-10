@@ -8,7 +8,9 @@ function App() {
 
   return (
     <>
-      <Gigs />
+      {/* <Splash /> */}
+      {/* <Main/> */}
+       <Gigs /> 
     </>
   );
 }
