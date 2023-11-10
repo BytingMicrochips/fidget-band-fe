@@ -84,3 +84,16 @@ margin-bottom: 2vh;
   margin: auto;
   padding: 0.5em;
 }
+
+.socialFeeds{
+display: block  ;
+padding: 1vw;
+width: fit-content;
+margin: auto;
+background-color: blueviolet;
+}
+
+.socialFeed iFrame{
+  padding: 1vw;
+  background-color: aqua;
+}
