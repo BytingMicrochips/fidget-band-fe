@@ -97,3 +97,22 @@ background-color: blueviolet;
   padding: 1vw;
   background-color: aqua;
 }
+
+.mailChimpWrapper{
+  background-color: black;
+  flex-direction: column;
+  justify-content: center;
+  display:flex;
+  width: 94%;
+  border-radius: 1em;
+  margin: auto;
+  margin-bottom: 1em;
+  padding: 1vw;
+}
+
+.mailChimpWrapper img{
+  display: flex;
+  margin: auto;
+  object-fit: cover;
+  width: 180px;
+}

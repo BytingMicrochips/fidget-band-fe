@@ -1,5 +1,6 @@
 import "../App.css";
 import Header from "./header.jsx";
+import MailChimp from "../components/mailChimp";
 import gigsData from "../../data/gigs-data.json";
 import { useState } from "react";
                          
@@ -29,7 +30,8 @@ const Gigs = () => {
                     </>
                   );
               })}
-          </div>
+      </div>
+      <MailChimp/>
     </>
   );
 };
