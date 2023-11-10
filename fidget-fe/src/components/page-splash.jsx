@@ -1,7 +1,10 @@
 import logo from "../assets/logo.jpg";
 import "../App.css";
+import MailChimp from "../components/mailChimp"
 
 const Splash = () => {
+
+
       return (
         <>
           <div className="splashWrapper">
@@ -10,8 +13,8 @@ const Splash = () => {
             </div>
             <div className="splashButtons">
               <button>Enter site</button>
-              <button>Join mailing list</button>
             </div>
+            <MailChimp/>
           </div>
         </>
       );

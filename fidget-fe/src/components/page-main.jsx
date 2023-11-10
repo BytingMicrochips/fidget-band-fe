@@ -1,5 +1,6 @@
 import "../App.css";
 import Header from "./header.jsx";
+import MailChimp from "../components/mailChimp";
 import { useEffect, useState, } from "react";
 import gigsData from "../../data/gigs-data.json";
 
@@ -89,6 +90,7 @@ const Main = () => {
           className="socialFeed"
         />
       </div>
+      <MailChimp/>
     </>
   );
 }
