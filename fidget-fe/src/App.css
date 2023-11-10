@@ -64,6 +64,16 @@ margin-bottom: 2vh;
   opacity: 0.75;
 }
 
+#gigTileDateLocation{
+  display: flex;
+  justify-content: center;
+}
+
+#gigTileDateLocation h3{
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
 .buttonFlier{
   position: relative;
   width: 98%;
@@ -116,4 +126,23 @@ background-color: blueviolet;
   margin: auto;
   object-fit: cover;
   width: 180px;
+}
+
+.gigListItem{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(143, 26, 46);
+  margin-bottom: 0.5em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.gigListItem a{
+margin-top: 1.25em;
+}
+
+.tileOrList{
+  margin-bottom: 0.5em;
 }
