@@ -106,7 +106,8 @@ background-color: blueviolet;
   width: 94%;
   border-radius: 1em;
   margin: auto;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
   padding: 1vw;
 }
 
