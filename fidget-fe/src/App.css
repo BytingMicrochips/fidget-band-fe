@@ -148,7 +148,16 @@ background-color: blueviolet;
 }
 
 .gigListItem a{
-margin-top: 1.25em;
+background-color: aqua;
+padding-top: 1.25em;
+color: black;
+}
+
+.gigListItem button{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: small;
 }
 
 .tileOrList{

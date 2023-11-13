@@ -45,19 +45,26 @@ const Gigs = () => {
             const gigDate = new Date(gig.date);
             return (
               <>
-                
                 {isList ? (
                   <>
                     <div className="gigListItem">
-                      <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
-                      <h3>{gig.location}</h3>
-                      <a href={gig.ticketLink}>Get tickets</a>
+                      <button onClick={(()=>{navigate(`/gigs/${gig.gig_id}`)})}>
+                        <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
+                        <h3>{gig.location}</h3>
+                        <a href={gig.ticketLink}>Get tickets</a>
+                      </button>
                     </div>
                   </>
                 ) : (
                   <>
                     <div className="buttonFlier">
-                      <button className="gigButton" onClick={() => { navigate(`/gigs/${gig.gig_id}`) }} value={gig.gig_id}>
+                      <button
+                        className="gigButton"
+                        onClick={() => {
+                          navigate(`/gigs/${gig.gig_id}`);
+                        }}
+                        value={gig.gig_id}
+                      >
                         <div id="gigTileDateLocation">
                           <h3>
                             {`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}
@@ -69,9 +76,9 @@ const Gigs = () => {
                       <img src={gig.flier} width="98%" />
                     </div>
                   </>
-                )
-                }
-              </>)
+                )}
+              </>
+            );
           })}
         </div>
         
