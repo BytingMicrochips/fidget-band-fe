@@ -46,8 +46,7 @@ const Gigs = () => {
             const gigDate = new Date(gig.date);
             return (
               <>
-                {isList ? (
-                  <>
+                
                     {isList ? (
                       <>
                         <div className="buttonFlier">
@@ -64,17 +63,6 @@ const Gigs = () => {
                         </div>
                       </>
                     ) : (
-                      <>
-                        <div className="gigListItem">
-                          <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
-                          <h3>{gig.location}</h3>
-                        </div>
-                        <h3>{gig.title}</h3>
-                      </button>
-                      <img src={gig.flier} width="98%" />
-                    </div>
-                  </>
-                ) : (
                   <>
                     <div className="gigListItem">
                       <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
