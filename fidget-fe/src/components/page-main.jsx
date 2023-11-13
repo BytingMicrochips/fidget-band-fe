@@ -3,6 +3,7 @@ import Header from "./header.jsx";
 import MailChimp from "../components/mailChimp";
 import { useEffect, useState, } from "react";
 import gigsData from "../../data/gigs-data.json";
+import DrawerNav from "./draw-nav.jsx";
 
 const Main = () => {
   const [futureGigs, setFutureGigs] = useState([]);
@@ -56,6 +57,7 @@ const Main = () => {
   return (
     <>
       <div className="page-main">
+        <DrawerNav/>
         <Header />
         <h2>
           Brass-fuelled skapunkery spurting punchy beats & social absurdities!
