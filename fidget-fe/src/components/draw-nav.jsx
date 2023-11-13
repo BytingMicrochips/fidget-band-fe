@@ -12,7 +12,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
-
+import Header from "./header";
 const drawerWidth = 240;
 
 function DrawerNav(props) {
@@ -65,10 +65,10 @@ function DrawerNav(props) {
       <CssBaseline />
       <IconButton
         color="inherit"
-        // aria-label="open drawer"
+        aria-label="open drawer"
         edge="start"
         onClick={handleDrawerToggle}
-        sx={{ display: { sm: "none" }, margin: 0, backgroundColor: '#880e3a'}}
+        sx={{ display: { sm: "none" }, margin: 0, backgroundColor: "#880e3a", borderRadius: 0 }}
       >
         <MenuIcon />
       </IconButton>
@@ -111,6 +111,7 @@ function DrawerNav(props) {
           {drawer}
         </Drawer>
       </Box>
+      <Header />
     </Box>
   );
 }

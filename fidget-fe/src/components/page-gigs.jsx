@@ -27,7 +27,6 @@ const Gigs = () => {
         }}
       >
         <DrawerNav />
-        <Header />
         <h2> Upcoming shows</h2>
         <select
           defaultValue="Show tiles"

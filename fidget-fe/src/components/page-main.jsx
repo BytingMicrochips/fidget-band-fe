@@ -69,7 +69,7 @@ const Main = () => {
       >
         <div className="page-main">
           <DrawerNav />
-          <Header />
+          {/* <Header /> */}
           <h2>
             Brass-fuelled skapunkery spurting punchy beats & social absurdities!
             Dealing out generous helpings of itchy rhythyms, funk infused
