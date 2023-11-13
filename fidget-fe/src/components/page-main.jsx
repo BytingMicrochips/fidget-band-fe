@@ -55,7 +55,6 @@ const Main = () => {
       } ${months[fullDate.getMonth()]} ${fullDate.getFullYear()}`
     );
   }, [nextGig]);
-  
   return (
     <>
       <Box
@@ -64,24 +63,30 @@ const Main = () => {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          padding: 0
+          padding: 0,
         }}
       >
         <div className="page-main">
           <DrawerNav />
-          {/* <Header /> */}
           <h2>
             Brass-fuelled skapunkery spurting punchy beats & social absurdities!
             Dealing out generous helpings of itchy rhythyms, funk infused
             basslines and jazz drenched horn lines we have been active in the
             diy seen since 2019.
           </h2>
-          <div className="nextGigBanner">
-            <h3>
-              Next playing in {nextGig.location} on {nextGigDate} !
-            </h3>
-            <a href={nextGig.ticketLink}>Buy tickets</a>
-          </div>
+          {Object.keys(nextGig).length !== 0 ? (
+            <>
+              {" "}
+              <div className="nextGigBanner">
+                <h3>
+                  Next playing in {nextGig.location} on {nextGigDate} !
+                </h3>
+                <a href={nextGig.ticketLink}>Buy tickets</a>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="socialFeeds">
           <iframe
