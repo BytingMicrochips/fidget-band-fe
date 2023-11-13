@@ -1,5 +1,6 @@
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
+import QuiltedImageList from "./image-list.jsx";
 
 const Gallery = () => {
   const drawerWidth = 240;
@@ -15,8 +16,10 @@ const Gallery = () => {
             padding: 0,
           }}
             >
-                <DrawerNav/>
-          <h2> page gallery</h2>
+            <DrawerNav/>
+                <h2> Photo gallery</h2>
+            <QuiltedImageList/>
+                
         </Box>
       </>
     );
