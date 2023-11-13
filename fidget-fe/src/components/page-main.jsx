@@ -55,7 +55,6 @@ const Main = () => {
       } ${months[fullDate.getMonth()]} ${fullDate.getFullYear()}`
     );
   }, [nextGig]);
-  console.log(nextGig, '<---------next gig')
   return (
     <>
       <Box
