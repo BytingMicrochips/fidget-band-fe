@@ -41,6 +41,7 @@ function DrawerNav(props) {
             <ListItemText primary="Home" />
           </ListItemButton>
         </ListItem>
+
         <ListItem
           disablePadding={true}
           onClick={() => {
@@ -52,6 +53,20 @@ function DrawerNav(props) {
               <InboxIcon />
             </ListItemIcon>
             <ListItemText primary="Gigs" />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem
+          disablePadding={true}
+          onClick={() => {
+            navigate("/gallery");
+          }}
+        >
+          <ListItemButton defaultValue="Gallery">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Gallery" />
           </ListItemButton>
         </ListItem>
       </List>
