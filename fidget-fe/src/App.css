@@ -3,7 +3,8 @@
   text-align: center;
   background-color: red;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
 }
 
 .splashLogo img{
@@ -36,13 +37,15 @@
 }
 
 .logoRedWrapper img{
-width: 100vw;
+width: 100%;
 display: block;
 }
 
 .logoRedWrapper h1{
   width: 100%;
-  font-size: 24px;
+  font-size: 5vw;
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
 }
 
 .page-main h2{
@@ -51,8 +54,6 @@ display: block;
 
 
 .socialFeed{
-height: 50vh;
-width: 340px;
 margin-bottom: 2vh;
 }
 
@@ -101,28 +102,26 @@ margin-bottom: 2vh;
 .socialFeeds{
 display: block  ;
 padding: 1vw;
-width: fit-content;
+width: 100%;
 margin: auto;
 background-color: blueviolet;
 }
 
-.socialFeed iFrame{
-  padding: 1vw;
-  background-color: aqua;
+.socialFeeds iFrame{
+  width: 96%;
 }
 
 .mailChimpWrapper{
   background-color: black;
   flex-direction: column;
-  justify-content: center;
   display:flex;
+  justify-content: center;
   height: fit-content;
-  width: 94%;
   border-radius: 1em;
-  margin: auto;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
-  padding: 1vw;
+  width: 100%;
+  color: white;
 }
 
 .mailChimpWrapper img{
@@ -130,6 +129,11 @@ background-color: blueviolet;
   margin: auto;
   object-fit: cover;
   width: 180px;
+}
+
+.mailChimpWrapper h2{
+  width: fit-content;
+  margin: auto;
 }
 
 .gigListItem{

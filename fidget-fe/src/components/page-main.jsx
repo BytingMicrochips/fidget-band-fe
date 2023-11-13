@@ -3,11 +3,14 @@ import Header from "./header.jsx";
 import MailChimp from "../components/mailChimp";
 import { useEffect, useState, } from "react";
 import gigsData from "../../data/gigs-data.json";
+import DrawerNav from "./draw-nav.jsx";
+import Box from "@mui/material/Box";
 
 const Main = () => {
   const [futureGigs, setFutureGigs] = useState([]);
   const [nextGig, setNextGig] = useState({});
   const [nextGigDate, setNextGigDate] = useState("");
+  const drawerWidth = 240;
 
   const actualDate = new Date();
   const dateNow = Math.ceil(actualDate / 100) * 100;
@@ -55,42 +58,50 @@ const Main = () => {
   
   return (
     <>
-      <div className="page-main">
-        <Header />
-        <h2>
-          Brass-fuelled skapunkery spurting punchy beats & social absurdities!
-          Dealing out generous helpings of itchy rhythyms, funk infused
-          basslines and jazz drenched horn lines we have been active in the diy
-          seen since 2019.
-        </h2>
-        <div className="nextGigBanner">
-          <h3>
-            Next playing in {nextGig.location} on {nextGigDate} !
-          </h3>
-          <a href={nextGig.ticketLink}>Buy tickets</a>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          padding: 0
+        }}
+      >
+        <div className="page-main">
+          <DrawerNav />
+          {/* <Header /> */}
+          <h2>
+            Brass-fuelled skapunkery spurting punchy beats & social absurdities!
+            Dealing out generous helpings of itchy rhythyms, funk infused
+            basslines and jazz drenched horn lines we have been active in the
+            diy seen since 2019.
+          </h2>
+          <div className="nextGigBanner">
+            <h3>
+              Next playing in {nextGig.location} on {nextGigDate} !
+            </h3>
+            <a href={nextGig.ticketLink}>Buy tickets</a>
+          </div>
         </div>
-      </div>
-      <div className="socialFeeds">
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwitchyfidgets&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-          width="340"
-          height="500"
-          allowFullScreen={true}
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          data-skin="dark"
-          className="socialFeed"
-        />
-        <iframe
-          src="https://www.instagram.com/fidgetandthetwitchers/embed"
-          width="340"
-          height="340"
-          scrolling="no"
-          allowtransparency="true"
-          data-skin="dark"
-          className="socialFeed"
-        />
-      </div>
-      <MailChimp/>
+        <div className="socialFeeds">
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwitchyfidgets&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+            width="340"
+            height="380"
+            allowFullScreen={true}
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            className="socialFeed"
+          />
+          <iframe
+            src="https://www.instagram.com/fidgetandthetwitchers/embed"
+            width="340"
+            height="380"
+            allowtransparency="true"
+            className="socialFeed"
+          />
+        </div>
+        <MailChimp />
+      </Box>
     </>
   );
 }
