@@ -16,19 +16,24 @@ import { useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
 function DrawerNav(props) {
-  const { window } = props;
+  // const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
 
   const drawer = (
     <div>
       <Divider />
       <List>
-        <ListItem disablePadding onClick={()=>{navigate("/home")}}>
+        <ListItem
+          disablePadding={true}
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
           <ListItemButton defaultValue="Home">
             <ListItemIcon>
               <InboxIcon />
@@ -36,7 +41,12 @@ function DrawerNav(props) {
             <ListItemText primary="Home" />
           </ListItemButton>
         </ListItem>
-              <ListItem disablePadding onClick={() => { navigate("/gigs") }}>
+        <ListItem
+          disablePadding={true}
+          onClick={() => {
+            navigate("/gigs");
+          }}
+        >
           <ListItemButton defaultValue="Gigs">
             <ListItemIcon>
               <InboxIcon />
@@ -51,17 +61,17 @@ function DrawerNav(props) {
 
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", backgroundColor: "#ff9800" }}>
       <CssBaseline />
-          <IconButton
-            color="inherit"
-            // aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
+      <IconButton
+        color="inherit"
+        // aria-label="open drawer"
+        edge="start"
+        onClick={handleDrawerToggle}
+        sx={{ display: { sm: "none" }, margin: 0, backgroundColor: '#880e3a'}}
+      >
+        <MenuIcon />
+      </IconButton>
 
       <Box
         component="nav"
@@ -70,7 +80,7 @@ function DrawerNav(props) {
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
-        //   container={container}
+          //   container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -101,7 +111,6 @@ function DrawerNav(props) {
           {drawer}
         </Drawer>
       </Box>
-
     </Box>
   );
 }
