@@ -2,16 +2,24 @@ import "../App.css";
 import Header from "./header.jsx";
 import MailChimp from "../components/mailChimp";
 import gigsData from "../../data/gigs-data.json";
-import { useState } from "react";
-                         
+import { useState, useContext } from "react";
+import { GigContext } from "../App.jsx"; 
+                        
 const Gigs = () => {
   const [isList, setIsList] = useState(true)
+  const [GigSelected, setGigSelected] = useContext(GigContext);
   
   const handleTileList = () => {
     isList === true ? setIsList(false) : setIsList(true)
-    console.log(isList)
   }
-
+  
+  const handleGigSelect = (e) => {
+    setGigSelected(e.currentTarget.value);
+    return console.log(
+      "🚀 ~ file: page-gigs.jsx:19 ~ handleGigSelect ~ e.currentTarget.value:",
+      e.currentTarget.value
+    );
+  }
   return (
     <>
       <Header />
@@ -28,7 +36,7 @@ const Gigs = () => {
                     {isList ? (
                       <>
                         <div className="buttonFlier">
-                          <button className="gigButton">
+                          <button className="gigButton" onClick={handleGigSelect} value={gig.gig_id}>
                             <div id="gigTileDateLocation">
                               <h3>
                                 {`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}

@@ -1,6 +1,8 @@
  [
   
-{ "location": "Big ol' festival",
+{ 
+    "gig_id": "0",
+    "location": "Big ol' festival",
     "venue": "Muddy field",
     "date": "2024-07-21",
     "time": "19:00-22:00",
@@ -10,6 +12,7 @@
     "flier": "https://luxurylondon.co.uk/wp-content/uploads/2022/04/boardmasters-uk-festivals-c-shutterstock-Jordan-Crosby-1465x1099-c-center.jpg"
 },
   {
+    "gig_id": "1",
     "location": "Bristol",
     "venue": "Mr Wolf's",
     "date": "2023-10-28",
@@ -19,7 +22,9 @@
     "ticketLink":"https://www.ticketmaster.co.uk/",
     "flier": "https://static.headfirstbristol.co.uk/images/events/935/e93576_i158577_s4.jpg"
   },
-  { "location": "London",
+  { 
+    "gig_id": "2",
+    "location": "London",
     "venue": "New Cross Inn",
     "date": "2023-12-16",
     "time": "14:00-23:30",
@@ -28,7 +33,9 @@
     "ticketLink":"https://newcrosslive.com/events/the-be-sharp-xmas-bash-2023",
     "flier": "https://newcrosslive.com/uploads/user/2023/11/07/59/35/640x480/YDrVcKjja8dPUpVF.jpg"
 },
- { "location": "Worcester",
+ { 
+    "gig_id": "3",
+    "location": "Worcester",
     "venue": " St Swithun's",
     "date": "2023-10-14",
     "time": "19:00-22:00",
@@ -37,7 +44,9 @@
     "ticketLink":"https://www.ticketmaster.co.uk/",
     "flier": "https://scontent.fbhx1-1.fna.fbcdn.net/v/t39.30808-6/384443622_689774183183159_5991247605735208925_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=VcZy5rdw514AX-A1Kn4&_nc_ht=scontent.fbhx1-1.fna&oh=00_AfAyMgWHxymIVIYtsJzrr1Kk_6_ojd9GsuVdQLQbxC-JCw&oe=65528C04"
 },
- { "location": "Nottingham",
+ { 
+    "gig_id": "4",
+    "location": "Nottingham",
     "venue": "Secret Basement",
     "date": "2024-01-10",
     "time": "19:00-22:00",
