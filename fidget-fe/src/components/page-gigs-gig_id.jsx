@@ -30,19 +30,29 @@ useEffect(() => {
           }}
         >
           <DrawerNav />
-          <h2> {thisGig.title}</h2>
-          <div>
-            <h3>{thisGig.location}</h3>
-            <h3>{thisGig.venue}</h3>
-          </div>
-
-          <h3>{`${new Date(thisGig.date).getDate()}-${new Date(thisGig.date).getMonth()}-${new Date(thisGig.date).getFullYear()}`}</h3>
-          <img src={thisGig.flier} />
-          <h3> {thisGig.description}</h3>
-          <div>
-          <a href={thisGig.ticketLink}>Buy tickets</a>
-            <a onClick={() => { navigate("/gigs") }}>Back to all gigs</a>
+          <div className="gigs-gig_id">
+            <h2> {thisGig.title}</h2>
+            <div className="gigs_idLocationVenue">
+              <h3>{thisGig.location}</h3>
+              <h3>{thisGig.venue}</h3>
             </div>
+
+            <h3 className="gigs_idDate">{`${new Date(thisGig.date).getDate()}-${new Date(
+              thisGig.date
+            ).getMonth()}-${new Date(thisGig.date).getFullYear()}`}</h3>
+            <img src={thisGig.flier} />
+            <h3> {thisGig.description}</h3>
+            <div className="gigs_idlinks">
+              <a href={thisGig.ticketLink}>Buy tickets</a>
+              <a
+                onClick={() => {
+                  navigate("/gigs");
+                }}
+              >
+                Back to all gigs
+              </a>
+            </div>
+          </div>
         </Box>
       </>
     );
