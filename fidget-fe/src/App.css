@@ -148,9 +148,57 @@ background-color: blueviolet;
 }
 
 .gigListItem a{
-margin-top: 1.25em;
+background-color: aqua;
+padding-top: 1.25em;
+color: black;
+}
+
+.gigListItem button{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: small;
 }
 
 .tileOrList{
+  margin-bottom: 0.5em;
+}
+
+.gigs_idLocationVenue{
+  display: flex;
+  justify-content: center;
+}
+
+.gigs_idLocationVenue h3{
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+}
+
+.gigs_idDate{
+  margin-bottom: 0.2em;
+  margin-top: 0em;
+  padding-top: 0em;
+  width: fit-content;
+  margin: auto;
+}
+
+.gigs-gig_id img{
+  width: 94%;
+}
+
+.gigs_idlinks{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: auto;
+  color: white;
+}
+
+.gigs_idlinks a {
+  padding: 1em;
+  font-size: medium;
+  background-color: blueviolet;
   margin-bottom: 0.5em;
 }
