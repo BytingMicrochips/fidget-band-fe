@@ -13,9 +13,10 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";
-const drawerWidth = 240;
+
 
 function DrawerNav(props) {
+  const drawerWidth = 240;
   // const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -46,8 +47,7 @@ function DrawerNav(props) {
           disablePadding={true}
           onClick={() => {
             navigate("/gigs");
-          }}
-        >
+          }}>
           <ListItemButton defaultValue="Gigs">
             <ListItemIcon>
               <InboxIcon />
@@ -60,8 +60,7 @@ function DrawerNav(props) {
           disablePadding={true}
           onClick={() => {
             navigate("/gallery");
-          }}
-        >
+          }}>
           <ListItemButton defaultValue="Gallery">
             <ListItemIcon>
               <InboxIcon />
@@ -69,6 +68,20 @@ function DrawerNav(props) {
             <ListItemText primary="Gallery" />
           </ListItemButton>
         </ListItem>
+
+        <ListItem
+          disablePadding={true}
+          onClick={() => {
+            navigate("/music");
+          }}>
+          <ListItemButton defaultValue="Music">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Music" />
+          </ListItemButton>
+        </ListItem>
+
       </List>
     </div>
   );
