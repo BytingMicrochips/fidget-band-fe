@@ -5,6 +5,8 @@ import { useEffect, useState, } from "react";
 import gigsData from "../../data/gigs-data.json";
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
+import contraband from "../assets/contrabandCircusBanner.jpg";
+import bandPic from "../assets/bandGaryHorne.jpg";
 
 const Main = () => {
   const [futureGigs, setFutureGigs] = useState([]);
@@ -68,12 +70,11 @@ const Main = () => {
       >
         <div className="page-main">
           <DrawerNav />
-          <h2>
-            Brass-fuelled skapunkery spurting punchy beats & social absurdities!
-            Dealing out generous helpings of itchy rhythyms, funk infused
-            basslines and jazz drenched horn lines we have been active in the
-            diy seen since 2019.
-          </h2>
+          <img
+            src={contraband}
+            alt="Contraband Circus new single 10-11-23 banner"
+            className="contrabandBanner"
+          />
           {Object.keys(nextGig).length !== 0 ? (
             <>
               {" "}
@@ -87,6 +88,13 @@ const Main = () => {
           ) : (
             <></>
           )}
+          <img src={bandPic} alt="full band after a busy gig" className="pageMainBandPic"/>
+          <h2>
+            Brass-fuelled skapunkery spurting punchy beats & social absurdities!
+            Dealing out generous helpings of itchy rhythyms, funk infused
+            basslines and jazz drenched horn lines we have been active in the
+            diy seen since 2019.
+          </h2>
         </div>
         <div className="socialFeeds">
           <iframe

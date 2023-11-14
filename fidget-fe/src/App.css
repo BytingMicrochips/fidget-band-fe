@@ -237,3 +237,13 @@ color: black;
   margin-left: 10px;
   line-height: 30px;
 }
+
+.contrabandBanner{
+  margin-top: 0.2em;
+  width: 100%;
+}
+
+.pageMainBandPic{
+  width: 96%;
+  margin-top: 0.5em;
+}
