@@ -206,3 +206,34 @@ color: black;
 .galleryVids{
   margin-top: 0.5em;
 }
+
+.videoButtons button{
+  background-color: aqua;
+  width: 33%;
+  justify-content: space-between;
+}
+
+.videoButtons img{
+  height: 30px;
+}
+
+.imageButtonVideo{
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+  margin: auto;
+  margin-bottom: 0.5em;
+}
+
+.vidArrowLabel{
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+}
+
+.vidArrowLabel h4{
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+  line-height: 30px;
+}

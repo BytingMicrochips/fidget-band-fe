@@ -2,6 +2,28 @@ import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 
+import baritone from "../assets/mediaGallery/baritone.jpg";
+import benDanny from "../assets/mediaGallery/benDanny.jpg";
+import benDanny2 from "../assets/mediaGallery/benDanny2.jpg";
+import benSheep from "../assets/mediaGallery/benSheep.jpg";
+import brassGang from "../assets/mediaGallery/brassGang.jpg";
+import chefGang from "../assets/mediaGallery/chefGang.jpg";
+import convoyGang from "../assets/mediaGallery/convoyGang.jpg";
+import dannyClown from "../assets/mediaGallery/dannyClown.jpg";
+import dannyStripe from "../assets/mediaGallery/dannyStripe.jpg";
+import hexBass from "../assets/mediaGallery/hexBass.jpg";
+import hexCarpark from "../assets/mediaGallery/hexCarpark.jpg";
+import hexMermaid from "../assets/mediaGallery/hexMermaid.jpg";
+import hexNooch from "../assets/mediaGallery/hexNooch.jpg";
+import nooch from "../assets/mediaGallery/nooch.jpg";
+import noochJump from "../assets/mediaGallery/noochJump.jpg";
+import oana from "../assets/mediaGallery/oana.jpg";
+import oana2 from "../assets/mediaGallery/oana2.jpg";
+import outCider from "../assets/mediaGallery/outCider.jpg";
+import tom1 from "../assets/mediaGallery/tom1.jpg";
+import tom2 from "../assets/mediaGallery/tom2.jpg";
+import van from "../assets/mediaGallery/van.jpg";
+
 function srcset(image, size, rows = 1, cols = 1) {
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
@@ -38,119 +60,115 @@ export default function QuiltedImageList() {
 
 const itemData = [
   {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
+    img: benDanny,
+    title: "Ben and Danny",
+    cols: 2,
+  },
+  {
+    img: brassGang,
+    title: "Horn section",
+    cols: 2,
+  },
+  {
+    img: chefGang,
+    title: "Fidgets in the kitchen",
+    rows: 2,
+    cols: 3,
+  },
+  {
+    img: hexBass,
+    title: "Hex on bass for a change",
+  },
+  {
+    img: dannyClown,
+    title: "Danny taking life seriously",
+  },
+  {
+    img: tom1,
+    title: "Trumpet Tom in the zone",
     rows: 2,
     cols: 2,
   },
   {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
+    img: dannyStripe,
+    title: "Danny Beetlejuice",
+    rows: 3,
     cols: 2,
   },
   {
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-    title: "Hats",
+    img: oana,
+    title: "Purple Oana",
     cols: 2,
   },
   {
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-    title: "Honey",
-    author: "@arwinneil",
+    img: outCider,
+    title: "Outcider festival crowd",
+    cols: 4,
+    rows: 2,
+  },
+  {
+    img: baritone,
+    title: "Jesse on the bari",
     rows: 2,
     cols: 2,
   },
   {
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-    title: "Basketball",
+    img: benSheep,
+    title: "Ben loves fancy dress!",
+    cols: 2,
   },
   {
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-    title: "Fern",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-    title: "Mushrooms",
+    img: hexCarpark,
+    title: "Hex warming up",
     rows: 2,
     cols: 2,
   },
   {
-    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-    title: "Tomato basil",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-    title: "Sea star",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-    title: "Bike",
+    img: noochJump,
+    title: "Flying sax!",
     cols: 2,
-  },
-  {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
     rows: 2,
+  },
+  {
+    img: hexNooch,
+    title: "Keytar and sax on stage",
     cols: 2,
   },
   {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    cols: 2,
-  },
-  {
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-    title: "Hats",
-    cols: 2,
-  },
-  {
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-    title: "Honey",
-    author: "@arwinneil",
+    img: oana2,
+    title: "Oana at The Exchange, Bristol",
     rows: 2,
-    cols: 2,
+    cols: 3,
   },
   {
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-    title: "Basketball",
+    img: hexMermaid,
+    title: "Keytar playing mermaid",
+    rows: 3,
   },
   {
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-    title: "Fern",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-    title: "Mushrooms",
+    img: van,
+    title: "New van photo",
+    cols: 3,
     rows: 2,
+  },
+  {
+    img: benDanny2,
+    title: "Ben and Danny on stage",
+  },
+  {
+    img: nooch,
+    title: "Nooch playing fat solo",
     cols: 2,
   },
   {
-    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-    title: "Tomato basil",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-    title: "Sea star",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-    title: "Bike",
+    img: tom2,
+    title: "Tom sending it",
     cols: 2,
+  },
+  {
+    img: convoyGang,
+    title: "Convoy Cabaret whole band",
+    cols: 4,
+    rows: 2,
   },
 ];
