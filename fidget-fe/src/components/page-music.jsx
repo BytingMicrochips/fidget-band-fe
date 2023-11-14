@@ -1,5 +1,6 @@
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
+import MusicPlayerSlider from "./music-player.jsx";
 
 const Music = () => {
   const drawerWidth = 240;
@@ -17,6 +18,7 @@ const Music = () => {
             >
             <DrawerNav />
                 <h2>page - music</h2>;
+                <MusicPlayerSlider/>
             </Box>
         </>)
 };
