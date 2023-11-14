@@ -23,6 +23,10 @@ import outCider from "../assets/mediaGallery/outCider.jpg";
 import tom1 from "../assets/mediaGallery/tom1.jpg";
 import tom2 from "../assets/mediaGallery/tom2.jpg";
 import van from "../assets/mediaGallery/van.jpg";
+import emilyMerch from "../assets/mediaGallery/emilyMerch.jpg";
+import park from "../assets/mediaGallery/park.jpg";
+import praccyRoom from "../assets/mediaGallery/praccyRoom.jpg";
+import statue from "../assets/mediaGallery/statue.jpg";
 
 function srcset(image, size, rows = 1, cols = 1) {
   return {
@@ -171,4 +175,22 @@ const itemData = [
     cols: 4,
     rows: 2,
   },
+  {
+    img: emilyMerch,
+    title: "Manager Emily with the merch",
+    cols: 2,
+    rows: 2,
+  },
+  {
+    img: praccyRoom,
+    title: "Practice room",
+    cols: 2,
+    rows: 2,
+  },
+  {
+    img: park,
+    title: "Practice in the park",
+    cols: 4,
+    rows: 2,
+  }
 ];
