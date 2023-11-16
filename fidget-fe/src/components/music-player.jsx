@@ -14,7 +14,12 @@ import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 
 import stickEm from "../assets/musicPlayer/stickEm.mp3";
 import landlord from "../assets/musicPlayer/landlord.mp3";
+import contraband from "../assets/musicPlayer/contraband.mp3";
 import whiteLogo from "../assets/whiteLogo.jpg";
+import contrabandCover from "../assets/musicPlayer/contrabandCover.jpg"; 
+import fullSteamAheadCover from "../assets/musicPlayer/fullSteamAheadCover.jpg"; 
+import cantSitStraightCover from "../assets/musicPlayer/cantSitStraightCover.jpg"; 
+import polyPerv from "../assets/musicPlayer/polyPerv.mp3"; 
 
 import { useEffect, useState } from "react";
 
@@ -24,18 +29,36 @@ const trackList = [
     artist: "Fidget & the Twitchers",
     album: "Can't sit straight",
     source: landlord,
-    coverArt: whiteLogo,
-    imageAlt: "White band logo",
+    coverArt: cantSitStraightCover,
+    imageAlt: "Can't sit straight cover",
   },
   {
     title: "Stick 'em up",
     artist: "Fidget & the Twitchers",
     album: "Can't sit straight",
     source: stickEm,
-    coverArt: whiteLogo,
-    imageAlt: "White band logo",
+    coverArt: cantSitStraightCover,
+    imageAlt: "Can't sit straight cover",
+  },
+  {
+    title: "Contraband Circus",
+    artist: "Fidget & the Twitchers",
+    album: "Contraband Circus",
+    source: contraband,
+    coverArt: contrabandCover,
+    imageAlt: "Contraband Circus single cover",
+  },
+  {
+    title: "Polyperv",
+    artist: "Fidget & the Twitchers",
+    album: "Full Steam Ahead",
+    source: polyPerv,
+    coverArt: fullSteamAheadCover,
+    imageAlt: "Full Steam Ahead cover",
   },
 ]; 
+
+
 
 const Widget = styled("div")(({ theme }) => ({
   padding: 16,
@@ -74,12 +97,25 @@ export default function MusicPlayerSlider() {
   const theme = useTheme();
   const [paused, setPaused] = React.useState(true);
   const [currentTrack, setCurrentTrack] = useState(0)
-  const [audio, setAudio] = useState(new Audio(trackList[currentTrack].source))
+  const [playlist, setPlaylist] = useState(trackList);
+  const [audio, setAudio] = useState(new Audio(playlist[currentTrack].source));
   const [userVolume, setUserVolume] = useState(1)
   const [duration, setDuration] = useState(0)
   const [position, setPosition] = useState(0);
   const [radioOn, setRadioOn] = useState(false)
-  
+  const [allAlbums, setAllAlbums] = useState([])
+  const [selectedAlbum, setSelectedAlbum] = useState("all");
+
+useEffect(() => {
+  const foundAlbums = ["all"];
+  trackList.map((track) => {
+    if (!foundAlbums.includes(track.album)) {
+      foundAlbums.push(track.album);
+    }
+  });
+  setAllAlbums(foundAlbums)
+}, []);
+
 audio.ontimeupdate = (event) => {
     setPosition(audio.currentTime)
 };    
@@ -88,7 +124,10 @@ audio.onloadedmetadata = (event) => {
     setDuration(audio.duration)
 }
 
-  audio.onended = () => {
+audio.onended = () => {
+    if (currentTrack === playlist.length-1) {
+      setPlaylist(trackList)
+    }
     handleSkipNext();
 }
 useEffect(() => {
@@ -96,12 +135,13 @@ useEffect(() => {
 },[userVolume])
     
 useEffect(() => {
-  setAudio(new Audio(trackList[currentTrack].source));
-  radioOn? setPaused(false) : setPaused(true)
+  setAudio(new Audio(playlist[currentTrack].source));
+  radioOn ? setPaused(false) : setPaused(true)
 }, [currentTrack])  
     
 useEffect(() => {
-    audio.volume = userVolume
+  audio.volume = userVolume
+  paused ? audio.pause() : audio.play();
 }, [audio])  
       
 useEffect(() => {
@@ -114,7 +154,7 @@ const handleSkipNext = () => {
         audio.currentTime = 0
         setPaused(true)
         let playingNow = currentTrack
-        playingNow < trackList.length - 1 ? setCurrentTrack(playingNow + 1) : setCurrentTrack(0);  
+        playingNow < playlist.length - 1 ? setCurrentTrack(playingNow + 1) : setCurrentTrack(0);  
 }
 
 const handleSkipPrev = () => {
@@ -122,7 +162,7 @@ const handleSkipPrev = () => {
         audio.currentTime = 0
         setPaused(true)
         let playingNow = currentTrack
-        playingNow === 0 ? setCurrentTrack(trackList.length - 1) : setCurrentTrack(playingNow - 1);
+        playingNow === 0 ? setCurrentTrack(playlist.length - 1) : setCurrentTrack(playingNow - 1);
 }
 
 const handleVolume = (e, val) => {
@@ -136,13 +176,35 @@ const handleSeek = (e, val) => {
     setPosition(newPosition)
 };
 
+const handleAlbumSelect = (e) => {
+  setCurrentTrack(0);
+  setSelectedAlbum(e.currentTarget.value)
+}
+  
+useEffect(() => {
+  if (selectedAlbum === "all") {
+    setPlaylist(trackList)
+  } else {
+    const onlySelected = trackList.filter((eachTrack) => {
+      return eachTrack.album === selectedAlbum
+    })
+    setPlaylist(onlySelected)
+  }
+}, [selectedAlbum])
 
-    
-    function formatDuration(duration) {
+useEffect(() => {
+  audio.pause()
+  setAudio(new Audio(playlist[currentTrack].source));
+  if (radioOn) {
+    setPaused(false)
+    setTimeout(audio.play, 1000)
+  } 
+  }, [playlist])
+function formatDuration(duration) {
       const minute = Math.floor(duration / 60);
       const secondLeft = Math.floor(duration) - minute * 60;
       return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
-    }
+}
     
   const mainIconColor = theme.palette.mode === "dark" ? "#fff" : "#000";
   const lightIconColor =
@@ -156,8 +218,8 @@ const handleSeek = (e, val) => {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CoverImage>
             <img
-              alt={trackList[currentTrack].imageAlt}
-              src={trackList[currentTrack].coverArt}
+              alt={playlist[currentTrack].imageAlt}
+              src={playlist[currentTrack].coverArt}
             />
           </CoverImage>
           <Box sx={{ ml: 1.5, minWidth: 0 }}>
@@ -169,22 +231,21 @@ const handleSeek = (e, val) => {
               {trackList[currentTrack].artist}
             </Typography>
             <Typography noWrap>
-              <b>{trackList[currentTrack].title}</b>
+              <b>{playlist[currentTrack].title}</b>
             </Typography>
             <Typography noWrap letterSpacing={-0.25}>
-              {trackList[currentTrack].album}
+              {playlist[currentTrack].album}
             </Typography>
           </Box>
         </Box>
         <Slider
           aria-label="time-indicator"
           size="small"
-          value={audio.currentTime/duration}
+          value={audio.currentTime / duration}
           min={0}
-          step={1/duration}
+          step={1 / duration}
           max={1}
           onChange={handleSeek}
-
           sx={{
             color: theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
             height: 4,
@@ -265,9 +326,8 @@ const handleSeek = (e, val) => {
           <VolumeDownRounded htmlColor={lightIconColor} />
           <Slider
             aria-label="Volume"
-                      defaultValue={100}
-                      onChange={handleVolume}
-                       
+            defaultValue={100}
+            onChange={handleVolume}
             sx={{
               color:
                 theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
@@ -289,6 +349,35 @@ const handleSeek = (e, val) => {
           />
           <VolumeUpRounded htmlColor={lightIconColor} />
         </Stack>
+        <Box
+          className="albumSelect"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            backgroundColor: "#ffffff",
+          }}
+        >
+          {allAlbums.map((eachAlbum) => {
+            const match = trackList.find((track) => track.album === eachAlbum);
+            return match ? (
+              <>
+                <div className="eachAlbum">
+                  <button value={eachAlbum} onClick={handleAlbumSelect}>
+                    <img src={match.coverArt} alt={match.imageAlt} />
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="eachAlbum">
+                  <button value="all" onClick={handleAlbumSelect}>
+                    <img src={whiteLogo} alt="White band logo" />
+                  </button>
+                </div>
+              </>
+            );
+          })}
+        </Box>
       </Widget>
     </Box>
   );

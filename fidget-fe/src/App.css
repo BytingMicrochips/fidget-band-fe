@@ -247,3 +247,23 @@ color: black;
   width: 96%;
   margin-top: 0.5em;
 }
+
+.albumSelect{
+  width: 96%;
+  height: 20%;
+  margin: auto;
+  border-radius: 0.4em;
+}
+
+ .albumSelect button{
+  width: 80px;
+  height: 80px;
+  padding: 0.1em;
+  margin: 0.2em
+}
+
+.eachAlbum img{
+  width: 75px;
+  height: 75px;
+  border-radius: 0.4em;
+}
