@@ -17,7 +17,7 @@ const Music = () => {
             }}
             >
             <DrawerNav />
-                <h2>page - music</h2>;
+                <h2>page - music</h2>
                 <MusicPlayerSlider/>
             </Box>
         </>)

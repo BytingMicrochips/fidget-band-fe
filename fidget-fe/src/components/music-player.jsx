@@ -12,6 +12,31 @@ import FastRewindRounded from "@mui/icons-material/FastRewindRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 
+import stickEm from "../assets/musicPlayer/stickEm.mp3";
+import landlord from "../assets/musicPlayer/landlord.mp3";
+import whiteLogo from "../assets/whiteLogo.jpg";
+
+import { useEffect, useState } from "react";
+
+const trackList = [
+  {
+    title: "Mr Landlord",
+    artist: "Fidget & the Twitchers",
+    album: "Can't sit straight",
+    source: landlord,
+    coverArt: whiteLogo,
+    imageAlt: "White band logo",
+  },
+  {
+    title: "Stick 'em up",
+    artist: "Fidget & the Twitchers",
+    album: "Can't sit straight",
+    source: stickEm,
+    coverArt: whiteLogo,
+    imageAlt: "White band logo",
+  },
+]; 
+
 const Widget = styled("div")(({ theme }) => ({
   padding: 16,
   borderRadius: 16,
@@ -21,7 +46,7 @@ const Widget = styled("div")(({ theme }) => ({
   position: "relative",
   zIndex: 1,
   backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
+  theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
   backdropFilter: "blur(40px)",
 }));
 
@@ -47,25 +72,92 @@ const TinyText = styled(Typography)({
 
 export default function MusicPlayerSlider() {
   const theme = useTheme();
-  const duration = 200; // seconds
-  const [position, setPosition] = React.useState(0);
   const [paused, setPaused] = React.useState(true);
-  function formatDuration(value) {
-    const minute = Math.floor(value / 60);
-    const secondLeft = value - minute * 60;
-    return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
-  }
+  const [currentTrack, setCurrentTrack] = useState(0)
+  const [audio, setAudio] = useState(new Audio(trackList[currentTrack].source))
+  const [userVolume, setUserVolume] = useState(1)
+  const [duration, setDuration] = useState(0)
+  const [position, setPosition] = useState(0);
+  const [radioOn, setRadioOn] = useState(false)
+  
+audio.ontimeupdate = (event) => {
+    setPosition(audio.currentTime)
+};    
+
+audio.onloadedmetadata = (event) => {
+    setDuration(audio.duration)
+}
+
+  audio.onended = () => {
+    handleSkipNext();
+}
+useEffect(() => {
+    audio.volume = userVolume
+},[userVolume])
+    
+useEffect(() => {
+  setAudio(new Audio(trackList[currentTrack].source));
+  radioOn? setPaused(false) : setPaused(true)
+}, [currentTrack])  
+    
+useEffect(() => {
+    audio.volume = userVolume
+}, [audio])  
+      
+useEffect(() => {
+  paused ? audio.pause() : audio.play();
+  paused? setRadioOn(false) : setRadioOn(true)
+}, [paused]);
+
+const handleSkipNext = () => {
+        audio.pause()
+        audio.currentTime = 0
+        setPaused(true)
+        let playingNow = currentTrack
+        playingNow < trackList.length - 1 ? setCurrentTrack(playingNow + 1) : setCurrentTrack(0);  
+}
+
+const handleSkipPrev = () => {
+        audio.pause()
+        audio.currentTime = 0
+        setPaused(true)
+        let playingNow = currentTrack
+        playingNow === 0 ? setCurrentTrack(trackList.length - 1) : setCurrentTrack(playingNow - 1);
+}
+
+const handleVolume = (e, val) => {
+    setUserVolume(val/100)  
+}
+
+const handleSeek = (e, val) => {
+    const newPosition = val * (1 / duration)
+    const seekTo = val*duration
+    audio.currentTime = seekTo
+    setPosition(newPosition)
+};
+
+
+    
+    function formatDuration(duration) {
+      const minute = Math.floor(duration / 60);
+      const secondLeft = Math.floor(duration) - minute * 60;
+      return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
+    }
+    
   const mainIconColor = theme.palette.mode === "dark" ? "#fff" : "#000";
   const lightIconColor =
-    theme.palette.mode === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
+      theme.palette.mode === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
+ 
+
+
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
       <Widget>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CoverImage>
             <img
-              alt="can't win - Chilling Sunday"
-              src="/static/images/sliders/chilling-sunday.jpg"
+              alt={trackList[currentTrack].imageAlt}
+              src={trackList[currentTrack].coverArt}
             />
           </CoverImage>
           <Box sx={{ ml: 1.5, minWidth: 0 }}>
@@ -74,24 +166,25 @@ export default function MusicPlayerSlider() {
               color="text.secondary"
               fontWeight={500}
             >
-              Jun Pulse
+              {trackList[currentTrack].artist}
             </Typography>
             <Typography noWrap>
-              <b>คนเก่าเขาทำไว้ดี (Can&apos;t win)</b>
+              <b>{trackList[currentTrack].title}</b>
             </Typography>
             <Typography noWrap letterSpacing={-0.25}>
-              Chilling Sunday &mdash; คนเก่าเขาทำไว้ดี
+              {trackList[currentTrack].album}
             </Typography>
           </Box>
         </Box>
         <Slider
           aria-label="time-indicator"
           size="small"
-          value={position}
+          value={audio.currentTime/duration}
           min={0}
-          step={1}
-          max={duration}
-          onChange={(_, value) => setPosition(value)}
+          step={1/duration}
+          max={1}
+          onChange={handleSeek}
+
           sx={{
             color: theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
             height: 4,
@@ -127,8 +220,8 @@ export default function MusicPlayerSlider() {
             mt: -2,
           }}
         >
-          <TinyText>{formatDuration(position)}</TinyText>
-          <TinyText>-{formatDuration(duration - position)}</TinyText>
+          <TinyText>{formatDuration(audio.currentTime)}</TinyText>
+          <TinyText>-{formatDuration(duration - audio.currentTime)}</TinyText>
         </Box>
         <Box
           sx={{
@@ -138,12 +231,14 @@ export default function MusicPlayerSlider() {
             mt: -1,
           }}
         >
-          <IconButton aria-label="previous song">
+          <IconButton aria-label="previous song" onClick={handleSkipPrev}>
             <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
           </IconButton>
           <IconButton
             aria-label={paused ? "play" : "pause"}
-            onClick={() => setPaused(!paused)}
+            onClick={() => {
+              setPaused(!paused);
+            }}
           >
             {paused ? (
               <PlayArrowRounded
@@ -157,7 +252,7 @@ export default function MusicPlayerSlider() {
               />
             )}
           </IconButton>
-          <IconButton aria-label="next song">
+          <IconButton aria-label="next song" onClick={handleSkipNext}>
             <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
           </IconButton>
         </Box>
@@ -170,7 +265,9 @@ export default function MusicPlayerSlider() {
           <VolumeDownRounded htmlColor={lightIconColor} />
           <Slider
             aria-label="Volume"
-            defaultValue={50}
+                      defaultValue={100}
+                      onChange={handleVolume}
+                       
             sx={{
               color:
                 theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
@@ -196,3 +293,4 @@ export default function MusicPlayerSlider() {
     </Box>
   );
 }
+
