@@ -127,6 +127,7 @@ audio.onloadedmetadata = (event) => {
 audio.onended = () => {
     if (currentTrack === playlist.length-1) {
       setPlaylist(trackList)
+      setSelectedAlbum("all")
     }
     handleSkipNext();
 }
@@ -181,7 +182,7 @@ const handleAlbumSelect = (e) => {
   setSelectedAlbum(e.currentTarget.value)
 }
   
-useEffect(() => {
+  useEffect(() => {
   if (selectedAlbum === "all") {
     setPlaylist(trackList)
   } else {
@@ -199,7 +200,7 @@ useEffect(() => {
     setPaused(false)
     setTimeout(audio.play, 1000)
   } 
-  }, [playlist])
+  }, [playlist, currentTrack])
 function formatDuration(duration) {
       const minute = Math.floor(duration / 60);
       const secondLeft = Math.floor(duration) - minute * 60;
@@ -210,7 +211,9 @@ function formatDuration(duration) {
   const lightIconColor =
       theme.palette.mode === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
  
-
+const preventDragHandler = (e) => {
+  e.preventDefault();
+};
 
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
@@ -218,6 +221,7 @@ function formatDuration(duration) {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CoverImage>
             <img
+              onDragStart={preventDragHandler}
               alt={playlist[currentTrack].imageAlt}
               src={playlist[currentTrack].coverArt}
             />
@@ -357,13 +361,18 @@ function formatDuration(duration) {
             backgroundColor: "#ffffff",
           }}
         >
+         
           {allAlbums.map((eachAlbum) => {
             const match = trackList.find((track) => track.album === eachAlbum);
             return match ? (
               <>
                 <div className="eachAlbum">
                   <button value={eachAlbum} onClick={handleAlbumSelect}>
-                    <img src={match.coverArt} alt={match.imageAlt} />
+                    <img
+                      src={match.coverArt}
+                      alt={match.imageAlt}
+                      onDragStart={preventDragHandler}
+                    />
                   </button>
                 </div>
               </>
@@ -371,12 +380,17 @@ function formatDuration(duration) {
               <>
                 <div className="eachAlbum">
                   <button value="all" onClick={handleAlbumSelect}>
-                    <img src={whiteLogo} alt="White band logo" />
+                    <img
+                      src={whiteLogo}
+                      alt="White band logo"
+                      onDragStart={preventDragHandler}
+                    />
                   </button>
                 </div>
               </>
             );
           })}
+       
         </Box>
       </Widget>
     </Box>

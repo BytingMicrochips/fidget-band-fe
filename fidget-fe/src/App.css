@@ -253,6 +253,9 @@ color: black;
   height: 20%;
   margin: auto;
   border-radius: 0.4em;
+  overflow: hidden;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
  .albumSelect button{
@@ -262,8 +265,10 @@ color: black;
   margin: 0.2em
 }
 
+
 .eachAlbum img{
   width: 75px;
   height: 75px;
   border-radius: 0.4em;
+  
 }
