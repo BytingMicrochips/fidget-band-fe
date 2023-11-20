@@ -22,6 +22,8 @@ import cantSitStraightCover from "../assets/musicPlayer/cantSitStraightCover.jpg
 import polyPerv from "../assets/musicPlayer/polyPerv.mp3"; 
 
 import { useEffect, useState } from "react";
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 const trackList = [
   {
@@ -31,6 +33,7 @@ const trackList = [
     source: landlord,
     coverArt: cantSitStraightCover,
     imageAlt: "Can't sit straight cover",
+    buyLink: "",
   },
   {
     title: "Stick 'em up",
@@ -39,6 +42,7 @@ const trackList = [
     source: stickEm,
     coverArt: cantSitStraightCover,
     imageAlt: "Can't sit straight cover",
+    buyLink: "",
   },
   {
     title: "Contraband Circus",
@@ -47,6 +51,8 @@ const trackList = [
     source: contraband,
     coverArt: contrabandCover,
     imageAlt: "Contraband Circus single cover",
+    buyLink:
+      "https://fidgetandthetwitchers.bandcamp.com/track/contraband-circus-2",
   },
   {
     title: "Polyperv",
@@ -55,6 +61,8 @@ const trackList = [
     source: polyPerv,
     coverArt: fullSteamAheadCover,
     imageAlt: "Full Steam Ahead cover",
+    buyLink:
+      "https://fidgetandthetwitchers.bandcamp.com/track/polyperv?action=download",
   },
 ]; 
 
@@ -361,7 +369,6 @@ const preventDragHandler = (e) => {
             backgroundColor: "#ffffff",
           }}
         >
-         
           {allAlbums.map((eachAlbum) => {
             const match = trackList.find((track) => track.album === eachAlbum);
             return match ? (
@@ -390,9 +397,45 @@ const preventDragHandler = (e) => {
               </>
             );
           })}
-       
         </Box>
       </Widget>
+      {playlist[currentTrack].buyLink === "" ? (
+        <>
+
+        </>
+      ) : (
+        <>
+          <div className="buyTrack">
+            <a href={playlist[currentTrack].buyLink}>
+              Support us by purchasing this track
+            </a>
+            <div className="shareTrack">
+              <h3>Share this track with your friends</h3>
+              <FacebookShareButton
+                url={playlist[currentTrack].buyLink}
+                hashtag="#ukskapunk"
+                className="socialShareButton"
+              >
+                <FacebookIcon size={36} />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={playlist[currentTrack].buyLink}
+                hashtag="#ukskapunk"
+                className="socialShareButton"
+              >
+                <TwitterIcon size={36} />
+              </TwitterShareButton>
+              <WhatsappShareButton
+                url={playlist[currentTrack].buyLink}
+                hashtag="#ukskapunk"
+                className="socialShareButton"
+              >
+                <WhatsappIcon size={36} />
+              </WhatsappShareButton>
+            </div>
+          </div>
+        </>
+      )}
     </Box>
   );
 }
