@@ -41,9 +41,7 @@ export default function StoreList() {
             alt={item.title}
             loading="lazy"
           />
-
-          {basket.includes(item.title) ? (
-           
+          {basket.includes(item.title) ? ( 
               <ImageListItemBar
                 title={item.title}
                 subtitle={`£${item.price}`}
@@ -51,20 +49,16 @@ export default function StoreList() {
                   <button
                     onClick={handleRemoveBasket}
                     value={item.title}
-                    aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-                  >
+                    aria-label={`Remove ${item.title} from basket, price £${item.price}`}>
                     <RemoveShoppingCartIcon
                       sx={{
                         color: "rgba(255, 255, 255, 0.54)",
                         opacity: "60%",
-                      }}
-                    />
+                      }}/>
                   </button>
                 }
               />
-           
           ) : (
-            
               <ImageListItemBar
                 title={item.title}
                 subtitle={`£${item.price}`}
@@ -83,7 +77,6 @@ export default function StoreList() {
                   </button>
                 }
               />
-           
           )}
         </ImageListItem>
       ))}

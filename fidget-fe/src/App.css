@@ -284,12 +284,15 @@ color: black;
 }
 
 .basketContains{
+  margin: auto;
   margin-bottom: 0.2em;
   margin-top: 0.2em;
+  width: 96%;
+  background-color: teal;
 }
 
 .merchStore{
-  margin-top: 0.5em;
+  margin-top: 0.2em;
   margin-bottom: 0.2em;
 }
 
