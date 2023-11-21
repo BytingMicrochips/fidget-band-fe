@@ -8,6 +8,7 @@ import GigsGig_id from "./components/page-gigs-gig_id.jsx";
 import Gallery from "./components/page-gallery.jsx";
 import Music from "./components/page-music.jsx";
 import Store from "./components/page-store.jsx";
+import StoreBasket from "./components/page-store-basket.jsx";
 
 export const BasketContext = createContext();
 export const BasketUpdateContext = createContext();
@@ -30,6 +31,7 @@ function App() {
               <Route path="/gallery" exact element={<Gallery />} />
               <Route path="/music" exact element={<Music />} />
               <Route path="/store" exact element={<Store />} />
+              <Route path="/store/basket" exact element={<StoreBasket />} />
             </Routes>
           </BasketUpdateContext.Provider>
         </BasketContext.Provider>
