@@ -27,6 +27,12 @@ export default function StoreList() {
     }
   }
 
+  const handleRemoveBasket = (e) => {
+      const updatedBasket = basket.filter((eachItem)=> eachItem !== e.currentTarget.value)
+      setBasket(updatedBasket)
+      basketChanged? setBasketChanged(false) : setBasketChanged(true)
+  }
+
   return (
     <ImageList sx={{ width: "96%", height: "70vh", margin: "auto" }}>
       {itemData.map((item) => (
@@ -37,20 +43,42 @@ export default function StoreList() {
             alt={item.title}
             loading="lazy"
           />
-          <ImageListItemBar
-            title={item.title}
-            actionIcon={
-              <button
-                onClick={handleAddBasket}
-                value={item.title}
-                aria-label={`Add ${item.title} to basket`}
-              >
-                <AddShoppingCartIcon
-                  sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                />
-              </button>
-            }
-          />
+
+          {basket.includes(item.title) ? (
+            <>
+              <ImageListItemBar
+                title={item.title}
+                actionIcon={
+                  <button
+                    onClick={handleRemoveBasket}
+                    value={item.title}
+                    aria-label={`Remove ${item.title} from basket`}
+                  >
+                    <RemoveShoppingCartIcon
+                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                    />
+                  </button>
+                }
+              />
+            </>
+          ) : (
+            <>
+              <ImageListItemBar
+                title={item.title}
+                actionIcon={
+                  <button
+                    onClick={handleAddBasket}
+                    value={item.title}
+                    aria-label={`Add ${item.title} to basket`}
+                  >
+                    <AddShoppingCartIcon
+                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                    />
+                  </button>
+                }
+              />
+            </>
+          )}
         </ImageListItem>
       ))}
     </ImageList>
