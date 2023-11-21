@@ -10,21 +10,28 @@ import Music from "./components/page-music.jsx";
 import Store from "./components/page-store.jsx";
 
 export const BasketContext = createContext();
+export const BasketUpdateContext = createContext();
+
 function App() {
   const [basket, setBasket] = useState([])
+  const [basketChanged, setBasketChanged] = useState(false);
   return (
     <>
       <BrowserRouter>
         <BasketContext.Provider value={[basket, setBasket]}>
-          <Routes>
-            <Route path="/" exact element={<Splash/>}/>
-            <Route path="/home" exact element={<Main/>}/>
-            <Route path="/gigs" exact element={<Gigs/>}/>
-            <Route path="/gigs/:gig_id" exact element={<GigsGig_id />}/>
-            <Route path="/gallery" exact element={<Gallery />}/>
-            <Route path="/music" exact element={<Music />}/>
-            <Route path="/store" exact element={<Store />}/>
-            </Routes>    
+          <BasketUpdateContext.Provider
+            value={[basketChanged, setBasketChanged]}
+          >
+            <Routes>
+              <Route path="/" exact element={<Splash />} />
+              <Route path="/home" exact element={<Main />} />
+              <Route path="/gigs" exact element={<Gigs />} />
+              <Route path="/gigs/:gig_id" exact element={<GigsGig_id />} />
+              <Route path="/gallery" exact element={<Gallery />} />
+              <Route path="/music" exact element={<Music />} />
+              <Route path="/store" exact element={<Store />} />
+            </Routes>
+          </BasketUpdateContext.Provider>
         </BasketContext.Provider>
       </BrowserRouter>
     </>

@@ -7,17 +7,24 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import InfoIcon from "@mui/icons-material/Info";
 import { useContext } from "react";
-import { BasketContext } from "../App";
+import { BasketContext, BasketUpdateContext } from "../App";
 
 export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
+  const [basketChanged, setBasketChanged] = useContext(BasketUpdateContext);
 
   const handleAddBasket = (e) => {
     if (basket.length > 0){
       const updatedBasket = basket
       updatedBasket.push(e.currentTarget.value);
       setBasket(updatedBasket)
-    } else {setBasket([e.currentTarget.value])}
+      basketChanged? setBasketChanged(false) : setBasketChanged(true)
+    } else {
+      setBasket(
+        [e.currentTarget.value],
+        basketChanged ? setBasketChanged(false) : setBasketChanged(true)
+      );
+    }
   }
 
   return (
