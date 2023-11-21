@@ -1,8 +1,12 @@
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
+import StoreList from "./store-list.jsx";
+import { BasketContext } from "../App.jsx";
+import { useContext } from "react";
 
 const Store = () => {
   const drawerWidth = 240;
+  const [basket, setBasket] = useContext(BasketContext);
 
   return (
     <>
@@ -17,6 +21,7 @@ const Store = () => {
       >
         <DrawerNav />
         <h2>page - store</h2>
+        <StoreList />
       </Box>
     </>
   );
