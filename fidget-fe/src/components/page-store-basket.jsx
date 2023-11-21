@@ -8,7 +8,12 @@ import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox
 const StoreBasket = () => {
   const drawerWidth = 240;
     const [basket, setBasket] = useContext(BasketContext);
+    const [order, setOrder] = useState([])
     
+    useEffect(() => {
+        const toOrder = basket.filter((merchItem) => (Object.values(merchItem)[0] !== 0))
+        setOrder(toOrder)
+    },[basket])
     
     return (
       <>
@@ -24,7 +29,7 @@ const StoreBasket = () => {
           <DrawerNav />
           <h1>Your basket</h1>
           <div className="basketWrapper">
-            {basket.map((eachItem) => {
+            {order.map((eachItem) => {
                 return (
                     
                   <>

@@ -13,15 +13,7 @@ export default function StoreList() {
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
 
-  useEffect(() => {
-    const merchOrder = []
-    shopStock.map((eachItem) => {
-      const merchItem = {}
-      merchItem[eachItem.title] = 0
-      merchOrder.push(merchItem)
-    })
-  setBasket(merchOrder)
-},[])
+
 
   const handleAddBasket = (e) => {
     const selected = e.currentTarget.value;

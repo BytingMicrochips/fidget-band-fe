@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom"
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import Splash from "./components/page-splash.jsx";
 import Main from "./components/page-main.jsx";
 import Gigs from "./components/page-gigs.jsx";
@@ -9,6 +9,7 @@ import Gallery from "./components/page-gallery.jsx";
 import Music from "./components/page-music.jsx";
 import Store from "./components/page-store.jsx";
 import StoreBasket from "./components/page-store-basket.jsx";
+import shopStock from "../data/store-data.json";
 
 export const BasketContext = createContext();
 export const ShoppingListContext = createContext();
@@ -16,6 +17,17 @@ export const ShoppingListContext = createContext();
 function App() {
   const [basket, setBasket] = useState([]);
   const [shoppingList, setShoppingList] = useState([]);
+
+    useEffect(() => {
+      const merchOrder = [];
+      shopStock.map((eachItem) => {
+        const merchItem = {};
+        merchItem[eachItem.title] = 0;
+        merchOrder.push(merchItem);
+      });
+      setBasket(merchOrder);
+    }, []);
+  
   return (
     <>
       <BrowserRouter>
