@@ -272,3 +272,8 @@ color: black;
   border-radius: 0.4em;
   
 }
+
+.MuiImageListItemBar-titleWrap{
+  margin-top: -10px;
+  margin-bottom: -5px;
+}

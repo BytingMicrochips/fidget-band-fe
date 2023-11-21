@@ -2,10 +2,8 @@ import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import InfoIcon from "@mui/icons-material/Info";
 import { useContext } from "react";
 import { BasketContext, BasketUpdateContext } from "../App";
 
@@ -35,7 +33,7 @@ export default function StoreList() {
 
   return (
     <ImageList sx={{ width: "96%", height: "70vh", margin: "auto" }}>
-      {itemData.map((item) => (
+      {shopStock.map((item) => (
         <ImageListItem key={item.img}>
           <img
             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
@@ -48,14 +46,18 @@ export default function StoreList() {
             <>
               <ImageListItemBar
                 title={item.title}
+                subtitle={`£${item.price}`}
                 actionIcon={
                   <button
                     onClick={handleRemoveBasket}
                     value={item.title}
-                    aria-label={`Remove ${item.title} from basket`}
+                    aria-label={`Remove ${item.title} from basket, price £${item.price}`}
                   >
                     <RemoveShoppingCartIcon
-                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      sx={{
+                        color: "rgba(255, 255, 255, 0.54)",
+                        opacity: "60%",
+                      }}
                     />
                   </button>
                 }
@@ -65,14 +67,18 @@ export default function StoreList() {
             <>
               <ImageListItemBar
                 title={item.title}
+                subtitle={`£${item.price}`}
                 actionIcon={
                   <button
                     onClick={handleAddBasket}
                     value={item.title}
-                    aria-label={`Add ${item.title} to basket`}
+                    aria-label={`Add ${item.title} to basket for £${item.price}`}
                   >
                     <AddShoppingCartIcon
-                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      sx={{
+                        color: "rgba(255, 255, 255, 0.54)",
+                        opacity: "95%",
+                      }}
                     />
                   </button>
                 }
@@ -85,11 +91,11 @@ export default function StoreList() {
   );
 }
 
-const itemData = [
+const shopStock = [
   {
     img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
     title: "Breakfast",
-    author: "@bkristastucchio",
+    price: 10,
     rows: 2,
     cols: 2,
     featured: true,
@@ -97,29 +103,29 @@ const itemData = [
   {
     img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
     title: "Burger",
-    author: "@rollelflex_graphy726",
+    price: 5,
   },
   {
     img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
     title: "Camera",
-    author: "@helloimnik",
+    price: 20,
   },
   {
     img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
     title: "Coffee",
-    author: "@nolanissac",
+    price: 15,
     cols: 2,
   },
   {
     img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
     title: "Hats",
-    author: "@hjrc33",
+    price: 10,
     cols: 2,
   },
   {
     img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
     title: "Honey",
-    author: "@arwinneil",
+    price: 10,
     rows: 2,
     cols: 2,
     featured: true,
@@ -127,34 +133,35 @@ const itemData = [
   {
     img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
     title: "Basketball",
-    author: "@tjdragotta",
+    price: 20,
   },
   {
     img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
     title: "Fern",
-    author: "@katie_wasserman",
+    price: 15,
   },
   {
     img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
     title: "Mushrooms",
-    author: "@silverdalex",
+    price: 5,
     rows: 2,
     cols: 2,
   },
   {
     img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
     title: "Tomato basil",
-    author: "@shelleypauls",
+    price: 10,
   },
   {
     img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
     title: "Sea star",
-    author: "@peterlaster",
+    price: 10,
   },
   {
     img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
     title: "Bike",
-    author: "@southside_customs",
+    price: 15,
+
     cols: 2,
   },
 ];
