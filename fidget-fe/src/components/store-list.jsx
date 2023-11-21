@@ -12,14 +12,18 @@ import { BasketContext } from "../App";
 export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
 
-    const handleAddCart = (e) => {
-        return console.log('add cart', e.currentTarget)
-    }
+  const handleAddBasket = (e) => {
+    if (basket.length > 0){
+      const updatedBasket = basket
+      updatedBasket.push(e.currentTarget.value);
+      setBasket(updatedBasket)
+    } else {setBasket([e.currentTarget.value])}
+  }
 
   return (
     <ImageList sx={{ width: "96%", height: "70vh", margin: "auto" }}>
       {itemData.map((item) => (
-        <ImageListItem key={item.img} >
+        <ImageListItem key={item.img}>
           <img
             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
             src={`${item.img}?w=248&fit=crop&auto=format`}
@@ -28,14 +32,16 @@ export default function StoreList() {
           />
           <ImageListItemBar
             title={item.title}
-            value={item.title}
             actionIcon={
-              <div onClick={handleAddCart}>
+              <button
+                onClick={handleAddBasket}
+                value={item.title}
+                aria-label={`Add ${item.title} to basket`}
+              >
                 <AddShoppingCartIcon
                   sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                  aria-label={`info about ${item.title}`}
-                ></AddShoppingCartIcon>
-              </div>
+                />
+              </button>
             }
           />
         </ImageListItem>

@@ -22,6 +22,7 @@ const Store = () => {
         <DrawerNav />
         <h2>page - store</h2>
         <StoreList />
+        <h3>basket contains {basket.length} items</h3>
       </Box>
     </>
   );
