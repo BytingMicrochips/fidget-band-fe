@@ -32,7 +32,7 @@ export default function StoreList() {
   }
 
   return (
-    <ImageList sx={{ width: "96%", height: "70vh", margin: "auto" }}>
+    <ImageList sx={{ width: "96%", height: "60vh", margin: "auto" }}>
       {shopStock.map((item) => (
         <ImageListItem key={item.img}>
           <img

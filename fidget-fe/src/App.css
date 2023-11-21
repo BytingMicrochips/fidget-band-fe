@@ -277,3 +277,26 @@ color: black;
   margin-top: -10px;
   margin-bottom: -5px;
 }
+
+.reviewCheckout{
+  width: 96%;
+  margin-bottom: 0.5em;
+}
+
+.basketContains{
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+}
+
+.merchStore{
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+.merchText{
+  background-color: blueviolet;
+  font-size: medium;
+  width: 96%;
+  margin: auto;
+  margin-bottom: 0.2em;
+}

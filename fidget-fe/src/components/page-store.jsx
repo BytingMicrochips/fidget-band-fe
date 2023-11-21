@@ -13,7 +13,7 @@ const Store = () => {
   useEffect(() => {
     setItemsBasket(basket.length);
   }, [basketChanged]); 
-  
+
   return (
     <>
       <Box
@@ -26,9 +26,12 @@ const Store = () => {
         }}
       >
         <DrawerNav />
-        <h2>page - store</h2>
+        <h2 className="merchStore">Merch Store</h2>
+        <h3 className="merchText">All clothing items are lovingly hand printed by the band and our manager Emily! We are committed to using recycled and sweatshop free materials wherever possible.</h3> 
         <StoreList />
-        <h3>basket contains {itemsBasket} items</h3>
+        <h3 className="basketContains">basket contains {itemsBasket} items</h3>
+        {itemsBasket > 0 ? <>
+        <button className="reviewCheckout">Review and checkout </button></> : <></>}
       </Box>
     </>
   );
