@@ -272,3 +272,34 @@ color: black;
   border-radius: 0.4em;
   
 }
+
+.MuiImageListItemBar-titleWrap{
+  margin-top: -10px;
+  margin-bottom: -5px;
+}
+
+.reviewCheckout{
+  width: 96%;
+  margin-bottom: 0.5em;
+}
+
+.basketContains{
+  margin: auto;
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+  width: 96%;
+  background-color: teal;
+}
+
+.merchStore{
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.merchText{
+  background-color: blueviolet;
+  font-size: medium;
+  width: 96%;
+  margin: auto;
+  margin-bottom: 0.2em;
+}

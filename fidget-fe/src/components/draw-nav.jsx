@@ -43,11 +43,14 @@ function DrawerNav(props) {
           </ListItemButton>
         </ListItem>
 
+        <Divider />
+
         <ListItem
           disablePadding={true}
           onClick={() => {
             navigate("/gigs");
-          }}>
+          }}
+        >
           <ListItemButton defaultValue="Gigs">
             <ListItemIcon>
               <InboxIcon />
@@ -60,7 +63,8 @@ function DrawerNav(props) {
           disablePadding={true}
           onClick={() => {
             navigate("/gallery");
-          }}>
+          }}
+        >
           <ListItemButton defaultValue="Gallery">
             <ListItemIcon>
               <InboxIcon />
@@ -73,7 +77,8 @@ function DrawerNav(props) {
           disablePadding={true}
           onClick={() => {
             navigate("/music");
-          }}>
+          }}
+        >
           <ListItemButton defaultValue="Music">
             <ListItemIcon>
               <InboxIcon />
@@ -82,6 +87,20 @@ function DrawerNav(props) {
           </ListItemButton>
         </ListItem>
 
+        <Divider />
+        <ListItem
+          disablePadding={true}
+          onClick={() => {
+            navigate("/store");
+          }}
+        >
+          <ListItemButton defaultValue="Store">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Store" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );
