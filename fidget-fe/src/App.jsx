@@ -11,18 +11,16 @@ import Store from "./components/page-store.jsx";
 import StoreBasket from "./components/page-store-basket.jsx";
 
 export const BasketContext = createContext();
-export const BasketUpdateContext = createContext();
+export const ShoppingListContext = createContext();
 
 function App() {
-  const [basket, setBasket] = useState([])
-  const [basketChanged, setBasketChanged] = useState(false);
+  const [basket, setBasket] = useState([]);
+  const [shoppingList, setShoppingList] = useState([]);
   return (
     <>
       <BrowserRouter>
         <BasketContext.Provider value={[basket, setBasket]}>
-          <BasketUpdateContext.Provider
-            value={[basketChanged, setBasketChanged]}
-          >
+          <ShoppingListContext.Provider value={[shoppingList, setShoppingList]}>
             <Routes>
               <Route path="/" exact element={<Splash />} />
               <Route path="/home" exact element={<Main />} />
@@ -33,7 +31,7 @@ function App() {
               <Route path="/store" exact element={<Store />} />
               <Route path="/store/basket" exact element={<StoreBasket />} />
             </Routes>
-          </BasketUpdateContext.Provider>
+            </ShoppingListContext.Provider>
         </BasketContext.Provider>
       </BrowserRouter>
     </>

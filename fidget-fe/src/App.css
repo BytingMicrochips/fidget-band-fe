@@ -303,3 +303,36 @@ color: black;
   margin: auto;
   margin-bottom: 0.2em;
 }
+
+.basketWrapper{
+  background-color: orange;
+}
+
+.basketItem{
+  width: 96%;
+  background-color: violet;
+  margin: auto;
+  padding-left: 0.3em ;
+  padding-right: 0.3em ;
+  margin-bottom: 0.3em;
+  display: flex;
+  justify-content: space-between;
+  font-size: smaller;
+}
+
+.addRemoveBasket{
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.MuiImageListItemBar-actionIcon{
+  height: ;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+.MuiImageListItemBar-actionIcon button{
+  margin: 0 0.2em 0 0.2em;
+}

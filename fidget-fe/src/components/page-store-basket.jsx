@@ -1,12 +1,15 @@
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
-import { BasketContext, BasketUpdateContext } from "../App.jsx";
+import { BasketContext } from "../App.jsx";
 import { useContext, useEffect, useState } from "react";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 
 const StoreBasket = () => {
   const drawerWidth = 240;
-  const [basket, setBasket] = useContext(BasketContext);
-
+    const [basket, setBasket] = useContext(BasketContext);
+    
+    
     return (
       <>
         <Box
@@ -20,6 +23,26 @@ const StoreBasket = () => {
         >
           <DrawerNav />
           <h1>Your basket</h1>
+          <div className="basketWrapper">
+            {basket.map((eachItem) => {
+                return (
+                    
+                  <>
+                    <div className="basketItem">
+                      <h2>{Object.keys(eachItem)[0]}</h2>
+                      <button>
+                        <IndeterminateCheckBoxIcon />
+                      </button>
+                      <h2>{Object.values(eachItem)[0]}</h2>
+                      <button>
+                        <AddBoxIcon />
+                      </button>
+                      <h2>cost</h2>
+                    </div>
+                  </>
+                );
+            })}
+          </div>
         </Box>
       </>
     );
