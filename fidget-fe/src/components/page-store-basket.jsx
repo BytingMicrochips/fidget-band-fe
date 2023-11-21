@@ -19,7 +19,7 @@ const StoreBasket = () => {
           }}
         >
           <DrawerNav />
-          <h1>page - store / basket</h1>
+          <h1>Your basket</h1>
         </Box>
       </>
     );

@@ -3,17 +3,23 @@ import Box from "@mui/material/Box";
 import StoreList from "./store-list.jsx";
 import { BasketContext, BasketUpdateContext } from "../App.jsx";
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Store = () => {
   const drawerWidth = 240;
   const [basket, setBasket] = useContext(BasketContext);
   const [basketChanged, setBasketChanged] = useContext(BasketUpdateContext);
   const [itemsBasket, setItemsBasket] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setItemsBasket(basket.length);
   }, [basketChanged]); 
 
+  const handleReviewCheckout = () => {
+    navigate("/store/basket")
+  }
+  
   return (
     <>
       <Box
@@ -31,7 +37,7 @@ const Store = () => {
         <StoreList />
         <h3 className="basketContains">Your basket contains {itemsBasket} items</h3>
         {itemsBasket > 0 ? <>
-        <button className="reviewCheckout">Review and checkout </button></> : <></>}
+        <button className="reviewCheckout" onClick={handleReviewCheckout}>Review and checkout </button></> : <></>}
       </Box>
     </>
   );
