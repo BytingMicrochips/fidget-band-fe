@@ -10,7 +10,17 @@ const StoreBasket = () => {
     const [basket, setBasket] = useContext(BasketContext);
     const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
     const [order, setOrder] = useState([])
+    const [totalPrice, setTotalPrice] = useState(0);
     
+    useEffect(() => {
+        let updatedCost = 0
+        order.map((eachItem) => {
+            updatedCost = updatedCost + Object.values(eachItem)[0] * Object.values(eachItem)[1];
+        })
+        setTotalPrice(updatedCost);
+    },[order])
+
+
     useEffect(() => {
         const toOrder = basket.filter((merchItem) => (Object.values(merchItem)[0] !== 0))
         setOrder(toOrder)
@@ -30,7 +40,6 @@ const StoreBasket = () => {
   };
 
     const handleRemoveBasket = (e) => {
-      console.log('handlingRemoveBasket', e.currentTarget.value)
     const selected = e.currentTarget.value;
     const updatedBasket = [...basket];
     const indexToRemove = shoppingList.indexOf(selected);
@@ -76,42 +85,51 @@ const StoreBasket = () => {
                     <>
                       <div className="basketItem">
                         <h2>{Object.keys(eachItem)[0]}</h2>
-                        <div className="basketQuantity">
-                          <button
-                            aria-label={`Remove one ${
-                              Object.keys(eachItem)[0]
-                            } from basket`}
-                            onClick={handleRemoveBasket}
-                            value={Object.keys(eachItem)[0]}
-                          >
-                            <IndeterminateCheckBoxIcon
-                              sx={{ width: 30, height: 30 }}
-                            />
-                          </button>
-                          <h2
-                            aria-label={`Quantity of ${
-                              Object.keys(eachItem)[0]
-                            } in basket`}>
-                            {Object.values(eachItem)[0]}
+                        <div className="quantityAndPrice">
+                          <div className="basketQuantity">
+                            <button
+                              aria-label={`Remove one ${
+                                Object.keys(eachItem)[0]
+                              } from basket`}
+                              onClick={handleRemoveBasket}
+                              value={Object.keys(eachItem)[0]}
+                            >
+                              <IndeterminateCheckBoxIcon
+                                sx={{ width: 30, height: 30 }}
+                              />
+                            </button>
+                            <h2
+                              aria-label={`Quantity of ${
+                                Object.keys(eachItem)[0]
+                              } in basket`}
+                            >
+                              {Object.values(eachItem)[0]}
+                            </h2>
+                            <button
+                              aria-label={`Add another ${
+                                Object.keys(eachItem)[0]
+                              } to basket`}
+                              onClick={handleAddBasket}
+                              value={Object.keys(eachItem)[0]}
+                            >
+                              <AddBoxIcon sx={{ width: 30, height: 30 }} />
+                            </button>
+                          </div>
+                          <h2 className="itemCost">
+                            £
+                            {Object.values(eachItem)[0] *
+                              Object.values(eachItem)[1]}
                           </h2>
-                          <button
-                            aria-label={`Add another ${
-                              Object.keys(eachItem)[0]
-                            } to basket`}
-                            onClick={handleAddBasket}
-                            value={Object.keys(eachItem)[0]}>
-                            <AddBoxIcon sx={{ width: 30, height: 30 }} />
-                          </button>
                         </div>
-                        <h2>
-                          £{Object.values(eachItem)[0] *Object.values(eachItem)[1]}
-                        </h2>
                       </div>
                     </>
                   );
                 })}
               </>
             )}
+            <div className="totalWrapper">
+              <h2>Order total: £{totalPrice}</h2>
+            </div>
           </div>
         </Box>
       </>
