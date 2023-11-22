@@ -76,25 +76,29 @@ const StoreBasket = () => {
                     <>
                       <div className="basketItem">
                         <h2>{Object.keys(eachItem)[0]}</h2>
-                        <button
-                          aria-label={`Remove ${
-                            Object.keys(eachItem)[0]
-                          } from basket`}
-                          onClick={handleRemoveBasket}
-                          value={Object.keys(eachItem)[0]}
-                        >
-                          <IndeterminateCheckBoxIcon />
-                        </button>
-                        <h2>{Object.values(eachItem)[0]}</h2>
-                        <button
-                          aria-label={`Remove ${
-                            Object.keys(eachItem)[0]
-                          } from basket`}
-                          onClick={handleAddBasket}
-                          value={Object.keys(eachItem)[0]}
-                        >
-                          <AddBoxIcon />
-                        </button>
+                        <div className="basketQuantity">
+                          <button
+                            aria-label={`Remove ${
+                              Object.keys(eachItem)[0]
+                            } from basket`}
+                            onClick={handleRemoveBasket}
+                            value={Object.keys(eachItem)[0]}
+                          >
+                            <IndeterminateCheckBoxIcon
+                              sx={{ width: 30, height: 30 }}
+                            />
+                          </button>
+                          <h2>{Object.values(eachItem)[0]}</h2>
+                          <button
+                            aria-label={`Remove ${
+                              Object.keys(eachItem)[0]
+                            } from basket`}
+                            onClick={handleAddBasket}
+                            value={Object.keys(eachItem)[0]}
+                          >
+                            <AddBoxIcon sx={{ width: 30, height: 30 }} />
+                          </button>
+                        </div>
                         <h2>cost</h2>
                       </div>
                     </>

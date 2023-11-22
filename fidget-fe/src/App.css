@@ -336,3 +336,21 @@ color: black;
 .MuiImageListItemBar-actionIcon button{
   margin: 0 0.2em 0 0.2em;
 }
+
+.basketQuantity{
+  display: flex;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.basketQuantity h2{
+  padding: 0em 0.2em 0em 0.2em;
+}
+
+.basketQuantity button{
+  height: fit-content;
+  display: flex;
+  padding: 0;
+  margin: auto;
+
+}
