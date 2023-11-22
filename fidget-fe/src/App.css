@@ -291,7 +291,7 @@ color: black;
   background-color: teal;
 }
 
-.merchStore{
+.merchStore, .yourOrder{
   margin-top: 0.2em;
   margin-bottom: 0.2em;
 }
@@ -302,4 +302,102 @@ color: black;
   width: 96%;
   margin: auto;
   margin-bottom: 0.2em;
+}
+
+.basketWrapper{
+  background-color: orange;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.basketItem{
+  width: 96%;
+  background-color: violet;
+  margin: auto;
+  padding-top: 0em, 0.3em, 0em, 0,3em ;
+  margin-bottom: 0.2em;
+  display: flex;
+  justify-content: space-between;
+  font-size: smaller;
+}
+
+.basketItem h2{
+padding: 0.2em;
+margin: 0;
+}
+
+.addRemoveBasket{
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.MuiImageListItemBar-actionIcon{
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+.MuiImageListItemBar-actionIcon button{
+  margin: 0 0.2em 0 0.2em;
+}
+
+.basketQuantity{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  width: 65%;
+}
+
+.basketQuantity h2{
+  padding: 0em 0.3em 0em 0.3em;
+}
+
+.basketQuantity button{
+  height: fit-content;
+  display: flex;
+  padding: 0;
+  margin: auto;
+}
+
+.quantityAndPrice{
+  display: flex;
+  justify-content: space-between;
+  width: 48%;
+}
+
+.totalWrapper{
+  background-color: mediumaquamarine;
+  width: 96%;
+  margin: auto;
+  font-size: smaller;
+  text-align: end;
+}
+
+.totalWrapper h2{
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.basketNav{
+  width: 66%;
+  margin: auto;
+  padding-top: 1em;
+}
+
+.basketText{
+  background-color: skyblue;
+  margin: auto;
+  padding: 0;
+}
+
+.basketText h3{
+  background-color: mediumslateblue;
+  margin: 0 0 0.2em 0;
+  font-size: medium;
+}
+
+.mailChimpBasket{
+  margin-top: 3em;
 }

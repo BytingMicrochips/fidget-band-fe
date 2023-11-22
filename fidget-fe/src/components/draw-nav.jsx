@@ -101,6 +101,20 @@ function DrawerNav(props) {
             <ListItemText primary="Store" />
           </ListItemButton>
         </ListItem>
+
+        <ListItem
+          disablePadding={true}
+          onClick={() => {
+            navigate("/store/basket");
+          }}
+        >
+          <ListItemButton defaultValue="Basket">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Basket" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );
