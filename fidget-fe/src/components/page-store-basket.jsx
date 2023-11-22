@@ -72,7 +72,7 @@ const StoreBasket = () => {
           }}
         >
           <DrawerNav />
-          <h1>Your order</h1>
+          <h2 className="yourOrder">Your order</h2>
           <div className="basketWrapper">
             {order.length === 0 ? (
               <>
