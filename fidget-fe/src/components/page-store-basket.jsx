@@ -78,20 +78,34 @@ const StoreBasket = () => {
                         <h2>{Object.keys(eachItem)[0]}</h2>
                         <div className="basketQuantity">
                           <button
-                            aria-label={`Remove one ${Object.keys(eachItem)[0]} from basket`}
+                            aria-label={`Remove one ${
+                              Object.keys(eachItem)[0]
+                            } from basket`}
                             onClick={handleRemoveBasket}
-                            value={Object.keys(eachItem)[0]}>
-                            <IndeterminateCheckBoxIcon sx={{ width: 30, height: 30 }}/>
+                            value={Object.keys(eachItem)[0]}
+                          >
+                            <IndeterminateCheckBoxIcon
+                              sx={{ width: 30, height: 30 }}
+                            />
                           </button>
-                          <h2 aria-label={`Quantity of ${Object.keys(eachItem)[0]} in basket`}>{Object.values(eachItem)[0]}</h2>
+                          <h2
+                            aria-label={`Quantity of ${
+                              Object.keys(eachItem)[0]
+                            } in basket`}>
+                            {Object.values(eachItem)[0]}
+                          </h2>
                           <button
-                            aria-label={`Add another ${Object.keys(eachItem)[0]} to basket`}
+                            aria-label={`Add another ${
+                              Object.keys(eachItem)[0]
+                            } to basket`}
                             onClick={handleAddBasket}
                             value={Object.keys(eachItem)[0]}>
                             <AddBoxIcon sx={{ width: 30, height: 30 }} />
                           </button>
                         </div>
-                        <h2>cost</h2>
+                        <h2>
+                          £{Object.values(eachItem)[0] *Object.values(eachItem)[1]}
+                        </h2>
                       </div>
                     </>
                   );

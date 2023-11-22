@@ -23,11 +23,13 @@ function App() {
       shopStock.map((eachItem) => {
         const merchItem = {};
         merchItem[eachItem.title] = 0;
+        merchItem.price = eachItem.price;
         merchOrder.push(merchItem);
       });
       setBasket(merchOrder);
     }, []);
-  
+    
+    console.log("🚀 ~ file: App.jsx:29 ~ useEffect ~ basket:", basket);
   return (
     <>
       <BrowserRouter>
