@@ -2,11 +2,16 @@ import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
 import { BasketContext, ShoppingListContext } from "../App.jsx";
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import MailChimp from "./mailChimp.jsx";
 
 const StoreBasket = () => {
-  const drawerWidth = 240;
+    const drawerWidth = 240;
+    const Navigate = useNavigate();
     const [basket, setBasket] = useContext(BasketContext);
     const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
     const [order, setOrder] = useState([])
@@ -73,6 +78,14 @@ const StoreBasket = () => {
         >
           <DrawerNav />
           <h2 className="yourOrder">Your order</h2>
+          <div className="basketText">
+            <h3>Thank you for supporting Fidget & the Twitchers!</h3>
+            <h3>
+              All orders will be posted soon as we are able - your patience is
+              appreciated during summer festival season.
+            </h3>
+            <h3> See you in the dance!</h3>
+          </div>
           <div className="basketWrapper">
             {order.length === 0 ? (
               <>
@@ -130,6 +143,22 @@ const StoreBasket = () => {
             <div className="totalWrapper">
               <h2>Order total: £{totalPrice}</h2>
             </div>
+            <div className="basketNav">
+              <Stack direction="column" spacing={1.5}>
+                <Button
+                  variant="outlined"
+                  onClick={() => {
+                    Navigate("/store");
+                  }}
+                >
+                  Return to store
+                </Button>
+                <Button variant="contained">Checkout now</Button>
+              </Stack>
+            </div>
+          </div>
+          <div className="mailChimpBasket">
+            <MailChimp />
           </div>
         </Box>
       </>

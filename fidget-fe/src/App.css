@@ -379,3 +379,25 @@ margin: 0;
   margin-top: 0.5em;
   margin-bottom: 0;
 }
+
+.basketNav{
+  width: 66%;
+  margin: auto;
+  padding-top: 1em;
+}
+
+.basketText{
+  background-color: skyblue;
+  margin: auto;
+  padding: 0;
+}
+
+.basketText h3{
+  background-color: mediumslateblue;
+  margin: 0 0 0.2em 0;
+  font-size: medium;
+}
+
+.mailChimpBasket{
+  margin-top: 3em;
+}
