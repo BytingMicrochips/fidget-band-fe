@@ -153,7 +153,7 @@ const StoreBasket = () => {
                 >
                   Return to store
                 </Button>
-                <Button variant="contained">Checkout now</Button>
+                <Button variant="contained" onClick={()=>{Navigate("/store/checkout");}}>Checkout now</Button>
               </Stack>
             </div>
           </div>
