@@ -2,13 +2,11 @@ import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
 import { BasketContext, ShoppingListContext } from "../App.jsx";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import MailChimp from "./mailChimp.jsx";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 
-const Checkout = () => {
+const Checkout = (order, totalPrice) => {
     const drawerWidth = 240;
-    const Navigate = useNavigate;
     return (
       <>
         <Box
