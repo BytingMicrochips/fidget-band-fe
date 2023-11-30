@@ -13,13 +13,13 @@ import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 
 import stickEm from "../assets/musicPlayer/stickEm.mp3";
-import landlord from "../assets/musicPlayer/landlord.mp3";
+import whiskyMystic from "../assets/musicPlayer/whiskyMystic.mp3";
 import contraband from "../assets/musicPlayer/contraband.mp3";
 import whiteLogo from "../assets/whiteLogo.jpg";
 import contrabandCover from "../assets/musicPlayer/contrabandCover.jpg"; 
 import fullSteamAheadCover from "../assets/musicPlayer/fullSteamAheadCover.jpg"; 
 import cantSitStraightCover from "../assets/musicPlayer/cantSitStraightCover.jpg"; 
-import polyPerv from "../assets/musicPlayer/polyPerv.mp3"; 
+import blackVoodooMagic from "../assets/musicPlayer/blackVoodooMagic.mp3"; 
 
 import { useEffect, useState } from "react";
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
@@ -27,10 +27,10 @@ import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 const trackList = [
   {
-    title: "Mr Landlord",
+    title: "Whisky Mystic",
     artist: "Fidget & the Twitchers",
     album: "Can't sit straight",
-    source: landlord,
+    source: whiskyMystic,
     coverArt: cantSitStraightCover,
     imageAlt: "Can't sit straight cover",
     buyLink: "",
@@ -55,15 +55,15 @@ const trackList = [
       "https://fidgetandthetwitchers.bandcamp.com/track/contraband-circus-2",
   },
   {
-    title: "Polyperv",
+    title: "Black Voodoo Magic",
     artist: "Fidget & the Twitchers",
     album: "Full Steam Ahead",
-    source: polyPerv,
+    source: blackVoodooMagic,
     coverArt: fullSteamAheadCover,
     imageAlt: "Full Steam Ahead cover",
     buyLink:
-      "https://fidgetandthetwitchers.bandcamp.com/track/polyperv?action=download",
-  },
+      "https://fidgetandthetwitchers.bandcamp.com/track/black-voodoo-magic?action=download",
+  }
 ]; 
 
 
