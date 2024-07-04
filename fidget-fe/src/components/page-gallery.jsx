@@ -7,7 +7,7 @@ import videosData from "../../data/videos-data.json";
 import { useState } from "react";
 
 const Gallery = () => {
-    const drawerWidth = 240;
+    const drawerWidth = 150;
     const [whichVideo, setWhichVideo] = useState(0)
     
     const handlePreviousVid = () => {

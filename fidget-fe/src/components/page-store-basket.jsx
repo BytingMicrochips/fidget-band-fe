@@ -10,7 +10,7 @@ import Stack from "@mui/material/Stack";
 import MailChimp from "./mailChimp.jsx";
 
 const StoreBasket = () => {
-    const drawerWidth = 240;
+    const drawerWidth = 150;
     const Navigate = useNavigate();
     const [basket, setBasket] = useContext(BasketContext);
     const [shoppingList, setShoppingList] = useContext(ShoppingListContext);

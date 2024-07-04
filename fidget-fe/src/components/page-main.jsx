@@ -12,7 +12,7 @@ const Main = () => {
   const [futureGigs, setFutureGigs] = useState([]);
   const [nextGig, setNextGig] = useState({});
   const [nextGigDate, setNextGigDate] = useState("");
-  const drawerWidth = 240;
+  const drawerWidth = 150;
 
   const actualDate = new Date();
   const dateNow = Math.ceil(actualDate / 100) * 100;

@@ -6,7 +6,7 @@ import { useContext} from "react";
 import { useNavigate } from "react-router-dom";
 
 const Store = () => {
-  const drawerWidth = 240;
+  const drawerWidth = 150;
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
   const navigate = useNavigate();
 
