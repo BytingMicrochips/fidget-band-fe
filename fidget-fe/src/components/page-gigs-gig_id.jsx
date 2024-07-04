@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 const GigsGig_id = () => {
   const params = useParams();
-  const drawerWidth = 240;
+  const drawerWidth = 150;
   const [thisGig, setThisGig] = useState({});
   const navigate = useNavigate();
 

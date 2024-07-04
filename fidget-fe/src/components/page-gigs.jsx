@@ -9,13 +9,16 @@ import { useNavigate } from "react-router-dom";
 
 const Gigs = () => {
   const [isList, setIsList] = useState(true)
-  const drawerWidth = 240;
+  const drawerWidth = 150;
   const navigate = useNavigate();
 
   const handleTileList = () => {
     isList === true ? setIsList(false) : setIsList(true)
   }
   
+  const fetchGigs = () => {
+    
+  }
 
   
   return (

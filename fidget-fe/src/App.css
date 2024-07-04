@@ -401,3 +401,63 @@ margin: 0;
 .mailChimpBasket{
   margin-top: 3em;
 }
+
+@media only screen and (min-width: 600px) {
+  #root{
+    height: 100vh;
+    margin-left: 150px;
+    margin-right: 0px;
+    width: 91vw;
+  }
+  .splashWrapper {
+    background-color: lightblue;
+  }
+  .splashWrapper img{
+    width: 30vw;
+  }
+  .mailChimpWrapper{
+    width: 30vw;
+    margin: auto;
+    margin-top: 10px;
+  }
+  .mailChimpWrapper img{
+    width: 150px;
+    margin-bottom: 5px;
+  }
+  .splashButtons{
+    width: 30vw;
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .page-main{
+    width: 91vw;
+  } 
+  .logoRedWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: -150px;
+  }
+  .logoRedWrapper h1{
+    font-size: 2em;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: silver;
+  }
+  .logoRedWrapper img{
+    width: 60%;
+  };
+  .contrabandBanner{
+    width: 45%;
+  }
+  .nextGigBanner{
+    width: 45%;
+    margin: auto;
+  }
+  .pageMainBandPic{
+    width: 45%;
+  }
+}

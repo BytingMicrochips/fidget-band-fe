@@ -16,7 +16,7 @@ import Header from "./header";
 
 
 function DrawerNav(props) {
-  const drawerWidth = 240;
+  const drawerWidth = 150;
   // const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -178,13 +178,5 @@ function DrawerNav(props) {
     </Box>
   );
 }
-
-// ResponsiveDrawer.propTypes = {
-//   /**
-//    * Injected by the documentation to work in an iframe.
-//    * Remove this when copying and pasting into your project.
-//    */
-//   window: PropTypes.func,
-// };
 
 export default DrawerNav;

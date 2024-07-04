@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import MusicPlayerSlider from "./music-player.jsx";
 
 const Music = () => {
-  const drawerWidth = 240;
+  const drawerWidth = 150;
 
     return (
         <>
