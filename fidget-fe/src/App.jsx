@@ -15,9 +15,12 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export const BasketContext = createContext();
 export const ShoppingListContext = createContext();
+export const GigsContext = createContext();
+
 function App() {
   const [basket, setBasket] = useState([]);
   const [shoppingList, setShoppingList] = useState([]);
+  const [gigsData, setGigsData] = useState([]);
 
     useEffect(() => {
       const merchOrder = [];
@@ -35,19 +38,26 @@ function App() {
       <BrowserRouter>
         <BasketContext.Provider value={[basket, setBasket]}>
           <ShoppingListContext.Provider value={[shoppingList, setShoppingList]}>
-            <PayPalScriptProvider options={{clientId: "AZO-gIkUY52-hUMGqCJggP3Hd0T1vvHtN85YBOyFMP7MuN4cc4s_Tw7vH2czYrI-PaNneoZhCOvnE81b"}}>
-              <Routes>
-                <Route path="/" exact element={<Splash />} />
-                <Route path="/home" exact element={<Main />} />
-                <Route path="/gigs" exact element={<Gigs />} />
-                <Route path="/gigs/:gig_id" exact element={<GigsGig_id />} />
-                <Route path="/gallery" exact element={<Gallery />} />
-                <Route path="/music" exact element={<Music />} />
-                <Route path="/store" exact element={<Store />} />
-                <Route path="/store/basket" exact element={<StoreBasket />} />
-                <Route path="/store/checkout" exact element={<Checkout />} />
-              </Routes>
-            </PayPalScriptProvider>
+            <GigsContext.Provider value={[gigsData, setGigsData]}>
+              <PayPalScriptProvider
+                options={{
+                  clientId:
+                    "AZO-gIkUY52-hUMGqCJggP3Hd0T1vvHtN85YBOyFMP7MuN4cc4s_Tw7vH2czYrI-PaNneoZhCOvnE81b",
+                }}
+              >
+                <Routes>
+                  <Route path="/" exact element={<Splash />} />
+                  <Route path="/home" exact element={<Main />} />
+                  <Route path="/gigs" exact element={<Gigs />} />
+                  <Route path="/gigs/:_id" exact element={<GigsGig_id />} />
+                  <Route path="/gallery" exact element={<Gallery />} />
+                  <Route path="/music" exact element={<Music />} />
+                  <Route path="/store" exact element={<Store />} />
+                  <Route path="/store/basket" exact element={<StoreBasket />} />
+                  <Route path="/store/checkout" exact element={<Checkout />} />
+                </Routes>
+              </PayPalScriptProvider>
+            </GigsContext.Provider>
           </ShoppingListContext.Provider>
         </BasketContext.Provider>
       </BrowserRouter>

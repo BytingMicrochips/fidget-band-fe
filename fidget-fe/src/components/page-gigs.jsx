@@ -1,13 +1,13 @@
 import "../App.css";
 import Header from "./header.jsx";
 import MailChimp from "../components/mailChimp";
-import gigsJson from "../../data/gigs-data.json";
-import { useState, useContext } from "react";
+// import gigsJson from "../../data/gigs-data.json";
+import { useState, useContext, useEffect } from "react";
 import DrawerNav from "./draw-nav.jsx";  
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import  axios  from "axios";
-import { useEffect } from "react";
+import { GigsContext } from "../App.jsx";
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
@@ -16,8 +16,7 @@ const axiosBase = axios.create({
 
   const Gigs = () => {
     const [isList, setIsList] = useState(true);
-    const [gigsData, setGigsData] = useState([])
-    console.log("🚀 ~ Gigs ~ gigsData:", gigsData)
+    const [gigsData, setGigsData] = useContext(GigsContext);
     const drawerWidth = 150;
     const navigate = useNavigate();
     
@@ -68,7 +67,7 @@ const axiosBase = axios.create({
                     <div className="gigListItem">
                       <button
                         onClick={() => {
-                          navigate(`/gigs/${gig.gig_id}`);
+                          navigate(`/gigs/${gig._id}`);
                         }}
                       >
                         <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
@@ -83,9 +82,9 @@ const axiosBase = axios.create({
                       <button
                         className="gigButton"
                         onClick={() => {
-                          navigate(`/gigs/${gig.gig_id}`);
+                          navigate(`/gigs/${gig._id}`);
                         }}
-                        value={gig.gig_id}
+                        value={gig._id}
                       >
                         <div id="gigTileDateLocation">
                           <h3>
