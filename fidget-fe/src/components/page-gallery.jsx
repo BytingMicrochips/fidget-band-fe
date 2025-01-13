@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import QuiltedImageList from "./image-list.jsx";
 import arrowLeft from "../assets/arrow-left.png"
 import arrowRight from "../assets/arrow-right.png"
-// import videosJson from "../../data/videos-data.json";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";

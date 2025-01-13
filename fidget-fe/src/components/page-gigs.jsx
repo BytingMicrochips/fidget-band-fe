@@ -1,7 +1,6 @@
 import "../App.css";
 import Header from "./header.jsx";
 import MailChimp from "../components/mailChimp";
-// import gigsJson from "../../data/gigs-data.json";
 import { useState, useContext, useEffect } from "react";
 import DrawerNav from "./draw-nav.jsx";  
 import Box from "@mui/material/Box";
