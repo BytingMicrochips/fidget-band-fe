@@ -17,7 +17,14 @@ const axiosBase = axios.create({
 const Gallery = () => {
   const drawerWidth = 150;
   const [whichVideo, setWhichVideo] = useState(0)
-  const [videosData, setVideosData] = useState([])
+  const [videosData, setVideosData] = useState([
+    {
+      _id: "66846ccf96dda6a332c154f0",
+      source: "https://www.youtube.com/embed/CFNc5MWu65o?si=NDfXhe500QCk8GDN",
+      title: "Contraband Circus (studio version)",
+      date: "2023-11-09",
+    }
+  ]);
 
   useEffect(() => {
     axiosBase
