@@ -6,14 +6,28 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { useContext, useState, useEffect } from "react";
 import { BasketContext, ShoppingListContext } from "../App";
-import shopStock from "../../data/store-data.json";
+import axios from "axios";
+
+const axiosBase = axios.create({
+  baseURL: "https://fidget-band-be.onrender.com/api/",
+});
 
 export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
+  const [shopStock, setShopStock] = useState([]);
 
-
+  useEffect ((
+  ) => {
+        axiosBase.get("store")
+        .then(( allStock ) => {
+        setShopStock(allStock.data);
+      })
+      .catch((err) => {
+        console.error("Problem fetching stock data", err);
+      });
+  }, [])
 
   const handleAddBasket = (e) => {
     const selected = e.currentTarget.value;
