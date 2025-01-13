@@ -1,26 +1,39 @@
 import "../App.css";
 import Header from "./header.jsx";
 import MailChimp from "../components/mailChimp";
-import gigsData from "../../data/gigs-data.json";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import DrawerNav from "./draw-nav.jsx";  
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
+import  axios  from "axios";
+import { GigsContext } from "../App.jsx";
 
-const Gigs = () => {
-  const [isList, setIsList] = useState(true)
-  const drawerWidth = 150;
-  const navigate = useNavigate();
+const axiosBase = axios.create({
+  baseURL: "https://fidget-band-be.onrender.com/api/",
+});
 
-  const handleTileList = () => {
-    isList === true ? setIsList(false) : setIsList(true)
-  }
-  
-  const fetchGigs = () => {
+
+  const Gigs = () => {
+    const [isList, setIsList] = useState(true);
+    const [gigsData, setGigsData] = useContext(GigsContext);
+    const drawerWidth = 150;
+    const navigate = useNavigate();
     
-  }
+    const handleTileList = () => {
+      isList === true ? setIsList(false) : setIsList(true);
+    };
+    
+  useEffect ((
+  ) => {
+        axiosBase.get("gigs")
+        .then(( allGigs ) => {
+        setGigsData(allGigs.data);
+      })
+      .catch((err) => {
+        console.error("Problem fetching gigs data", err);
+      });
+  }, [])
 
-  
   return (
     <>
       <Box
@@ -51,7 +64,11 @@ const Gigs = () => {
                 {isList ? (
                   <>
                     <div className="gigListItem">
-                      <button onClick={(()=>{navigate(`/gigs/${gig.gig_id}`)})}>
+                      <button
+                        onClick={() => {
+                          navigate(`/gigs/${gig._id}`);
+                        }}
+                      >
                         <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
                         <h3>{gig.location}</h3>
                         <a href={gig.ticketLink}>Get tickets</a>
@@ -64,9 +81,9 @@ const Gigs = () => {
                       <button
                         className="gigButton"
                         onClick={() => {
-                          navigate(`/gigs/${gig.gig_id}`);
+                          navigate(`/gigs/${gig._id}`);
                         }}
-                        value={gig.gig_id}
+                        value={gig._id}
                       >
                         <div id="gigTileDateLocation">
                           <h3>
@@ -84,11 +101,11 @@ const Gigs = () => {
             );
           })}
         </div>
-        
+
         <MailChimp />
       </Box>
-    </>   
-  )
+    </>
+  );
 };
 
 export default Gigs;

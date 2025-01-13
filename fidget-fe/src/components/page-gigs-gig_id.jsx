@@ -2,17 +2,19 @@ import gigsData from "../../data/gigs-data.json";
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { GigsContext } from "../App.jsx";
 
 const GigsGig_id = () => {
   const params = useParams();
+  const [gigsData, setGigsData] = useContext(GigsContext);
   const drawerWidth = 150;
   const [thisGig, setThisGig] = useState({});
   const navigate = useNavigate();
 
 useEffect(() => {
   gigsData.filter((eachGig) => {
-    if (eachGig.gig_id === params.gig_id) {
+    if (eachGig._id === params._id) {
       setThisGig(eachGig)
     }
   })
