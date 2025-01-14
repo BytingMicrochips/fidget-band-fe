@@ -53,8 +53,21 @@ display: block;
 }
 
 
-.socialFeed{
-margin-bottom: 2vh;
+
+
+#facebookWidget{
+  width: fit-content;
+  min-width: 350px;
+  max-width: 700px;
+  margin-right: 0.5vh;
+}
+
+#instagramWidget{
+  /* max-width: 1000px; */
+  width: 59vw;
+  min-width: 350px;
+  max-width: 485px;
+  max-height: 375px;
 }
 
 .gigButton{
@@ -102,14 +115,14 @@ margin-bottom: 2vh;
 .socialFeeds{
 display: block  ;
 padding: 1vw;
-width: 100%;
+width: fit-content;
+min-width: 320px;
+min-height: fit-content;
+max-height: fit-content;
 margin: auto;
 background-color: blueviolet;
 }
 
-.socialFeeds iFrame{
-  width: 96%;
-}
 
 .mailChimpWrapper{
   background-color: black;
@@ -451,7 +464,12 @@ margin: 0;
     width: 60%;
   };
   .contrabandBanner{
-    width: 45%;
+    display: flex;
+    width: 25vw;
+    margin: auto;
+  }
+  .bannerWrapper{
+    background-color: black;
   }
   .nextGigBanner{
     width: 45%;
@@ -460,4 +478,11 @@ margin: 0;
   .pageMainBandPic{
     width: 45%;
   }
+  .socialFeeds{
+    display:flex;
+  }
+
+  #instagramWidget{
+  max-height: 470px;
+}
 }
