@@ -55,6 +55,11 @@ display: block;
 
 .socialFeed{
 margin-bottom: 2vh;
+background: transparent;
+}
+
+#facebookWidget, #instagramWidget {
+  width: 90vw;
 }
 
 .gigButton{
@@ -110,6 +115,7 @@ background-color: blueviolet;
 .socialFeeds iFrame{
   width: 96%;
 }
+
 
 .mailChimpWrapper{
   background-color: black;
@@ -459,5 +465,8 @@ margin: 0;
   }
   .pageMainBandPic{
     width: 45%;
+  }
+  .socialFeeds{
+    display:flex;
   }
 }

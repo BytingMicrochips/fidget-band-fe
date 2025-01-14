@@ -77,7 +77,6 @@ const Main = () => {
           />
           {Object.keys(nextGig).length !== 0 ? (
             <>
-              {" "}
               <div className="nextGigBanner">
                 <h3>
                   Next playing in {nextGig.location} on {nextGigDate} !
@@ -88,7 +87,11 @@ const Main = () => {
           ) : (
             <></>
           )}
-          <img src={bandPic} alt="full band after a busy gig" className="pageMainBandPic"/>
+          <img
+            src={bandPic}
+            alt="full band after a busy gig"
+            className="pageMainBandPic"
+          />
           <h2>
             Brass-fuelled skapunkery spurting punchy beats & social absurdities!
             Dealing out generous helpings of itchy rhythyms, funk infused
@@ -98,16 +101,16 @@ const Main = () => {
         </div>
         <div className="socialFeeds">
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwitchyfidgets&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-            width="340"
+            id="facebookWidget"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwitchyfidgets&tabs=timeline&colorscheme=dark&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId_data-lazy=true"
             height="380"
             allowFullScreen={true}
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             className="socialFeed"
           />
           <iframe
-            src="https://www.instagram.com/fidgetandthetwitchers/embed"
-            width="340"
+            id="instagramWidget"
+            src="https://www.instagram.com/fidgetandthetwitchers/embed?theme=dark"
             height="380"
             allowtransparency="true"
             className="socialFeed"
