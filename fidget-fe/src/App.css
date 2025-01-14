@@ -105,11 +105,20 @@ display: block;
 }
 
 .nextGigBanner a{
-  font-size: large;
+  font-size: medium;
   background-color: rgb(5, 33, 135);
   width: fit-content;
   margin: auto;
   padding: 0.5em;
+  margin-bottom: 1vh;
+}
+
+.nextGigBanner h3{
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 1px;
+  padding-right: 1px;
+  font-size:medium;
 }
 
 .socialFeeds{
@@ -463,26 +472,37 @@ margin: 0;
   .logoRedWrapper img{
     width: 60%;
   };
-  .contrabandBanner{
-    display: flex;
-    width: 25vw;
-    margin: auto;
-  }
-  .bannerWrapper{
-    background-color: black;
-  }
-  .nextGigBanner{
-    width: 45%;
-    margin: auto;
-  }
+
+
   .pageMainBandPic{
     width: 45%;
   }
   .socialFeeds{
     display:flex;
   }
-
   #instagramWidget{
   max-height: 470px;
+}
+
+@media only screen and (min-width: 900px) {
+    .contrabandBanner {
+        width: 42vw;
+      }
+  .bannerWrapper {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .nextGigBanner {
+      width: 42vw;
+      height: 15vh;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-bottom: 1vh;
+    }
+    .nextGigBanner a{
+      margin-top: 0%;
+    }
 }
 }
