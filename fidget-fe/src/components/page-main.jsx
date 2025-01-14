@@ -70,11 +70,13 @@ const Main = () => {
       >
         <div className="page-main">
           <DrawerNav />
+          <div className="bannerWrapper">
           <img
             src={contraband}
             alt="Contraband Circus new single 10-11-23 banner"
             className="contrabandBanner"
-          />
+            />
+            </div>
           {Object.keys(nextGig).length !== 0 ? (
             <>
               <div className="nextGigBanner">
@@ -100,18 +102,18 @@ const Main = () => {
           </h2>
         </div>
         <div className="socialFeeds">
-          <iframe
-            id="facebookWidget"
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwitchyfidgets&tabs=timeline&colorscheme=dark&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId_data-lazy=true"
-            height="380"
-            allowFullScreen={true}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            className="socialFeed"
-          />
+            <iframe
+              id="facebookWidget"
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwitchyfidgets&width=350&tabs=timeline&colorscheme=dark&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId_data-lazy=true"
+              height="470"
+              allowFullScreen={true}
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              className="socialFeed"
+            />
           <iframe
             id="instagramWidget"
             src="https://www.instagram.com/fidgetandthetwitchers/embed?theme=dark"
-            height="380"
+            height="470"
             allowtransparency="true"
             className="socialFeed"
           />
