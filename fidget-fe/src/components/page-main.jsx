@@ -1,14 +1,22 @@
 import "../App.css";
 import Header from "./header.jsx";
 import MailChimp from "../components/mailChimp";
-import { useEffect, useState, } from "react";
+import { useEffect, useState, useContext} from "react";
 import gigsData from "../../data/gigs-data.json";
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
 import contraband from "../assets/contrabandCircusBanner.jpg";
 import bandPic from "../assets/bandGaryHorne.jpg";
+import axios from "axios";
+import { GigsContext } from "../App.jsx";
+
+
+const axiosBase = axios.create({
+  baseURL: "https://fidget-band-be.onrender.com/api/",
+});
 
 const Main = () => {
+  const [gigsData, setGigsData] = useContext(GigsContext);
   const [futureGigs, setFutureGigs] = useState([]);
   const [nextGig, setNextGig] = useState({});
   const [nextGigDate, setNextGigDate] = useState("");
@@ -17,11 +25,21 @@ const Main = () => {
   const actualDate = new Date();
   const dateNow = Math.ceil(actualDate / 100) * 100;
 
+  useEffect ((
+  ) => {
+        axiosBase.get("gigs")
+        .then(( allGigs ) => {
+          setGigsData(allGigs.data);
+      })
+      .catch((err) => {
+        console.error("Problem fetching gigs data", err);
+      });
+  }, [])
+
   useEffect(() => {
     const timeFromNow = gigsData.map((eachGig) => {
       return new Date(eachGig.date) - dateNow;
     });
-
     const upcomingGigs = timeFromNow.filter((eachGig) => {
       if (eachGig >= 0) {
         return eachGig;
@@ -33,7 +51,7 @@ const Main = () => {
         return a - b;
       })
     );
-  }, []);
+}, [gigsData])
 
   useEffect(() => {
     gigsData.filter((eachGig) => {
