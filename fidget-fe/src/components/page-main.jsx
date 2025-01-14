@@ -94,7 +94,6 @@ const Main = () => {
             alt="Contraband Circus new single 10-11-23 banner"
             className="contrabandBanner"
             />
-            </div>
           {Object.keys(nextGig).length !== 0 ? (
             <>
               <div className="nextGigBanner">
@@ -107,6 +106,7 @@ const Main = () => {
           ) : (
             <></>
           )}
+          </div>
           <img
             src={bandPic}
             alt="full band after a busy gig"

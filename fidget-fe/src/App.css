@@ -110,6 +110,12 @@ display: block;
   width: fit-content;
   margin: auto;
   padding: 0.5em;
+  margin-bottom: 1vh;
+}
+
+.nextGigBanner h3{
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .socialFeeds{
@@ -464,16 +470,19 @@ margin: 0;
     width: 60%;
   };
   .contrabandBanner{
-    display: flex;
     width: 25vw;
-    margin: auto;
   }
   .bannerWrapper{
     background-color: black;
+    display: flex;
+    justify-content: center;
   }
   .nextGigBanner{
-    width: 45%;
-    margin: auto;
+    width: 25vw;
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-bottom: 1vh;
   }
   .pageMainBandPic{
     width: 45%;
@@ -481,7 +490,6 @@ margin: 0;
   .socialFeeds{
     display:flex;
   }
-
   #instagramWidget{
   max-height: 470px;
 }
