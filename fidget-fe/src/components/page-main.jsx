@@ -77,15 +77,16 @@ const Main = () => {
   }, [nextGig]);
   return (
     <>
-      <Box
+      {/* <Box
         component="main"
         sx={{
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          bgcolor: "#ff9800",
           padding: 0,
-        }}
-      >
+        }} */}
+      {/* > */}
         <div className="page-main">
           <DrawerNav />
           <div className="bannerWrapper">
@@ -137,7 +138,7 @@ const Main = () => {
           />
         </div>
         <MailChimp />
-      </Box>
+      {/* </Box> */}
     </>
   );
 }

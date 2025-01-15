@@ -45,6 +45,7 @@ const axiosBase = axios.create({
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           padding: 0,
+          bgcolor: "#ff9800",
         }}
       >
         <DrawerNav />
@@ -63,54 +64,52 @@ const axiosBase = axios.create({
             const gigDate = new Date(gig.date);
             let currentDate = new Date();
             if (gigDate >= currentDate) {
-
-            return (
-              <>
-                {isList ? (
-                  <>
-                    <div className="gigListItem">
-                      <button
-                        onClick={() => {
-                          navigate(`/gigs/${gig._id}`);
-                        }}
-                      >
-                        <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
-                        <h3>{gig.location}</h3>
-                        <a href={gig.ticketLink}>Get tickets</a>
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="buttonFlier">
-                      <button
-                        className="gigButton"
-                        onClick={() => {
-                          navigate(`/gigs/${gig._id}`);
-                        }}
-                        value={gig._id}
-                      >
-                        <div id="gigTileDateLocation">
-                          <h3>
-                            {`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}
-                          </h3>
+              return (
+                <>
+                  {isList ? (
+                    <>
+                      <div className="gigListItem">
+                        <button
+                          onClick={() => {
+                            navigate(`/gigs/${gig._id}`);
+                          }}
+                        >
+                          <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
-                        </div>
-                        <h3>{gig.title}</h3>
-                      </button>
-                      <img src={gig.flier} width="98%" />
-                    </div>
-                  </>
-                )}
-              </>
-            )
-          };
+                          <a href={gig.ticketLink}>Get tickets</a>
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="buttonFlier">
+                        <button
+                          className="gigButton"
+                          onClick={() => {
+                            navigate(`/gigs/${gig._id}`);
+                          }}
+                          value={gig._id}
+                        >
+                          <div id="gigTileDateLocation">
+                            <h3>
+                              {`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}
+                            </h3>
+                            <h3>{gig.location}</h3>
+                          </div>
+                          <h3>{gig.title}</h3>
+                        </button>
+                        <img src={gig.flier} width="98%" />
+                      </div>
+                    </>
+                  )}
+                </>
+              );
+            }
           })}
         </div>
         <h2> Past shows</h2>
         <div>
-          {
-            revGigs.map((gig) => {
+          {revGigs.map((gig) => {
             const gigDate = new Date(gig.date);
             let currentDate = new Date();
             if (gigDate < currentDate) {
