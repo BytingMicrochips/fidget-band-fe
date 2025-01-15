@@ -1,4 +1,5 @@
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo-trans.png";
+import tapt from "../assets/fidget tapt.jpg";
 import "../App.css";
 import MailChimp from "../components/mailChimp"
 import { useNavigate } from "react-router-dom";
@@ -10,12 +11,13 @@ const Splash = () => {
         <>
           <div className="splashWrapper">
             <div className="splashLogo">
-              <img src={logo} />
+              <img id="logo" src={logo} />
+              <img id="tapt" src={tapt} />
             </div>
             <div className="splashButtons">
               <button onClick={()=>{navigate("/home")}}>Enter site</button>
             </div>
-            <MailChimp/>
+            {/* <MailChimp/> */}
           </div>
         </>
       );
