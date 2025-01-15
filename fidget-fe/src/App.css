@@ -1,12 +1,15 @@
 #root {
   margin: 0 auto;
   text-align: center;
-  background-color: red;
-  width: 100%;
+  background-color:teal;
   min-height: 100vh;
-  height: fit-content;
+  
 }
 
+/* body {
+  background-color: yellow;
+  height: auto;
+} */
 .splashLogo img{
   width: 98vw;
   margin:auto;
@@ -49,11 +52,8 @@ display: block;
 }
 
 .page-main h2{
-  background-color: purple;
+  background-color: transparent;
 }
-
-
-
 
 #facebookWidget{
   width: fit-content;
@@ -124,12 +124,13 @@ display: block;
 .socialFeeds{
 display: block  ;
 padding: 1vw;
-width: fit-content;
-min-width: 320px;
+width: 91vw;
+min-width: 358px;
 min-height: fit-content;
 max-height: fit-content;
 margin: auto;
-background-color: blueviolet;
+justify-content: center;
+background-color: transparent;
 }
 
 
@@ -262,7 +263,20 @@ color: black;
 
 .contrabandBanner{
   margin-top: 0.2em;
+  margin-bottom: 0%;
+  max-width: 70%;
+}
+
+.contrabandBanner img{
+    max-width: 30%;
+      max-height: 10vh;
+      width: auto;
+      height: auto;
+}
+
+.bannerWrapper{
   width: 100%;
+  background-color: black;
 }
 
 .pageMainBandPic{
@@ -430,6 +444,7 @@ margin: 0;
     margin-left: 150px;
     margin-right: 0px;
     width: 91vw;
+    background-color: "9fff01";
   }
   .splashWrapper {
     background-color: lightblue;
@@ -485,24 +500,39 @@ margin: 0;
 }
 
 @media only screen and (min-width: 900px) {
-    .contrabandBanner {
-        width: 42vw;
+  .page-main{
+    width: calc(100vw - 167px) !important;
+    background-color: slateblue;
+  }
+  .contrabandBanner {
+        width: 35%;
       }
   .bannerWrapper {
       background-color: black;
       display: flex;
       justify-content: center;
+      max-height: 10vh;
     }
   
     .nextGigBanner {
-      width: 42vw;
-      height: 15vh;
+      height: 10vh;
+      width: 20vw;
       margin-top: auto;
       margin-bottom: auto;
       padding-bottom: 1vh;
+      display: flex;
+      flex-direction: row;
     }
     .nextGigBanner a{
-      margin-top: 0%;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 10px;
+    }
+    .nextGigBanner h3{
+      width: 80%;
+      margin: auto;
+      text-align: center;
+      padding: 10px;
     }
 }
 }

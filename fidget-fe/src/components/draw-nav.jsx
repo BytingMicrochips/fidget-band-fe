@@ -131,7 +131,12 @@ function DrawerNav(props) {
         aria-label="open drawer"
         edge="start"
         onClick={handleDrawerToggle}
-        sx={{ display: { sm: "none" }, margin: 0, backgroundColor: "#880e3a", borderRadius: 0 }}
+        sx={{
+          display: { sm: "none" },
+          margin: 0,
+          backgroundColor: "#f50057",
+          borderRadius: 0,
+        }}
       >
         <MenuIcon />
       </IconButton>
@@ -144,6 +149,7 @@ function DrawerNav(props) {
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           //   container={container}
+          
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -155,7 +161,7 @@ function DrawerNav(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-            },
+            }
           }}
         >
           {drawer}
@@ -168,6 +174,7 @@ function DrawerNav(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            
           }}
           open
         >
