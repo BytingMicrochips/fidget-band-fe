@@ -195,8 +195,18 @@ min-width: 358px;
 min-height: fit-content;
 max-height: fit-content;
 margin: auto;
+padding-bottom: 0px;
 justify-content: center;
-background-color: transparent;
+background-color: #d9d9d9;
+opacity: 0.8;
+border-radius: 1em;
+}
+
+.socialFeeds iframe{
+  border-radius: 1em;
+  color:#0d0d0d;
+margin-bottom: 1px;
+margin-top: 1px;
 }
 
 
