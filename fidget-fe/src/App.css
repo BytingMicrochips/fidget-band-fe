@@ -1,17 +1,10 @@
-
-
 #root {
   margin: 0 auto;
   text-align: center;
-  /* background-color:teal; */
+  background-image: url("../src/assets/background.jpg");
   min-height: 100vh;
-  
 }
 
-/* body {
-  background-color: yellow;
-  height: auto;
-} */
 .splashLogo img{
   width: 98vw;
   margin:auto;
@@ -45,7 +38,6 @@
 
 .logoRedWrapper{
  background-color: #0d0d0d;
- 
   width: 100%;
 }
 
@@ -74,8 +66,47 @@ display: block;
   color: whitesmoke;
 }
 
+.blerb{
+  background-image: url("../src/assets/paper-cropped.png");
+  background-position: 60%;
+  background-repeat: no-repeat;
+  width: 98%;
+  /* height: fit-content; */
+  /* padding-bottom: 100px; */
+}
 .page-main h2{
-  background-color: transparent;
+  font-size: medium;
+  color: #0d0d0d;
+  /* border-radius: 0.4em;
+  border-style: groove;
+  border-color: whitesmoke;
+  border-width: 4px; */
+}
+
+.reviews{
+  /* background-color: #b3b3b3; */
+  background-image: url("../src/assets/paper-cropped.png");
+  background-position: 60%;
+  background-repeat: no-repeat;
+  max-width: 98%;
+  margin: auto;
+  margin-top: 5px;
+  color: #0d0d0d;
+  /* border-radius: 0.4em;
+  border-style: groove;
+  border-color: whitesmoke;
+  border-width: 4px; */
+  font-size: small;
+      /* position: relative; */
+      /* height: 500px; */
+      /* display: flex; */
+}
+
+.reviews h3, .blerb h2{
+  margin-left: 15vw;
+  margin-right: 5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
 
 #facebookWidget{
@@ -100,7 +131,7 @@ display: block;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  background-color: #0d0d0d;
+  /* background-color: #0d0d0d; */
   opacity: 0.75;
 }
 
@@ -121,17 +152,29 @@ display: block;
 }
 
 .nextGigBanner{
-  background-color: green;
+  /* background-image: url("../src/assets/checker.png"); */
+  margin: 12px;
+  margin-top: 1px;
+  margin-bottom: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: 2px;
+  border-style:groove;
+  border-color: whitesmoke;
+  border-radius: 0.7em;
+  opacity: 80%;
+  
 }
 
 .nextGigBanner a{
   font-size: medium;
-  background-color: rgb(5, 33, 135);
+  color:#0d0d0d;
+  background-color: antiquewhite;
+  border-radius: 0.4em;
   width: fit-content;
   margin: auto;
+  margin-top: 4px;
   padding: 0.5em;
   margin-bottom: 1vh;
 }
@@ -289,26 +332,28 @@ color: #0d0d0d;
 }
 
 .contrabandBanner{
-  margin-top: 0.2em;
+  /* margin-top: 0.2em; */
   margin-bottom: 0%;
   max-width: 70%;
 }
 
 .contrabandBanner img{
-    max-width: 30%;
-      max-height: 10vh;
-      width: auto;
-      height: auto;
+  max-width: 30%;
+  max-height: 10vh;
+  width: auto;
+  height: auto;
 }
 
 .bannerWrapper{
   width: 100%;
   background-color: #0d0d0d;
+  padding-bottom: 1px;
 }
 
 .pageMainBandPic{
   width: 96%;
   margin-top: 0.5em;
+  border-radius: 0.4em;
 }
 
 .albumSelect{
@@ -543,10 +588,11 @@ margin: 0;
     }
   
     .nextGigBanner {
-      height: 10vh;
-      width: 20vw;
-      margin-top: auto;
-      margin-bottom: auto;
+      height: fit-content;
+      width: fit-content;
+      max-width: 45vw;
+      margin-top: 3px;
+      margin-bottom: 3px;
       padding-bottom: 1vh;
       display: flex;
       flex-direction: row;
