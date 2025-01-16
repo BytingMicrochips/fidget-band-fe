@@ -152,7 +152,6 @@ display: block;
 }
 
 .nextGigBanner{
-  /* background-image: url("../src/assets/checker.png"); */
   margin: 12px;
   margin-top: 1px;
   margin-bottom: 5px;
@@ -163,16 +162,19 @@ display: block;
   border-style:groove;
   border-color: whitesmoke;
   border-radius: 0.7em;
-  opacity: 80%;
   
 }
 
 .nextGigBanner a{
   font-size: medium;
-  color:#0d0d0d;
-  background-color: antiquewhite;
+  color: white;
+  font-weight: 600;
+  background-image: url("../src/assets/orange-slice.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 0.4em;
-  width: fit-content;
+  min-width: fit-content;
+  width: 80%;
   margin: auto;
   margin-top: 4px;
   padding: 0.5em;
@@ -198,7 +200,7 @@ margin: auto;
 padding-bottom: 0px;
 justify-content: center;
 background-color: #d9d9d9;
-opacity: 0.8;
+opacity: 0.76;
 border-radius: 1em;
 }
 
@@ -344,7 +346,8 @@ color: #0d0d0d;
 .contrabandBanner{
   /* margin-top: 0.2em; */
   margin-bottom: 0%;
-  max-width: 70%;
+  max-width: 75%;
+  border-radius: 0.4em;
 }
 
 .contrabandBanner img{
@@ -356,8 +359,8 @@ color: #0d0d0d;
 
 .bannerWrapper{
   width: 100%;
-  background-color: #0d0d0d;
   padding-bottom: 1px;
+  background-image: linear-gradient(#0d0d0d, rgba(255,0,0,0));
 }
 
 .pageMainBandPic{
