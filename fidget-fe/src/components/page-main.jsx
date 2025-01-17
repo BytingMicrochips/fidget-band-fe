@@ -101,7 +101,7 @@ const Main = () => {
                 <h3>
                   Next playing in {nextGig.location} on {nextGigDate}!
                 </h3>
-                <a href={nextGig.ticketLink}>Find tickets</a>
+                <button href={nextGig.ticketLink}>Find tickets</button>
               </div>
             </>
           ) : (

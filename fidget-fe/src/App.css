@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "CabinSketch-Regular";
+  src: url("../src/assets/fonts/CabinSketch-Regular.ttf");
+  src: url("../src/assets/fonts/CabinSketch-Bold.ttf");
+}
+
+@font-face {
+  font-family: "AveriaSansLibre-Regular";
+  src: url("../src/assets/fonts/AveriaSansLibre-Regular.ttf");
+}
+
+@font-face{
+  font-family: "AveriaSansLibre-Italic";
+  src: url("../src/assets/fonts/AveriaSansLibre-Italic.ttf");
+}
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -39,6 +55,7 @@
 .logoRedWrapper{
  background-color: #0d0d0d;
   width: 100%;
+  font-family: CabinSketch-Regular;
 }
 
 .logoRedWrapper img{
@@ -71,8 +88,7 @@ display: block;
   background-position: 60%;
   background-repeat: no-repeat;
   width: 98%;
-  /* height: fit-content; */
-  /* padding-bottom: 100px; */
+  font-family: AveriaSansLibre-Regular;
 }
 .page-main h2{
   font-size: medium;
@@ -92,14 +108,8 @@ display: block;
   margin: auto;
   margin-top: 5px;
   color: #0d0d0d;
-  /* border-radius: 0.4em;
-  border-style: groove;
-  border-color: whitesmoke;
-  border-width: 4px; */
   font-size: small;
-      /* position: relative; */
-      /* height: 500px; */
-      /* display: flex; */
+  font-family: AveriaSansLibre-Regular;
 }
 
 .reviews h3, .blerb h2{
@@ -107,6 +117,10 @@ display: block;
   margin-right: 5vw;
   padding-top: 1vh;
   padding-bottom: 1vh;
+}
+
+.reviews em{
+  font-family: AveriaSansLibre-Italic;
 }
 
 #facebookWidget{
@@ -162,10 +176,10 @@ display: block;
   border-style:groove;
   border-color: whitesmoke;
   border-radius: 0.7em;
-  
+  font-family: "CabinSketch-Bold";
 }
 
-.nextGigBanner a{
+.nextGigBanner button{
   font-size: medium;
   color: white;
   font-weight: 600;
@@ -227,13 +241,15 @@ margin-top: 1px;
   width: 100%;
   color: whitesmoke;
   width: 98vw;
+  font-family: CabinSketch-Regular;
 }
 
 .mailChimpWrapper img{
   display: flex;
   margin: auto;
   object-fit: cover;
-  width: 180px
+  width: 180px;
+  margin-bottom: 4px;
 }
 
 .mailChimpWrapper h2{
@@ -610,7 +626,7 @@ margin: 0;
       display: flex;
       flex-direction: row;
     }
-    .nextGigBanner a{
+    .nextGigBanner button{
       margin-top: auto;
       margin-bottom: auto;
       margin-right: 10px;
