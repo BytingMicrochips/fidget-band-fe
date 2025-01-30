@@ -107,7 +107,7 @@ display: block;
   background-repeat: no-repeat;
   max-width: 98%; 
   margin: auto;
-  margin-top: 5px;
+  margin-top: 2px;
   color: #0d0d0d;
   font-size: small;
   font-family: AveriaSansLibre-Regular;
@@ -116,8 +116,8 @@ display: block;
 .reviews h3, .blerb h2{
   margin-left: 15vw;
   margin-right: 8vw;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+  /* padding-top: 1vh;
+  padding-bottom: 1vh; */
 }
 
 .reviews em{

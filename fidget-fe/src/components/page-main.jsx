@@ -110,29 +110,31 @@ const Main = () => {
           className="pageMainBandPic"
         />
         <div className="blerb">
-        <h2>
-          We are a lively band offering brass-fuelled skapunkery, punchy beats &
-          social absurdities! Dealing out generous helpings of itchy rhythyms,
-          funk infused basslines and jazz drenched horn playing we have been
-          active in the DIY scene since 2019.
-        </h2>
+          <h2>
+            We are a lively band offering brass-fuelled skapunkery, punchy beats
+            & social absurdities! Dealing out generous helpings of itchy
+            rhythyms, funk infused basslines and jazz drenched horn playing we
+            have been active in the DIY scene since 2019.
+          </h2>
         </div>
         <div className="reviews">
-          {/* <img src={paper}/> */}
           <h3>
-            "A playful assault of bouncy ska-punk, straight from Bristol's murky musical swamp" - <em>Nibley Festival</em>
+            "A playful assault of bouncy ska-punk, straight from Bristol's murky
+            musical swamp" <br /> <em>Nibley Festival</em>
           </h3>
           <h3>
-            "Relentlessly engaging and mischievous" -{" "}
+            "Relentlessly engaging and mischievous" <br />
             <em>The Ringmaster Review</em>
           </h3>
           <h3>
             "Mixing ska and punk with a bit of hip hop style vocals thrown in
             for good measure, it's a unique sound that has a bit of everything!"
-            - <em>Rude Rebel</em>
+            <br />
+            <em>Rude Rebel</em>
           </h3>
           <h3>
-            "Fun in a sinister kinda way" - <em>That's Good Enough For Me</em>
+            "Fun in a sinister kinda way" <br />
+            <em>That's Good Enough For Me</em>
           </h3>
           {/* <h3>
             "FATT have brought their fiery sounds to countless diverse venues,
