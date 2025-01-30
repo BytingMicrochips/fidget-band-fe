@@ -84,10 +84,11 @@ display: block;
 }
 
 .blerb{
-  background-image: url("../src/assets/paper-cropped.png");
+  background-image: url("../src/assets/paper1-nolines.png");
   background-position: 60%;
   background-repeat: no-repeat;
   width: 98%;
+  margin: auto;
   font-family: AveriaSansLibre-Regular;
 }
 .page-main h2{
@@ -101,7 +102,7 @@ display: block;
 
 .reviews{
   /* background-color: #b3b3b3; */
-  background-image: url("../src/assets/paper-cropped.png");
+  background-image: url("../src/assets/paper1-nolines.png");
   background-position: 60%;
   background-repeat: no-repeat;
   max-width: 98%; 
@@ -114,7 +115,7 @@ display: block;
 
 .reviews h3, .blerb h2{
   margin-left: 15vw;
-  margin-right: 5vw;
+  margin-right: 8vw;
   padding-top: 1vh;
   padding-bottom: 1vh;
 }

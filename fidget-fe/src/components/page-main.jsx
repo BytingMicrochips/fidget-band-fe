@@ -1,15 +1,11 @@
 import "../App.css";
-import Header from "./header.jsx";
 import MailChimp from "../components/mailChimp";
 import { useEffect, useState, useContext} from "react";
-import gigsData from "../../data/gigs-data.json";
 import DrawerNav from "./draw-nav.jsx";
-import Box from "@mui/material/Box";
 import contraband from "../assets/contrabandCircusBanner.jpg";
 import bandPic from "../assets/press shot edit.jpg";
 import axios from "axios";
 import { GigsContext } from "../App.jsx";
-import paper from "../assets/paper-cropped.png";
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
