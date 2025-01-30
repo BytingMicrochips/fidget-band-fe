@@ -1,26 +1,17 @@
-@font-face {
-  font-family: "CabinSketch-Regular";
-  src: url("../src/assets/fonts/CabinSketch-Regular.ttf");
-  src: url("../src/assets/fonts/CabinSketch-Bold.ttf");
-}
 
-@font-face {
-  font-family: "AveriaSansLibre-Regular";
-  src: url("../src/assets/fonts/AveriaSansLibre-Regular.ttf");
-}
-
-@font-face{
-  font-family: "AveriaSansLibre-Italic";
-  src: url("../src/assets/fonts/AveriaSansLibre-Italic.ttf");
-}
 
 #root {
   margin: 0 auto;
   text-align: center;
-  background-image: url("../src/assets/background.jpg");
+  /* background-color:teal; */
   min-height: 100vh;
+  
 }
 
+/* body {
+  background-color: yellow;
+  height: auto;
+} */
 .splashLogo img{
   width: 98vw;
   margin:auto;
@@ -44,6 +35,7 @@
 }
 
 .splashWrapper {
+ /* background-color: orange; */
   background-image: url("../src/assets/background.jpg");
  display: flex;
  flex-direction: column;
@@ -53,9 +45,7 @@
 }
 
 .logoRedWrapper{
- background-color: #0d0d0d;
-  width: 100%;
-  font-family: CabinSketch-Regular;
+  background-color: aquamarine;
 }
 
 .logoRedWrapper img{
@@ -80,47 +70,10 @@ display: block;
   font-size: 5vw;
   margin-bottom: 0.2em;
   margin-top: 0.2em;
-  color: whitesmoke;
 }
 
-.blerb{
-  background-image: url("../src/assets/paper-cropped.png");
-  background-position: 60%;
-  background-repeat: no-repeat;
-  width: 98%;
-  font-family: AveriaSansLibre-Regular;
-}
 .page-main h2{
-  font-size: medium;
-  color: #0d0d0d;
-  /* border-radius: 0.4em;
-  border-style: groove;
-  border-color: whitesmoke;
-  border-width: 4px; */
-}
-
-.reviews{
-  /* background-color: #b3b3b3; */
-  background-image: url("../src/assets/paper-cropped.png");
-  background-position: 60%;
-  background-repeat: no-repeat;
-  max-width: 98%; 
-  margin: auto;
-  margin-top: 5px;
-  color: #0d0d0d;
-  font-size: small;
-  font-family: AveriaSansLibre-Regular;
-}
-
-.reviews h3, .blerb h2{
-  margin-left: 15vw;
-  margin-right: 5vw;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-}
-
-.reviews em{
-  font-family: AveriaSansLibre-Italic;
+  background-color: transparent;
 }
 
 #facebookWidget{
@@ -145,7 +98,7 @@ display: block;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  /* background-color: #0d0d0d; */
+  background-color: black;
   opacity: 0.75;
 }
 
@@ -166,31 +119,17 @@ display: block;
 }
 
 .nextGigBanner{
-  margin: 12px;
-  margin-top: 1px;
-  margin-bottom: 5px;
+  background-color: green;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 2px;
-  border-style:groove;
-  border-color: whitesmoke;
-  border-radius: 0.7em;
-    font-family: AveriaSansLibre-Regular;
 }
 
-.nextGigBanner button{
+.nextGigBanner a{
   font-size: medium;
-  color: white;
-  font-weight: 600;
-  background-image: url("../src/assets/orange-slice.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 0.4em;
-  min-width: fit-content;
-  width: 80%;
+  background-color: rgb(5, 33, 135);
+  width: fit-content;
   margin: auto;
-  margin-top: 4px;
   padding: 0.5em;
   margin-bottom: 1vh;
 }
@@ -211,23 +150,13 @@ min-width: 358px;
 min-height: fit-content;
 max-height: fit-content;
 margin: auto;
-padding-bottom: 0px;
 justify-content: center;
-background-color: #d9d9d9;
-opacity: 0.76;
-border-radius: 1em;
-}
-
-.socialFeeds iframe{
-  border-radius: 1em;
-  color:#0d0d0d;
-margin-bottom: 1px;
-margin-top: 1px;
+background-color: transparent;
 }
 
 
 .mailChimpWrapper{
-  background-color: #0d0d0d;
+  background-color: black;
   opacity: 70%;
   flex-direction: column;
   display:flex;
@@ -239,17 +168,15 @@ margin-top: 1px;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
   width: 100%;
-  color: whitesmoke;
+  color: white;
   width: 98vw;
-  font-family: CabinSketch-Regular;
 }
 
 .mailChimpWrapper img{
   display: flex;
   margin: auto;
   object-fit: cover;
-  width: 180px;
-  margin-bottom: 4px;
+  width: 180px
 }
 
 .mailChimpWrapper h2{
@@ -271,7 +198,7 @@ margin-top: 1px;
 .gigListItem a{
 background-color: aqua;
 padding-top: 1.25em;
-color: #0d0d0d;
+color: black;
 }
 
 .gigListItem button{
@@ -360,29 +287,26 @@ color: #0d0d0d;
 }
 
 .contrabandBanner{
-  /* margin-top: 0.2em; */
+  margin-top: 0.2em;
   margin-bottom: 0%;
-  max-width: 75%;
-  border-radius: 0.4em;
+  max-width: 70%;
 }
 
 .contrabandBanner img{
-  max-width: 30%;
-  max-height: 10vh;
-  width: auto;
-  height: auto;
+    max-width: 30%;
+      max-height: 10vh;
+      width: auto;
+      height: auto;
 }
 
 .bannerWrapper{
   width: 100%;
-  padding-bottom: 1px;
-  background-image: linear-gradient(#0d0d0d, rgba(255,0,0,0));
+  background-color: black;
 }
 
 .pageMainBandPic{
   width: 96%;
   margin-top: 0.5em;
-  border-radius: 0.4em;
 }
 
 .albumSelect{
@@ -576,7 +500,6 @@ margin: 0;
     display: flex;
     justify-content: space-between;
     margin-left: -150px;
-    background-color: #0d0d0d;
   }
   .logoRedWrapper h1{
     font-size: 2em;
@@ -584,7 +507,7 @@ margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: whitesmoke;
+    background-color: silver;
   }
   .logoRedWrapper img{
     width: 60%;
@@ -610,23 +533,22 @@ margin: 0;
         width: 35%;
       }
   .bannerWrapper {
-      background-color: #0d0d0d;
+      background-color: black;
       display: flex;
       justify-content: center;
       max-height: 10vh;
     }
   
     .nextGigBanner {
-      height: fit-content;
-      width: fit-content;
-      max-width: 45vw;
-      margin-top: 3px;
-      margin-bottom: 3px;
+      height: 10vh;
+      width: 20vw;
+      margin-top: auto;
+      margin-bottom: auto;
       padding-bottom: 1vh;
       display: flex;
       flex-direction: row;
     }
-    .nextGigBanner button{
+    .nextGigBanner a{
       margin-top: auto;
       margin-bottom: auto;
       margin-right: 10px;
