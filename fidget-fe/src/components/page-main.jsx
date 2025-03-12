@@ -3,7 +3,7 @@ import MailChimp from "../components/mailChimp";
 import { useEffect, useState, useContext} from "react";
 import DrawerNav from "./draw-nav.jsx";
 import contraband from "../assets/contrabandCircusBanner.jpg";
-import bandPic from "../assets/press shot edit.jpg";
+import bandPic from "../assets/bandGaryHorne.jpg";
 import axios from "axios";
 import { GigsContext } from "../App.jsx";
 
@@ -83,26 +83,38 @@ const Main = () => {
           padding: 0,
         }} */}
       {/* > */}
-      <div className="page-main">
-        <DrawerNav />
-        <div className="bannerWrapper">
+        <div className="page-main">
+          <DrawerNav />
+          <div className="bannerWrapper">
           <img
             src={contraband}
             alt="Contraband Circus new single 10-11-23 banner"
             className="contrabandBanner"
-          />
+            />
           {Object.keys(nextGig).length !== 0 ? (
             <>
               <div className="nextGigBanner">
                 <h3>
-                  Next playing in {nextGig.location} on {nextGigDate}!
+                  Next playing in {nextGig.location} on {nextGigDate} !
                 </h3>
-                <button href={nextGig.ticketLink}>Find tickets</button>
+                <a href={nextGig.ticketLink}>Buy tickets</a>
               </div>
             </>
           ) : (
             <></>
           )}
+          </div>
+          <img
+            src={bandPic}
+            alt="full band after a busy gig"
+            className="pageMainBandPic"
+          />
+          <h2>
+            Brass-fuelled skapunkery spurting punchy beats & social absurdities!
+            Dealing out generous helpings of itchy rhythyms, funk infused
+            basslines and jazz drenched horn lines we have been active in the
+            diy seen since 2019.
+          </h2>
         </div>
         <img
           src={bandPic}
@@ -142,25 +154,24 @@ const Main = () => {
             <em>Rubberband Radio</em>
           </h3> */}
         </div>
-      </div>
-      <div className="socialFeeds">
-        <iframe
-          id="facebookWidget"
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwitchyfidgets&width=350&tabs=timeline&colorscheme=dark&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId_data-lazy=true"
-          height="470"
-          allowFullScreen={true}
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          className="socialFeed"
-        />
-        <iframe
-          id="instagramWidget"
-          src="https://www.instagram.com/fidgetandthetwitchers/embed?theme=dark"
-          height="470"
-          allowtransparency="true"
-          className="socialFeed"
-        />
-      </div>
-      <MailChimp />
+        <div className="socialFeeds">
+            <iframe
+              id="facebookWidget"
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwitchyfidgets&width=350&tabs=timeline&colorscheme=dark&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId_data-lazy=true"
+              height="470"
+              allowFullScreen={true}
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              className="socialFeed"
+            />
+          <iframe
+            id="instagramWidget"
+            src="https://www.instagram.com/fidgetandthetwitchers/embed?theme=dark"
+            height="470"
+            allowtransparency="true"
+            className="socialFeed"
+          />
+        </div>
+        <MailChimp />
       {/* </Box> */}
     </>
   );
