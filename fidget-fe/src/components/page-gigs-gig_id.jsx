@@ -1,4 +1,3 @@
-import gigsData from "../../data/gigs-data.json";
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
 import { useParams, useNavigate } from "react-router-dom";
@@ -28,6 +27,7 @@ useEffect(() => {
             flexGrow: 1,
             p: 3,
             width: { sm: `calc(100% - ${drawerWidth}px)` },
+            height: "100vh",
             padding: 0,
           }}
         >
@@ -39,22 +39,22 @@ useEffect(() => {
               <h3>{thisGig.venue}</h3>
             </div>
 
-            <h3 className="gigs_idDate">{`${new Date(thisGig.date).getDate()}-${new Date(
+            <h3 className="gigs_idDate">{`${new Date(
               thisGig.date
-            ).getMonth()}-${new Date(thisGig.date).getFullYear()}`}</h3>
-            <img src={thisGig.flier} />
-            <h3> {thisGig.description}</h3>
-            <div className="gigs_idlinks">
-              <a href={thisGig.ticketLink}>Buy tickets</a>
-              <a
-                onClick={() => {
-                  navigate("/gigs");
-                }}
-              >
-                Back to all gigs
-              </a>
+            ).getDate()}-${new Date(thisGig.date).getMonth()}-${new Date(
+              thisGig.date
+            ).getFullYear()}`}</h3>
+            <img src={thisGig.flier} draggable="false" />
+              <h3 id="thisGig-desc-text"> {thisGig.description}</h3>
+              <div className="gigs_idlinks">
+                <a href={thisGig.ticketLink} draggable="false">
+                  Buy tickets
+                </a>
+                <a onClick={() => {navigate("/gigs")}} draggable="false">
+                  Back to all gigs
+                </a>
+              </div>
             </div>
-          </div>
         </Box>
       </>
     );
