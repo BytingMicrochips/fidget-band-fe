@@ -1,6 +1,10 @@
 @font-face {
   font-family: "CabinSketch-Regular";
   src: url("../src/assets/fonts/CabinSketch-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CabinSketch-Bold";
   src: url("../src/assets/fonts/CabinSketch-Bold.ttf");
 }
 
@@ -12,6 +16,11 @@
 @font-face{
   font-family: "AveriaSansLibre-Italic";
   src: url("../src/assets/fonts/AveriaSansLibre-Italic.ttf");
+}
+
+@font-face {
+  font-family: "AveriaSansLibre-Bold";
+  src: url("../src/assets/fonts/AveriaSansLibre-Bold.ttf");
 }
 
 #root {
@@ -258,33 +267,56 @@ margin-top: 1px;
   margin: auto;
 }
 
-.gigListItem{
+.gigListItem, .pastGigListItem{
   display: flex;
   justify-content: space-between;
-  background-color: rgb(143, 26, 46);
   margin-bottom: 0.5em;
   margin-left: 0.25em;
   margin-right: 0.25em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  font-family: "CabinSketch-Bold";
 }
 
-.gigListItem a{
-background-color: aqua;
+.gigListItem a, .pastGigListItem a{
+background-color: white;
+opacity: 0.8;
 padding-top: 1.25em;
+padding-left: 4px;
+padding-right: 4px;
 color: #0d0d0d;
+border-radius: 4px;
+text-decoration: none;
 }
 
-.gigListItem button{
+.pageGigsHeadings{
+  background-image: url("../src/assets/orange-slice.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 55%;
+  width: 92%;
+  margin: auto;
+  color: #0d0d0d;
+  font-family: AveriaSansLibre-Bold;
+}
+
+.gigListItem button, .pastGigListItem button{
   width: 100%;
   display: flex;
   justify-content: space-between;
   font-size: small;
 }
 
-.tileOrList{
-  margin-bottom: 0.5em;
+.pastGigListItem a{
+  visibility: hidden;
 }
+
+.tileOrList select, .tileOrList option{
+  margin-bottom: 0.5em;
+  font-family: "AveriaSansLibre-Regular", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size:medium
+}
+
 
 .gigs_idLocationVenue{
   display: flex;

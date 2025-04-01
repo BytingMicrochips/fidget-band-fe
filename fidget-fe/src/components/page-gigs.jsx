@@ -45,20 +45,19 @@ const axiosBase = axios.create({
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           padding: 0,
-          bgcolor: "#ff9800",
+          // bgcolor: "#ff9800",
         }}
       >
         <DrawerNav />
-        <h2> Upcoming shows</h2>
-        <select
-          defaultValue="Show list"
-          onChange={handleTileList}
-          className="tileOrList"
-        >
-          <option>Show list</option>
-          <option>Show tiles</option>
-        </select>
-
+        <div className="pageGigsHeadings">
+          <h2> Upcoming shows</h2>
+        </div>
+        <div className="tileOrList">
+          <select defaultValue="Show list" onChange={handleTileList}>
+            <option>Show list</option>
+            <option>Show tiles</option>
+          </select>
+        </div>
         <div>
           {gigsData.map((gig) => {
             const gigDate = new Date(gig.date);
@@ -76,7 +75,7 @@ const axiosBase = axios.create({
                         >
                           <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
-                          <a href={gig.ticketLink}>Get tickets</a>
+                          <a href={gig.ticketLink} draggable="false">Get tickets</a>
                         </button>
                       </div>
                     </>
@@ -107,7 +106,9 @@ const axiosBase = axios.create({
             }
           })}
         </div>
-        <h2> Past shows</h2>
+        <div className="pageGigsHeadings">
+          <h2> Past shows</h2>
+        </div>
         <div>
           {revGigs.map((gig) => {
             const gigDate = new Date(gig.date);
@@ -117,7 +118,7 @@ const axiosBase = axios.create({
                 <>
                   {isList ? (
                     <>
-                      <div className="gigListItem">
+                      <div className="pastGigListItem">
                         <button
                           onClick={() => {
                             navigate(`/gigs/${gig._id}`);
@@ -156,7 +157,7 @@ const axiosBase = axios.create({
             }
           })}
         </div>
-        <MailChimp />
+        {/* <MailChimp /> */}
       </Box>
     </>
   );
