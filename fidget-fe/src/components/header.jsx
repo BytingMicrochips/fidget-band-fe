@@ -5,7 +5,7 @@ const Header = () => {
     return (
       <>
         <div className="logoRedWrapper">
-          <img src={banner} />
+          <img src={banner} draggable='false'/>
           <h1>
             <em>7 piece Ska-Punk fusion, Bristol UK </em>
           </h1>
