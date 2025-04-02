@@ -2,10 +2,10 @@ import "../App.css";
 import MailChimp from "../components/mailChimp";
 import { useEffect, useState, useContext} from "react";
 import DrawerNav from "./draw-nav.jsx";
-import contraband from "../assets/contrabandCircusBanner.jpg";
 import bandPic from "../assets/press shot edit.jpg";
 import axios from "axios";
 import { GigsContext } from "../App.jsx";
+import { useNavigate } from "react-router-dom";
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
@@ -17,6 +17,7 @@ const Main = () => {
   const [nextGig, setNextGig] = useState({});
   const [nextGigDate, setNextGigDate] = useState("");
   const drawerWidth = 150;
+  const navigate = useNavigate();
 
   const actualDate = new Date();
   const dateNow = Math.ceil(actualDate / 100) * 100;
@@ -86,18 +87,17 @@ const Main = () => {
       <div className="page-main">
         <DrawerNav />
         <div className="bannerWrapper">
-          <img
-            src={contraband}
-            alt="Contraband Circus new single 10-11-23 banner"
-            className="contrabandBanner"
-          />
           {Object.keys(nextGig).length !== 0 ? (
             <>
               <div className="nextGigBanner">
-                <h3>
+                <a
+                  onClick={() => {
+                    navigate(`/gigs/${nextGig._id}`);
+                  }}
+                  draggable="false"
+                >
                   Next playing in {nextGig.location} on {nextGigDate}!
-                </h3>
-                <button href={nextGig.ticketLink}>Find tickets</button>
+                </a>
               </div>
             </>
           ) : (
@@ -141,8 +141,9 @@ const Main = () => {
             <em>Rubberband Radio</em>
           </h3> */}
           <h3>
-            "There is a captivating energy to the band, the music screams of danceability,
-            it was pure party vibes..."<br />
+            "There is a captivating energy to the band, the music screams of
+            danceability, it was pure party vibes..."
+            <br />
             <em>Rockfreaks</em>
           </h3>
         </div>
