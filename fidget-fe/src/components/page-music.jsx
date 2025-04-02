@@ -6,21 +6,26 @@ const Music = () => {
   const drawerWidth = 150;
 
     return (
-        <>
-            <Box
-            component="main"
-            sx={{
+      <>
+        <Box
+          component="main"
+          sx={{
             flexGrow: 1,
             p: 3,
             width: { sm: `calc(100% - ${drawerWidth}px)` },
             padding: 0,
-            }}
-            >
-            <DrawerNav />
-                <h2>page - music</h2>
-                <MusicPlayerSlider/>
-            </Box>
-        </>)
+          }}
+        >
+          <DrawerNav />
+          <div className="pageGradientWrapper">
+            <div className="pageGigsHeadings">
+              <h2>Music</h2>
+            </div>
+          </div>
+          <MusicPlayerSlider />
+        </Box>
+      </>
+    );
 };
 
 export default Music;
