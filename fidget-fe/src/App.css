@@ -285,14 +285,14 @@ margin-top: 1px;
 }
 
 .gigListItem a, .pastGigListItem a{
-background-color: white;
-opacity: 0.8;
+background-color: rgba(250, 235, 215, 0.7);
 padding-top: 1.25em;
 padding-left: 4px;
 padding-right: 4px;
 color: #0d0d0d;
 border-radius: 4px;
 text-decoration: none;
+font-family: 'AveriaSansLibre-Bold';
 }
 
 .pageGigsHeadings{
