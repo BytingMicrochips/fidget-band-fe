@@ -44,8 +44,8 @@ const axiosBase = axios.create({
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          height: "100vh",
           padding: 0,
-          // bgcolor: "#ff9800",
         }}
       >
         <DrawerNav />
@@ -75,7 +75,9 @@ const axiosBase = axios.create({
                         >
                           <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
-                          <a href={gig.ticketLink} draggable="false">Get tickets</a>
+                          <a href={gig.ticketLink} draggable="false">
+                            Get tickets
+                          </a>
                         </button>
                       </div>
                     </>
