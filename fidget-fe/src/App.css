@@ -191,7 +191,7 @@ display: block;
 
 .nextGigBanner button{
   font-size: medium;
-  color: white;
+  color: antiquewhite;
   font-weight: 600;
   background-image: url("../src/assets/orange-slice.jpg");
   background-repeat: no-repeat;
@@ -338,23 +338,59 @@ text-decoration: none;
   margin: auto;
 }
 
+.gigs-gig_id {
+  font-family: "AveriaSansLibre-Regular";
+  background-color: rgba(26, 26, 26, 0.4);
+  width: 96%;
+  min-height: 83%;
+  margin: auto;
+  border-radius: 0.5em;
+}
+
+.gigs-gig_id h2{
+  font-family: "CabinSketch-Bold";
+}
 .gigs-gig_id img{
   width: 94%;
+  border-radius: 0.5em;
+}
+
+.gigs_idlinks {
+  padding-top: 10px;
+}
+
+.gigs_idlinks a {
+  border-radius: 10px;
+  text-decoration: none;
+  color: antiquewhite;
+}
+
+#thisGig-desc-text{
+margin-bottom: 0px;
+text-overflow: ellipsis;
 }
 
 .gigs_idlinks{
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  margin: auto;
+  width: 92%;
+  margin-left: 2%;
+  margin-right: 2%;
   color: white;
+    bottom: 20px;
+      position: absolute;
+      justify-items: center;
 }
 
 .gigs_idlinks a {
   padding: 1em;
   font-size: medium;
-  background-color: blueviolet;
+  background-color: rgb(26,26,26);
   margin-bottom: 0.5em;
+}
+
+#thisGig-desc-text {
+  margin-top: 0px;
 }
 
 .galleryVids{

@@ -127,8 +127,7 @@ const Main = () => {
             <em>The Ringmaster Review</em>
           </h3>
           <h3>
-            "Mixing ska and punk with a bit of hip hop style vocals thrown in
-            for good measure, it's a unique sound that has a bit of everything!"
+            "...it's a unique sound that has a bit of everything!"
             <br />
             <em>Rude Rebel</em>
           </h3>
@@ -141,6 +140,11 @@ const Main = () => {
             ranging from public parks to underground tunnels" -{" "}
             <em>Rubberband Radio</em>
           </h3> */}
+          <h3>
+            "There is a captivating energy to the band, the music screams of danceability,
+            it was pure party vibes..."<br />
+            <em>Rockfreaks</em>
+          </h3>
         </div>
       </div>
       <div className="socialFeeds">
