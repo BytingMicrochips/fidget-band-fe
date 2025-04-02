@@ -96,25 +96,31 @@ display: block;
   background-image: url("../src/assets/paper1-nolines.png");
   background-position: 60%;
   background-repeat: no-repeat;
+  background-size: cover;
   width: 98%;
   margin: auto;
-  font-family: AveriaSansLibre-Regular;
+  font-family: AveriaSansLibre-Bold;
 }
-.page-main h2{
+.page-main h2, .page-main h3{
   font-size: medium;
-  color: #0d0d0d;
-  /* border-radius: 0.4em;
-  border-style: groove;
-  border-color: whitesmoke;
-  border-width: 4px; */
+  color: rgb(26,26,26);
+  font-family: AveriaSansLibre-Bold;
+}
+
+.page-main h2 {
+  font-size: medium;
+}
+
+.page-main h3 em {
+  font-family: AveriaSansLibre-Regular;
 }
 
 .reviews{
-  /* background-color: #b3b3b3; */
   background-image: url("../src/assets/paper1-nolines.png");
   background-position: 60%;
   background-repeat: no-repeat;
   max-width: 98%; 
+  background-size: cover;
   margin: auto;
   margin-top: 2px;
   color: #0d0d0d;
@@ -124,9 +130,16 @@ display: block;
 
 .reviews h3, .blerb h2{
   margin-left: 15vw;
-  margin-right: 8vw;
+  margin-right: 12vw;
   /* padding-top: 1vh;
   padding-bottom: 1vh; */
+}
+
+.reviews h3{
+  position: relative;
+  top: 1px;
+  line-height: normal;
+  
 }
 
 .reviews em{
@@ -141,7 +154,6 @@ display: block;
 }
 
 #instagramWidget{
-  /* max-width: 1000px; */
   width: 59vw;
   min-width: 350px;
   max-width: 485px;
@@ -176,33 +188,16 @@ display: block;
 }
 
 .nextGigBanner{
-  margin: 12px;
-  margin-top: 0px;
-  margin-bottom: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border: 2px;
   border-style:groove;
-  border-color: whitesmoke;
+  border-color: rgba(250, 235, 215, 0.85);
   border-radius: 0.7em;
     font-family: AveriaSansLibre-Regular;
-}
-
-.nextGigBanner button{
-  font-size: medium;
-  color: antiquewhite;
-  font-weight: 600;
-  background-image: url("../src/assets/orange-slice.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 0.4em;
-  min-width: fit-content;
-  width: 80%;
+  width: 98%;
   margin: auto;
-  margin-top: 4px;
-  padding: 0.5em;
-  margin-bottom: 1vh;
 }
 
 .bannerWrapper{
@@ -233,7 +228,7 @@ border-radius: 1em;
 
 .socialFeeds iframe{
   border-radius: 1em;
-  color:#0d0d0d;
+  color: rgba(26,26,26,0.5);
 margin-bottom: 1px;
 margin-top: 1px;
 }
