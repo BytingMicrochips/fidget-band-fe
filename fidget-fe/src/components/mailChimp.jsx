@@ -25,7 +25,7 @@ const MailChimp = () => {
             {status === "success" && (
               <div style={{ color: "green" }}>Subscribed !</div>
                 )}
-                <img src={mailChimpLogo}/>
+                <img src={mailChimpLogo} draggable='false'/>
           </div>
         )}
       />

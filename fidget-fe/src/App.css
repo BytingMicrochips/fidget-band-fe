@@ -177,7 +177,7 @@ display: block;
 
 .nextGigBanner{
   margin: 12px;
-  margin-top: 1px;
+  margin-top: 0px;
   margin-bottom: 5px;
   display: flex;
   flex-direction: column;
@@ -205,8 +205,11 @@ display: block;
   margin-bottom: 1vh;
 }
 
-.nextGigBanner h3{
-  margin-top: 0;
+.bannerWrapper{
+  padding-top: 5px;
+}
+
+.nextGigBanner a{
   margin-bottom: 0;
   padding-left: 1px;
   padding-right: 1px;
@@ -237,8 +240,7 @@ margin-top: 1px;
 
 
 .mailChimpWrapper{
-  background-color: #0d0d0d;
-  opacity: 70%;
+  background-color: rgba(26,26,26,0.65);
   flex-direction: column;
   display:flex;
   justify-content: center;
@@ -254,6 +256,11 @@ margin-top: 1px;
   font-family: CabinSketch-Regular;
 }
 
+.mailChimpWrapper button{
+  background-color: rgba(26, 26, 26, 0.6);
+  margin-left: 5px;
+}
+
 .mailChimpWrapper img{
   display: flex;
   margin: auto;
@@ -265,6 +272,10 @@ margin-top: 1px;
 .mailChimpWrapper h2{
   width: fit-content;
   margin: auto;
+}
+
+.mailChimpWrapper input{
+  font-family: 'AveriaSansLibre-Regular';
 }
 
 .gigListItem, .pastGigListItem{
@@ -684,6 +695,8 @@ margin: 0;
       justify-content: center;
       max-height: 10vh;
     }
+
+  
   
     .nextGigBanner {
       height: fit-content;
@@ -700,7 +713,7 @@ margin: 0;
       margin-bottom: auto;
       margin-right: 10px;
     }
-    .nextGigBanner h3{
+    .nextGigBanner a{
       width: 80%;
       margin: auto;
       text-align: center;
