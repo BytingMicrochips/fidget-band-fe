@@ -75,8 +75,8 @@ const axiosBase = axios.create({
                         >
                           <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
-                          <a href={gig.ticketLink} draggable="false">
-                            Get tickets
+                          <a id='ticketLink' href={gig.ticketLink} draggable="false">
+                            TICKETS
                           </a>
                         </button>
                       </div>
