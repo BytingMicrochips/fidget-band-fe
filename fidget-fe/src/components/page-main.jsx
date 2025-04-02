@@ -74,16 +74,6 @@ const Main = () => {
   }, [nextGig]);
   return (
     <>
-      {/* <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          bgcolor: "#ff9800",
-          padding: 0,
-        }} */}
-      {/* > */}
       <div className="page-main">
         <DrawerNav />
         <div className="bannerWrapper">
@@ -108,6 +98,7 @@ const Main = () => {
           src={bandPic}
           alt="full band after a busy gig"
           className="pageMainBandPic"
+          draggable='false'
         />
         <div className="blerb">
           <h2>
@@ -135,11 +126,6 @@ const Main = () => {
             "Fun in a sinister kinda way" <br />
             <em>That's Good Enough For Me</em>
           </h3>
-          {/* <h3>
-            "FATT have brought their fiery sounds to countless diverse venues,
-            ranging from public parks to underground tunnels" -{" "}
-            <em>Rubberband Radio</em>
-          </h3> */}
           <h3>
             "There is a captivating energy to the band, the music screams of
             danceability, it was pure party vibes..."
@@ -166,7 +152,6 @@ const Main = () => {
         />
       </div>
       <MailChimp />
-      {/* </Box> */}
     </>
   );
 }
