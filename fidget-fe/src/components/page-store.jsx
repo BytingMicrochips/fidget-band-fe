@@ -26,7 +26,11 @@ const Store = () => {
         }}
       >
         <DrawerNav />
-        <h2 className="merchStore">Merch Store</h2>
+        <div className="pageGradientWrapper">
+          <div className="pageGigsHeadings">
+            <h2>Merch Store</h2>
+          </div>
+        </div>
         <h3 className="merchText">
           All clothing items are lovingly hand printed by the band and our
           manager Emily! We are committed to using recycled and sweatshop-free

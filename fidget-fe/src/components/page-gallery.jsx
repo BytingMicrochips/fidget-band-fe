@@ -64,7 +64,11 @@ const Gallery = () => {
           }}
         >
           <DrawerNav />
-          <h2> Media gallery</h2>
+          <div className="pageGradientWrapper">
+          <div className="pageGigsHeadings">
+              <h2> Media gallery</h2>
+          </div>
+        </div>
           <QuiltedImageList />
           {videosData.length > 0 ? (
             <Fragment>
