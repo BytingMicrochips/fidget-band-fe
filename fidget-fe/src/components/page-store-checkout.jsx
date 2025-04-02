@@ -19,7 +19,11 @@ const Checkout = (order, totalPrice) => {
           }}
         >
           <DrawerNav />
-          <h2>page - checkout</h2>;
+          <div className="pageGradientWrapper">
+            <div className="pageGigsHeadings">
+              <h2>Checkout</h2>
+            </div>
+          </div>
           <PayPalButtons />
         </Box>
       </>

@@ -525,11 +525,6 @@ text-overflow: ellipsis;
   background-color: teal;
 }
 
-.merchStore, .yourOrder{
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
-}
-
 .merchText{
   background-color: blueviolet;
   font-size: medium;

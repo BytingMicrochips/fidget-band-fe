@@ -77,7 +77,11 @@ const StoreBasket = () => {
           }}
         >
           <DrawerNav />
-          <h2 className="yourOrder">Your order</h2>
+          <div className="pageGradientWrapper">
+            <div className="pageGigsHeadings">
+              <h2>Your basket</h2>
+            </div>
+          </div>
           <div className="basketText">
             <h3>Thank you for supporting Fidget & the Twitchers!</h3>
             <h3>
@@ -153,7 +157,14 @@ const StoreBasket = () => {
                 >
                   Return to store
                 </Button>
-                <Button variant="contained" onClick={()=>{Navigate("/store/checkout");}}>Checkout now</Button>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    Navigate("/store/checkout");
+                  }}
+                >
+                  Checkout now
+                </Button>
               </Stack>
             </div>
           </div>
