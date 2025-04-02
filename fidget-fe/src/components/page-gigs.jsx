@@ -49,8 +49,10 @@ const axiosBase = axios.create({
         }}
       >
         <DrawerNav />
-        <div className="pageGigsHeadings">
-          <h2> Upcoming shows</h2>
+        <div className="pageGradientWrapper">
+          <div className="pageGigsHeadings">
+            <h2> Upcoming shows</h2>
+          </div>
         </div>
         <div className="tileOrList">
           <select defaultValue="Show list" onChange={handleTileList}>
@@ -75,7 +77,11 @@ const axiosBase = axios.create({
                         >
                           <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
-                          <a id='ticketLink' href={gig.ticketLink} draggable="false">
+                          <a
+                            id="ticketLink"
+                            href={gig.ticketLink}
+                            draggable="false"
+                          >
                             TICKETS
                           </a>
                         </button>

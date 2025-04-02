@@ -301,15 +301,21 @@ font-family: 'AveriaSansLibre-Italic';
   border-style:groove; 
 }
 
+.pageGradientWrapper{
+  background-image: linear-gradient(#0d0d0d, rgba(255, 0, 0, 0));
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
 .pageGigsHeadings{
   background-image: url("../src/assets/orange-slice.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 55%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 55%;
   width: 92%;
   margin: auto;
   color: #0d0d0d;
   font-family: AveriaSansLibre-Bold;
+  border-radius: 5px;
 }
 
 .gigListItem button, .pastGigListItem button{
