@@ -6,6 +6,8 @@ import bandPic from "../assets/press shot edit.jpg";
 import axios from "axios";
 import { GigsContext } from "../App.jsx";
 import { useNavigate } from "react-router-dom";
+import ImageCarousel from "./image-carousel.jsx";
+
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
@@ -94,12 +96,8 @@ const Main = () => {
             <></>
           )}
         </div>
-        <img
-          src={bandPic}
-          alt="full band after a busy gig"
-          className="pageMainBandPic"
-          draggable='false'
-        />
+
+        <ImageCarousel/>
         <div className="blerb">
           <h2>
             We are a lively band offering brass-fuelled skapunkery, punchy beats

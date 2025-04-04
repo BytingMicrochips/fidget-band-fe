@@ -12,7 +12,6 @@ import StoreBasket from "./components/page-store-basket.jsx";
 import Checkout from "./components/page-store-checkout.jsx";
 import shopStock from "../data/store-data.json";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
 export const BasketContext = createContext();
 export const ShoppingListContext = createContext();
 export const GigsContext = createContext();

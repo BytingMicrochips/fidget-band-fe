@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import smallLoading  from "../assets/smallLoading.gif";
 import { Fragment } from "react";
+import ImageCarousel from "./image-carousel.jsx";
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
@@ -60,21 +61,23 @@ const Gallery = () => {
             flexGrow: 1,
             p: 3,
             width: { sm: `calc(100% - ${drawerWidth}px)` },
+            height: "fit-content",
             padding: 0,
           }}
         >
           <DrawerNav />
           <div className="pageGradientWrapper">
-          <div className="pageGigsHeadings">
+            <div className="pageGigsHeadings">
               <h2> Media gallery</h2>
+            </div>
           </div>
-        </div>
           <QuiltedImageList />
-          {videosData.length > 0 ? (
+          {/* {videosData.length > 0 ? (
             <Fragment>
               <div className="galleryVids">
                 <div className="videoButtons">
                   <iframe
+                    id="youtubeIframe"
                     width="96%"
                     height="315"
                     src={videosData[whichVideo].source}
@@ -98,8 +101,8 @@ const Gallery = () => {
                       aria-label="skip next video"
                     >
                       <div className="vidArrowLabel">
-                        <img src={arrowRight} />
                         <h4>Next</h4>
+                        <img src={arrowRight} />
                       </div>
                     </button>
                   </div>
@@ -108,7 +111,7 @@ const Gallery = () => {
             </Fragment>
           ) : (
             <img src={smallLoading} height="315" alt="Video feed loading" />
-          )}
+          )} */}
         </Box>
       </>
     );
