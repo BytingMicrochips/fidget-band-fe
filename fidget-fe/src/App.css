@@ -447,6 +447,10 @@ text-overflow: ellipsis;
   margin-top: 0.5em;
 }
 
+.galleryVids iframe{
+  border-radius: 0.5em;
+}
+
 .videoCarouselWrapper{
   margin: auto;
   margin-top: 10px;

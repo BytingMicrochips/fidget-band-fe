@@ -16,42 +16,25 @@ const axiosBase = axios.create({
 
 const Gallery = () => {
   const drawerWidth = 150;
-  const [whichVideo, setWhichVideo] = useState(0)
-  const [videosData, setVideosData] = useState([  {
-    _id: "66846ccf96dda6a332c154f0",
-    source: "https://www.youtube.com/embed/CFNc5MWu65o?si=NDfXhe500QCk8GDN",
-    title: "Contraband Circus (studio version)",
-    date: "2023-11-09",
-  }])
+  const [videosData, setVideosData] = useState([
+    {
+      _id: "66846ccf96dda6a332c154f0",
+      source:
+        "https://www.youtube.com/embed/videoseries?si=dNmT2d0AT2suk3Di&amp;list=OLAK5uy_n9ND_7kFabhc4onTo2zAFQOuu3NG5dx7g",
+      title: "Highlights from the Fidget and the Twitchers Youtube channel",
+    },
+  ]);
 
   useEffect(() => {
     axiosBase
       .get("videos")
-      .then((allVids) => {
-        setVideosData(allVids.data);
+      .then((fetchedPlaylist) => {
+        setVideosData(fetchedPlaylist.data);
       })
       .catch((err) => {
-        console.error("Problem fetching video data", err);
+        console.error("Problem fetching video playlist", err);
       });
   }, []);
-
-    const handlePreviousVid = () => {
-        let currentVid = whichVideo
-        if (currentVid >= 1) {
-            setWhichVideo(currentVid-1);
-        } else {
-          setWhichVideo(videosData.length - 1);
-        }
-    }
-
-    const handleNextVid = () => {
-        let currentVid = whichVideo;        
-        if (currentVid >= videosData.length - 1) {
-          setWhichVideo(0);
-        } else {
-          setWhichVideo(currentVid+1);
-        }
-    }
 
     return (
       <>
@@ -72,46 +55,28 @@ const Gallery = () => {
             </div>
           </div>
           <QuiltedImageList />
-          {/* {videosData.length > 0 ? (
+          {videosData.length > 0 ? (
             <Fragment>
               <div className="galleryVids">
-                <div className="videoButtons">
-                  <iframe
-                    id="youtubeIframe"
-                    width="96%"
-                    height="315"
-                    src={videosData[whichVideo].source}
-                    title={videosData[whichVideo].title}
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  />
-                  <div className="imageButtonVideo">
-                    <button
-                      onClick={handlePreviousVid}
-                      aria-label="skip previous video"
-                    >
-                      <div className="vidArrowLabel">
-                        <img src={arrowLeft} />
-                        <h4>Previous</h4>
-                      </div>
-                    </button>
-                    <button
-                      onClick={handleNextVid}
-                      aria-label="skip next video"
-                    >
-                      <div className="vidArrowLabel">
-                        <h4>Next</h4>
-                        <img src={arrowRight} />
-                      </div>
-                    </button>
-                  </div>
-                </div>
+                <iframe
+                  width="96%"
+                  height="315"
+                  src={`https://www.youtube.com/embed/videoseries?${videosData[0].source}`}
+                  title={videosData.title}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  rel="0"
+                  autoplay="1"
+                  fs="0"
+                  iv_load_policy="3"
+                />
               </div>
             </Fragment>
           ) : (
             <img src={smallLoading} height="315" alt="Video feed loading" />
-          )} */}
+          )}
         </Box>
       </>
     );
