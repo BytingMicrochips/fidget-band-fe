@@ -37,9 +37,9 @@ const ImageCarousel = () => {
       autoPlay="true"
       interval={10000}
       animation="fade"
-        duration={2500}
-        indicators="false"
-        stopAutoPlayOnHover="false"
+      duration={2300}
+      indicators="false"
+      stopAutoPlayOnHover="false"
       >
       {
         carouselContents.map(item => <CarouselItem key={item._id} source={item.source} />)
