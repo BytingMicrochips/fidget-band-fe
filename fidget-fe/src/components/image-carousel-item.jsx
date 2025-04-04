@@ -9,7 +9,3 @@ function CarouselItem(item) {
 }
 
 export default CarouselItem;
-
-// <img alt={item.description} src={`./${item.source}`} />;
-      
-//  "/src/assets/mediaGallery/outCider.jpg";
