@@ -32,7 +32,7 @@ const Gallery = () => {
         setVideosData(fetchedPlaylist.data);
       })
       .catch((err) => {
-        console.error("Problem fetching video playlist", err);
+        console.error("Problem fetching video playlist, using default", err);
       });
   }, []);
 
