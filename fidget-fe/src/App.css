@@ -443,8 +443,16 @@ text-overflow: ellipsis;
   margin-top: 0px;
 }
 
-.galleryVids{
-  margin-top: 0.5em;
+.ImageQuiltWrapper{
+margin-bottom: 15px;
+}
+
+.bandcampPlayer{
+  border: none;
+  padding: 0px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  border-radius: 0.5em;
 }
 
 .galleryVids iframe{

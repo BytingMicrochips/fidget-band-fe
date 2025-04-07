@@ -54,9 +54,34 @@ const Gallery = () => {
               <h2> Media gallery</h2>
             </div>
           </div>
-          <QuiltedImageList />
+          <div className="ImageQuiltWrapper">
+            <QuiltedImageList />
+          </div>
           {videosData.length > 0 ? (
             <Fragment>
+              <iframe
+                className="bandcampPlayer"
+                width="96%"
+                height="310px"
+                src="https://bandcamp.com/EmbeddedPlayer/album=96665267/size=large/bgcol=333333/linkcol=e99708/tracklist=true/artwork=small/transparent=true/"
+                seamless
+              >
+                <a href="https://fidgetandthetwitchers.bandcamp.com/album/cant-sit-straight">
+                  Can&#39;t Sit Straight by Fidget and the Twitchers
+                </a>
+              </iframe>
+
+              <iframe
+                className="bandcampPlayer"
+                width="96%"
+                height="310px"
+                src="https://bandcamp.com/EmbeddedPlayer/album=4223751233/size=large/bgcol=333333/linkcol=e99708/artwork=small/transparent=true/"
+                seamless
+              >
+                <a href="https://fidgetandthetwitchers.bandcamp.com/album/full-steam-ahead">
+                  Full Steam Ahead by Fidget and the Twitchers
+                </a>
+              </iframe>
               <div className="galleryVids">
                 <iframe
                   width="96%"
