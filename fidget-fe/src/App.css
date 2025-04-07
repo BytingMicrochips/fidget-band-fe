@@ -346,6 +346,10 @@ font-family: 'AveriaSansLibre-Italic';
   border-radius: 5px;
 }
 
+.pageGigsHeadings h2{
+  margin-bottom: 10px;
+}
+
 .gigListItem button, .pastGigListItem button{
   width: 100%;
   display: flex;
@@ -444,13 +448,13 @@ text-overflow: ellipsis;
 }
 
 .ImageQuiltWrapper{
-margin-bottom: 15px;
+margin-bottom: 7px;
 }
 
 .bandcampPlayer{
   border: none;
   padding: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   margin-top: 0px;
   border-radius: 0.5em;
 }

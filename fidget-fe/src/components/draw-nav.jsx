@@ -70,20 +70,9 @@ function DrawerNav(props) {
           }}
         >
           <ListItemButton
-            defaultValue="Gallery"
-            aria-label="Navigate to gallery"
+            defaultValue="Music & media"
+            aria-label="Navigate to music and media"
           >
-            <ListItemText primary="Gallery" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem
-          disablePadding={true}
-          onClick={() => {
-            navigate("/music");
-          }}
-        >
-          <ListItemButton defaultValue="Music" aria-label="Navigate to music">
             <ListItemText primary="Music" />
           </ListItemButton>
         </ListItem>

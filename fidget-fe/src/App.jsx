@@ -6,7 +6,6 @@ import Main from "./components/page-main.jsx";
 import Gigs from "./components/page-gigs.jsx";
 import GigsGig_id from "./components/page-gigs-gig_id.jsx";
 import Gallery from "./components/page-gallery.jsx";
-import Music from "./components/page-music.jsx";
 import Store from "./components/page-store.jsx";
 import StoreBasket from "./components/page-store-basket.jsx";
 import Checkout from "./components/page-store-checkout.jsx";
@@ -50,7 +49,6 @@ function App() {
                   <Route path="/gigs" exact element={<Gigs />} />
                   <Route path="/gigs/:_id" exact element={<GigsGig_id />} />
                   <Route path="/gallery" exact element={<Gallery />} />
-                  <Route path="/music" exact element={<Music />} />
                   <Route path="/store" exact element={<Store />} />
                   <Route path="/store/basket" exact element={<StoreBasket />} />
                   <Route path="/store/checkout" exact element={<Checkout />} />
