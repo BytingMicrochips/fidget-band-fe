@@ -8,7 +8,7 @@ const Contact = () => {
 
         <div className="pageGradientWrapper">
           <div className="pageGigsHeadings">
-            <h2> Contact & EPK</h2>
+            <h2> Contact us & EPK</h2>
           </div>
         </div>
 
@@ -21,9 +21,6 @@ const Contact = () => {
             If you are interested in collaborations or remixes we would love to
             hear from you too.
           </h2>
-          {/* <a href="mailto:fidgetandthetwitchers@gmail.com">
-            fidgetandthetwitchers@gmail.com
-          </a> */}
           <div className="contactButtons">
             <Button
               href="mailto:fidgetandthetwitchers@gmail.com"
