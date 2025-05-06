@@ -321,7 +321,7 @@ margin-top: 1px;
   font-family: "CabinSketch-Bold";
 }
 
-.gigListItem a, .pastGigListItem a{
+/* .gigListItem a, .pastGigListItem a,{
 background-color: rgba(250, 235, 215, 0.15);
 padding-top: 1.25em;
 padding-left: 4px;
@@ -330,7 +330,7 @@ color: antiquewhite;
 border-radius: 4px;
 text-decoration: none;
 font-family: 'AveriaSansLibre-Italic';  
-}
+} */
 
 #ticketLink{
   border-width: 1px;

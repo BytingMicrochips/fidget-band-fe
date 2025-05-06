@@ -25,6 +25,7 @@ const Contact = () => {
             <Button
               href="mailto:fidgetandthetwitchers@gmail.com"
               target="_blank"
+              draggable="false"
               variant="contained"
               sx={{
                 color: "##FAEBD7",
@@ -41,13 +42,14 @@ const Contact = () => {
         </div>
         <div className="contactInfo" id="epkTech">
           <h2>
-            Our current Electronic Press Kit (EPK) and Tech Rider can
-            always be found at the following links:
+            Our current Electronic Press Kit (EPK) and Tech Rider can always be
+            found at the following links:
           </h2>
           <div className="contactButtons">
             <Button
               href="https://drive.google.com/drive/folders/1KKsqiFR2ATbJ98_VxraBrcsPE3TLfOmj?usp=drive_link"
               target="_blank"
+              draggable="false"
               variant="contained"
               sx={{
                 color: "##FAEBD7",
