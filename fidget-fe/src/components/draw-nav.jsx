@@ -108,11 +108,21 @@ function DrawerNav(props) {
             navigate("/contact");
           }}
         >
-          <ListItemButton defaultValue="EPK & Contact" aria-label="Navigate to EPK & Contact">
-            <ListItemText primary="EPK & Contact" />
+          <ListItemButton
+            defaultValue="EPK & Contact Us"
+            aria-label="Navigate to EPK & Contact Us"
+          >
+            <ListItemText
+              primary={
+                <div>
+                  Contact Us
+                  <br />
+                  EPK
+                </div>
+              }
+            />
           </ListItemButton>
         </ListItem>
-
       </List>
     </div>
   );

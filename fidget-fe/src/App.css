@@ -122,6 +122,8 @@ display: block;
 
 .contactInfo{
   margin-top: 0px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 
 .blerb h2, .contactInfo h2{
@@ -136,6 +138,10 @@ display: block;
 .contactInfo h2{
   margin-left: 17vw;
   margin-right: 12vw;
+}
+
+#epkTech {
+margin-top: 15px;
 }
 
 .page-main h2 {
@@ -758,6 +764,7 @@ margin: 0;
   #instagramWidget{
   max-height: 470px;
 }
+
 
 @media only screen and (min-width: 900px) {
   .page-main{
