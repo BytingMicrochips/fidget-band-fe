@@ -1,12 +1,11 @@
 import "../App.css";
-import Header from "./header.jsx";
-import MailChimp from "../components/mailChimp";
 import { useState, useContext, useEffect } from "react";
 import DrawerNav from "./draw-nav.jsx";  
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import  axios  from "axios";
 import { GigsContext } from "../App.jsx";
+import Button from "@mui/material/Button";
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
@@ -77,13 +76,22 @@ const axiosBase = axios.create({
                         >
                           <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
-                          <a
+
+                          <Button
                             id="ticketLink"
-                            href={gig.ticketLink}
                             draggable="false"
+                            href={gig.ticketLink}
+                            target="_blank"
+                            variant="contained"
+                            sx={{
+                              color: "##FAEBD7",
+                              backgroundColor: "rgba(250, 235, 215, 0.15)",
+                              fontFamily: "AveriaSansLibre-Bold",
+                              "&:hover": { backgroundColor: "#d15c2a" },
+                            }}
                           >
                             TICKETS
-                          </a>
+                          </Button>
                         </button>
                       </div>
                     </>
@@ -165,7 +173,6 @@ const axiosBase = axios.create({
             }
           })}
         </div>
-        {/* <MailChimp /> */}
       </Box>
     </>
   );
