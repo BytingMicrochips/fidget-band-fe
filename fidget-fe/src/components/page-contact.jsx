@@ -8,7 +8,7 @@ const Contact = () => {
 
         <div className="pageGradientWrapper">
           <div className="pageGigsHeadings">
-            <h2> Contact us & EPK</h2>
+            <h2> Contact Us & EPK</h2>
           </div>
         </div>
 
