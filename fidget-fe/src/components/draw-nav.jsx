@@ -99,6 +99,30 @@ function DrawerNav(props) {
             <ListItemText primary="Basket" />
           </ListItemButton>
         </ListItem>
+
+        <Divider />
+
+        <ListItem
+          disablePadding={true}
+          onClick={() => {
+            navigate("/contact");
+          }}
+        >
+          <ListItemButton
+            defaultValue="EPK & Contact Us"
+            aria-label="Navigate to EPK & Contact Us"
+          >
+            <ListItemText
+              primary={
+                <div>
+                  Contact Us
+                  <br />
+                  EPK
+                </div>
+              }
+            />
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );
