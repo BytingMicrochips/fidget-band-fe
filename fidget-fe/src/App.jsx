@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, BrowserRouter } from "react-router-dom"
+import { Routes, Route, BrowserRouter, json } from "react-router-dom"
 import { createContext, useContext, useState, useEffect } from "react";
 import Splash from "./components/page-splash.jsx";
 import Main from "./components/page-main.jsx";
@@ -9,6 +9,7 @@ import Gallery from "./components/page-gallery.jsx";
 import Store from "./components/page-store.jsx";
 import StoreBasket from "./components/page-store-basket.jsx";
 import Checkout from "./components/page-store-checkout.jsx";
+import Contact from "./components/page-contact.jsx";
 import shopStock from "../data/store-data.json";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 export const BasketContext = createContext();
@@ -52,6 +53,7 @@ function App() {
                   <Route path="/store" exact element={<Store />} />
                   <Route path="/store/basket" exact element={<StoreBasket />} />
                   <Route path="/store/checkout" exact element={<Checkout />} />
+                  <Route path="/contact" exact element={<Contact />} />
                 </Routes>
               </PayPalScriptProvider>
             </GigsContext.Provider>
