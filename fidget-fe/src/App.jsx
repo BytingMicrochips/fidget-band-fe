@@ -49,7 +49,7 @@ function App() {
                   <Route path="/home" exact element={<Main />} />
                   <Route path="/gigs" exact element={<Gigs />} />
                   <Route path="/gigs/:_id" exact element={<GigsGig_id />} />
-                  <Route path="/gallery" exact element={<Gallery />} />
+                  <Route path="/musicandgallery" exact element={<Gallery />} />
                   <Route path="/store" exact element={<Store />} />
                   <Route path="/store/basket" exact element={<StoreBasket />} />
                   <Route path="/store/checkout" exact element={<Checkout />} />

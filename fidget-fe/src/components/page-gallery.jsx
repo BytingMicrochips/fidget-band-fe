@@ -51,7 +51,7 @@ const Gallery = () => {
           <DrawerNav />
           <div className="pageGradientWrapper">
             <div className="pageGigsHeadings">
-              <h2> Music & media</h2>
+              <h2> Music & Gallery</h2>
             </div>
           </div>
           <div className="bandcampPlayer">
