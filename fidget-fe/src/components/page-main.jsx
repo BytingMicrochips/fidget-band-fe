@@ -96,8 +96,9 @@ const Main = () => {
             <></>
           )}
         </div>
-
+        <div className="carousel">
         <ImageCarousel/>
+        </div>
         <div className="blerb">
           <h2>
             We are a lively band offering brass-fuelled skapunkery, punchy beats
