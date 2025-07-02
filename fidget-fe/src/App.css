@@ -93,13 +93,16 @@ display: block;
 }
 
 .carousel{
-  margin-top: 0.5em;
+  margin: auto;
+  margin-top: 1em ;
   margin-bottom: 3.1em;
   height: 400px;
+  border-radius: 0.5em;
+  width: 96%;
+  background-color: rgba(26, 26, 26, 0.6);
 }
 
 .carouselImg{
-  margin-top: 0.5em;
   object-fit: cover;
   height: 400px;
   border-radius: 0.5em;

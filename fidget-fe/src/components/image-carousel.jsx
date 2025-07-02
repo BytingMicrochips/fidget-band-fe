@@ -32,7 +32,6 @@ const ImageCarousel = () => {
 
 
   return (
-    <div className="carousel">
     <Carousel
       autoPlay="true"
       interval={10000}
@@ -45,7 +44,6 @@ const ImageCarousel = () => {
         carouselContents.map(item => <CarouselItem key={item._id} source={item.source} />)
       }
     </Carousel>
-      </div>
     );
 }
 
