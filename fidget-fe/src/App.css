@@ -410,10 +410,11 @@ font-family: 'AveriaSansLibre-Italic';
   font-family: "AveriaSansLibre-Regular";
   background-color: rgba(26, 26, 26, 0.4);
   width: 96%;
-  min-height: 83%;
+  max-height: fit-content;
+  min-height: 86%;
   margin: auto;
   border-radius: 0.5em;
-  z-index: 3;
+  
 }
 
 .gigs-gig_id h2{
@@ -446,12 +447,10 @@ text-overflow: ellipsis;
   display: flex;
   flex-direction: column;
   width: 92%;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 4%;
+  margin-right: 4%;
   color: white;
-    bottom: 20px;
-      position: absolute;
-      justify-items: center;
+  justify-items: stretch;
 }
 
 .gigs_idlinks a {
