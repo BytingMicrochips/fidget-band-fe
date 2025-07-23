@@ -207,8 +207,12 @@ margin-top: 15px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  /* background-color: #0d0d0d; */
-  opacity: 0.75;
+  background-color: rgba(13,13,13, 0.75);
+}
+
+.gigButton:hover, .pastGigListItem button:hover, .gigListItem button:hover, .gigs_idlinks a:hover, .mailChimpWrapper button:hover{
+  background-color: rgba(209, 92, 42, 0.85);
+  border-color: transparent;
 }
 
 #gigTileDateLocation{
@@ -286,7 +290,7 @@ margin-top: 1px;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
   width: 100%;
-  color: whitesmoke;
+  color: antiquewhite;
   width: 98vw;
   font-family: CabinSketch-Regular;
 }
@@ -311,6 +315,14 @@ margin-top: 1px;
 
 .mailChimpWrapper input{
   font-family: 'AveriaSansLibre-Regular';
+}
+
+.mailChimpWrapper input:focus{
+  outline: rgb(209, 92, 42);
+  outline-width: 3px;
+  outline-style:groove;
+  
+  
 }
 
 .gigListItem, .pastGigListItem{
@@ -394,8 +406,8 @@ font-family: 'AveriaSansLibre-Italic';
 .gigs_idLocationVenue h3{
   padding-left: 0.5em;
   padding-right: 0.5em;
-  margin-bottom: 0.2em;
-  margin-top: 0.2em;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 .gigs_idDate{
@@ -408,7 +420,7 @@ font-family: 'AveriaSansLibre-Italic';
 
 .gigs-gig_id {
   font-family: "AveriaSansLibre-Regular";
-  background-color: rgba(26, 26, 26, 0.4);
+  background-color: rgba(26, 26, 26, 0.55);
   width: 96%;
   max-height: fit-content;
   min-height: 86%;
@@ -418,10 +430,9 @@ font-family: 'AveriaSansLibre-Italic';
 }
 
 .gigs-gig_id h2{
-  font-family: "CabinSketch-Bold";
-  margin: auto;
-  justify-items: center;
-  width: fit-content;
+margin-bottom: 0%;
+font-weight: 1200;
+
 }
 .gigs-gig_id img{
   width: 94%;
