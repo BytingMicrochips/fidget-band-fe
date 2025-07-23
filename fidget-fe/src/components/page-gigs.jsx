@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import  axios  from "axios";
 import { GigsContext } from "../App.jsx";
 import Button from "@mui/material/Button";
-
+import pressShot from "../assets/outdoor-press-shot.jpg";
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
 });
@@ -113,7 +113,11 @@ const axiosBase = axios.create({
                           </div>
                           <h3>{gig.title}</h3>
                         </button>
-                        <img src={gig.flier} width="98%" />
+                        {gig.flier.length === 0 ? (
+                          <img src={pressShot} width="98%" draggable="false" />
+                        ) : (
+                          <img src={gig.flier} width="98%" draggable="false" />
+                        )}
                       </div>
                     </Fragment>
                   )}
@@ -164,7 +168,11 @@ const axiosBase = axios.create({
                           </div>
                           <h3>{gig.title}</h3>
                         </button>
-                        <img src={gig.flier} width="98%" />
+                        {gig.flier.length === 0 ? (
+                          <img src={pressShot} width="98%" draggable="false" />
+                        ) : (
+                          <img src={gig.flier} width="98%" draggable="false" />
+                        )}
                       </div>
                     </Fragment>
                   )}
