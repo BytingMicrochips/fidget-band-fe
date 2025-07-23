@@ -232,6 +232,9 @@ margin-top: 15px;
   margin-bottom: 1vh;
 }
 
+.buttonFlier img{
+  border-radius: 5px;
+}
 .nextGigBanner{
   display: flex;
   flex-direction: column;
