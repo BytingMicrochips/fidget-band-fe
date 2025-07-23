@@ -81,8 +81,10 @@ const GigsGig_id = () => {
         ) : (
           <>
             <div className="gigs-gig_id">
-              <div className="gradientGigsId">
-                <h2> {thisGig.title}</h2>
+                <div className="gradientGigsId">
+                  <div className="pageGigsHeadings">
+                <h2 id="thisGigTitle"> {thisGig.title}</h2>
+                  </div>
               </div>
               <div className="gigs_idLocationVenue">
                 <h3>{thisGig.location}</h3>

@@ -43,7 +43,7 @@ const axiosBase = axios.create({
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          height: "100vh",
+          
           padding: 0,
         }}
       >
@@ -126,7 +126,7 @@ const axiosBase = axios.create({
             }
           })}
         </div>
-        <div className="pageGigsHeadings">
+        <div className="pageGigsHeadings" id="pastShowsHeading">
           <h2> Past shows</h2>
         </div>
         <div>
