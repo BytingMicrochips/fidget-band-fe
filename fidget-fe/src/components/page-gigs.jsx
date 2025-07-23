@@ -33,7 +33,7 @@ const axiosBase = axios.create({
       .catch((err) => {
         console.error("Problem fetching gigs data", err);
       });
-  }, [])
+  }, []) 
 
   return (
     <>
