@@ -27,6 +27,7 @@ const axiosBase = axios.create({
   ) => {
         axiosBase.get("gigs")
         .then(( allGigs ) => {
+          console.log("🚀 ~ .then ~ allGigs.data:", allGigs.data)
           setGigsData(allGigs.data);
           setRevGigs(allGigs.data.reverse());
       })
@@ -60,6 +61,7 @@ const axiosBase = axios.create({
           </select>
         </div>
         <div>
+          {/* UPCOMING GIGS */}
           {gigsData.map((gig) => {
             const gigDate = new Date(gig.date);
             let currentDate = new Date();
@@ -69,7 +71,7 @@ const axiosBase = axios.create({
                   {isList ? (
                     <Fragment key={`ListItem${gig._id}`}>
                       <div className="gigListItem">
-                        <button
+                        <button 
                           onClick={() => {
                             navigate(`/gigs/${gig._id}`);
                           }}
