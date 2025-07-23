@@ -41,7 +41,7 @@ export default function QuiltedImageList() {
   return (
     <ImageList
       sx={{
-        width: "96%", height: 500, margin: "auto",
+        width: "96%", height: 800, margin: "auto",
         borderRadius: '0.5em'
       }}
       variant="quilted"

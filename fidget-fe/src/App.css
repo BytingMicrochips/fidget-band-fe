@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: "CabinSketch-Regular";
   src: url("../src/assets/fonts/CabinSketch-Regular.ttf");
@@ -479,14 +480,27 @@ text-overflow: ellipsis;
 margin-bottom: 7px;
 }
 
-.bandcampPlayer{
+.bandcampPlayer, .bandcampPlayer iframe{
   border: none;
   padding: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
   border-radius: 0.5em;
+  /* width: 96%; */
+  height : 310px;
+  margin: auto;
+  background-color: #0d0d0d;
 }
 
+.bandcampPlayer{
+  width: 96%;
+  margin-bottom: 5px;
+}
+
+.bandcampPlayer iframe{
+  width: 100%;
+  z-index: 200;
+}
 .galleryVids iframe{
   border-radius: 0.5em;
 }
