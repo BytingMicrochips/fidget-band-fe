@@ -74,7 +74,13 @@ const axiosBase = axios.create({
                             navigate(`/gigs/${gig._id}`);
                           }}
                         >
-                          <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
+                          <h3>{`${gigDate
+                            .getDate()
+                            .toString()
+                            .padStart(2, "0")}-${gigDate
+                            .getMonth()
+                            .toString()
+                            .padStart(2, "0")}-${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
 
                           <Button
@@ -107,7 +113,13 @@ const axiosBase = axios.create({
                         >
                           <div id="gigTileDateLocation">
                             <h3>
-                              {`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}
+                              {`${gigDate
+                                .getDate()
+                                .toString()
+                                .padStart(2, "0")}-${gigDate
+                                .getMonth()
+                                .toString()
+                                .padStart(2, "0")}-${gigDate.getFullYear()}`}
                             </h3>
                             <h3>{gig.location}</h3>
                           </div>
@@ -144,9 +156,25 @@ const axiosBase = axios.create({
                             navigate(`/gigs/${gig._id}`);
                           }}
                         >
-                          <h3>{`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}</h3>
+                          <h3>{`${gigDate.getDate().toString().padStart(2, "0")}
+                            -${gigDate.getMonth().toString().padStart(2, "0")}
+                            -${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
-                          <a href={gig.ticketLink}>Get tickets</a>
+                          <Button
+                            id="ticketLink"
+                            draggable="false"
+                            href={gig.ticketLink}
+                            target="_blank"
+                            variant="contained"
+                            sx={{
+                              color: "##FAEBD7",
+                              backgroundColor: "rgba(250, 235, 215, 0.15)",
+                              fontFamily: "AveriaSansLibre-Bold",
+                              "&:hover": { backgroundColor: "#d15c2a" },
+                            }}
+                          >
+                            TICKETS
+                          </Button>
                         </button>
                       </div>
                     </Fragment>
@@ -162,7 +190,15 @@ const axiosBase = axios.create({
                         >
                           <div id="gigTileDateLocation">
                             <h3>
-                              {`${gigDate.getDate()}-${gigDate.getMonth()}-${gigDate.getFullYear()}`}
+                              {`${gigDate
+                                .getDate()
+                                .toString()
+                                .padStart(2, "0")}
+                                -${gigDate
+                                .getMonth()
+                                .toString()
+                                .padStart(2, "0")}
+                                -${gigDate.getFullYear()}`}
                             </h3>
                             <h3>{gig.location}</h3>
                           </div>
