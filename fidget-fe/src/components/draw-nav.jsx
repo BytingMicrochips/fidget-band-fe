@@ -138,11 +138,15 @@ function DrawerNav(props) {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <IconButton
-          color="purple"
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
           sx={{
+            color: "#FAEBD7",
+            "&:hover": {
+              color: "#D15C2A",
+              bgcolor: "#0d0d0d"
+            },
             display: { sm: "none" },
             margin: 0,
             borderRadius: 0,
@@ -170,7 +174,8 @@ function DrawerNav(props) {
                 boxSizing: "border-box",
                 width: drawerWidth,
                 // backgroundColor: "#7F00FF",
-                background: 'linear-gradient(90deg, rgba(13,13,13,1) 40%, rgba(13,13,13,0.25) 100%)'
+                background:
+                  "linear-gradient(90deg, rgba(13,13,13,1) 40%, rgba(13,13,13,0.25) 100%)",
               },
             }}
           >
