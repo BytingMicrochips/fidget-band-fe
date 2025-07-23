@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { GigsContext } from "../App.jsx";
+import axios from "axios";
 
 const GigsGig_id = () => {
   const params = useParams();
@@ -10,17 +11,39 @@ const GigsGig_id = () => {
   const drawerWidth = 150;
   const [thisGig, setThisGig] = useState({});
   const navigate = useNavigate();
+  const axiosBase = axios.create({
+    baseURL: "https://fidget-band-be.onrender.com/api/",
+  });
 
-useEffect(() => {
-  gigsData.filter((eachGig) => {
-    if (eachGig._id === params._id) {
-      setThisGig(eachGig)
+  
+  useEffect(() => {
+  
+    if (gigsData.length === 0 || Object.keys(thisGig).length === 0) {
+      fetchSingleGig(params._id)
+    } else {
+      gigsData.filter((eachGig) => {
+        if (eachGig._id === params._id) {
+          setThisGig(eachGig)
+        }
+      })
     }
-  })
-}, [])
+  }, [])
+  
+  const fetchSingleGig = async (_id) => {
+    try {
+      return axiosBase
+      .get(`gigs/${_id}`, {
+      })
+      .then((matchedGig) => {
+        setThisGig(matchedGig.data.gig[0]);
+      })
+    } catch (err){
+      console.log(err)
+    }
+  }
 
-    return (
-      <>
+  return (
+    <>
         <Box
           component="main"
           sx={{

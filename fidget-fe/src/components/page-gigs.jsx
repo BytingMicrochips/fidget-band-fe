@@ -1,5 +1,5 @@
 import "../App.css";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, Fragment } from "react";
 import DrawerNav from "./draw-nav.jsx";  
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ const axiosBase = axios.create({
       .catch((err) => {
         console.error("Problem fetching gigs data", err);
       });
-  }, [])
+  }, []) 
 
   return (
     <>
@@ -65,9 +65,9 @@ const axiosBase = axios.create({
             let currentDate = new Date();
             if (gigDate >= currentDate) {
               return (
-                <>
+                <Fragment key={gig._id}>
                   {isList ? (
-                    <>
+                    <Fragment key={`ListItem${gig._id}`}>
                       <div className="gigListItem">
                         <button
                           onClick={() => {
@@ -94,9 +94,9 @@ const axiosBase = axios.create({
                           </Button>
                         </button>
                       </div>
-                    </>
+                    </Fragment>
                   ) : (
-                    <>
+                    <Fragment key={`GigNav${gig.gig_id}`}>
                       <div className="buttonFlier">
                         <button
                           className="gigButton"
@@ -115,9 +115,9 @@ const axiosBase = axios.create({
                         </button>
                         <img src={gig.flier} width="98%" />
                       </div>
-                    </>
+                    </Fragment>
                   )}
-                </>
+                </Fragment>
               );
             }
           })}
@@ -131,9 +131,9 @@ const axiosBase = axios.create({
             let currentDate = new Date();
             if (gigDate < currentDate) {
               return (
-                <>
+                <Fragment key={`PastGig${gig._id}`}>
                   {isList ? (
-                    <>
+                    <Fragment key={`PastGigItem${gig.gig_id}`}>
                       <div className="pastGigListItem">
                         <button
                           onClick={() => {
@@ -145,9 +145,9 @@ const axiosBase = axios.create({
                           <a href={gig.ticketLink}>Get tickets</a>
                         </button>
                       </div>
-                    </>
+                    </Fragment>
                   ) : (
-                    <>
+                    <Fragment key={`PastGigNav${gig.gig_id}`}>
                       <div className="buttonFlier">
                         <button
                           className="gigButton"
@@ -166,9 +166,9 @@ const axiosBase = axios.create({
                         </button>
                         <img src={gig.flier} width="98%" />
                       </div>
-                    </>
+                    </Fragment>
                   )}
-                </>
+                </Fragment>
               );
             }
           })}
