@@ -122,6 +122,12 @@ display: block;
   margin: auto;
   margin-top: -25px;
   font-family: AveriaSansLibre-Bold;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.blerb{
+margin-bottom: 15px;
 }
 
 .contactInfo{
@@ -180,9 +186,7 @@ padding-bottom: 15px;
 
 .reviews h3, .blerb h2{
   margin-left: 15vw;
-  margin-right: 12vw;
-  /* padding-top: 1vh;
-  padding-bottom: 1vh; */
+  margin-right: 14vw;
 }
 
 .reviews h3{
@@ -194,6 +198,12 @@ padding-bottom: 15px;
 
 .reviews em{
   font-family: AveriaSansLibre-Italic;
+}
+
+#reviewsAllText{
+padding-top: 10px;
+padding-bottom: 10px;
+margin-bottom: 15px;
 }
 
 #facebookWidget{
