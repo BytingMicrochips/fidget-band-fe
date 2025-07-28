@@ -27,14 +27,19 @@ const axiosBase = axios.create({
   ) => {
         axiosBase.get("gigs")
         .then(( allGigs ) => {
-          console.log("🚀 ~ .then ~ allGigs.data:", allGigs.data)
-          setGigsData(allGigs.data);
-          setRevGigs(allGigs.data.reverse());
+          handleDateSorting(allGigs.data)
       })
       .catch((err) => {
         console.error("Problem fetching gigs data", err);
       });
   }, []) 
+
+    const handleDateSorting = (allGigs) => {
+      const dateAscending = allGigs.sort((a, b) => new Date(a.date) - new Date(b.date));
+      const dateDescending = [...dateAscending].reverse();
+      setGigsData(dateAscending);
+      setRevGigs(dateDescending); 
+    }
 
   return (
     <>
