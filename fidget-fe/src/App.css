@@ -642,7 +642,8 @@ border-radius: 0.5em;
   margin-bottom: 0.2em;
   margin-top: 0.2em;
   width: 96%;
-  background-color: teal;
+  background-color: rgba(13,13,13, 0.75);
+  border-radius: 5px;
 }
 
 .merchText{
