@@ -646,11 +646,17 @@ border-radius: 0.5em;
 }
 
 .merchText{
-  background-color: blueviolet;
+  background-image: url("./assets/paper1-nolines.png");
+  background-position: 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-size: medium;
   width: 96%;
+  padding: 15px 80px 15px 80px;
   margin: auto;
-  margin-bottom: 0.2em;
+  margin-bottom: 15px;
+  color: #0d0d0d;
+  font-family: AveriaSansLibre-Bold;
 }
 
 .basketWrapper{
