@@ -1,5 +1,6 @@
 import DrawerNav from "./draw-nav";
 import Button from "@mui/material/Button";
+import nooch161 from "../assets/nooch161.jpg";
 
 const Contact = () => { 
     return (
@@ -12,14 +13,17 @@ const Contact = () => {
           </div>
         </div>
 
+        <img src={nooch161} className="contactImg" />
+
         <div className="contactInfo">
           <h2>
             If you are looking to get in touch with us for bookings, interviews
-            or reviews you can do so via the email button below.
+            or reviews you can reach out directly to our sax player Nooch via
+            the email button below.
             <br />
             <br />
             If you are interested in collaborations or remixes we would love to
-            hear from you too.
+            hear from you too
           </h2>
           <div className="contactButtons">
             <Button
@@ -64,7 +68,7 @@ const Contact = () => {
             </Button>
           </div>
           <Button
-            href="https://drive.google.com/file/d/1WURaM7FeJ4YMKLAF9J-0MdCWPWzAq5E1/view?usp=sharing"
+            href="https://drive.google.com/file/d/1MSBwbjHCqIjRbK4bSoAGQbDVk6Nw7KyN/view?usp=sharing"
             target="_blank"
             variant="contained"
             sx={{
