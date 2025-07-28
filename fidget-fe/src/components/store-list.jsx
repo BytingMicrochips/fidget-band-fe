@@ -8,6 +8,7 @@ import { useContext, useState, useEffect } from "react";
 import { BasketContext, ShoppingListContext } from "../App";
 import axios from "axios";
 
+
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
 });
@@ -17,6 +18,7 @@ export default function StoreList() {
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
   const [shopStock, setShopStock] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect ((
   ) => {
@@ -64,7 +66,14 @@ export default function StoreList() {
   }
 
   return (
-    <ImageList sx={{ width: "96%", height: "60vh", margin: "auto" }}>
+    <ImageList
+      sx={{
+        width: "96%",
+        height: "80vh",
+        margin: "auto",
+        borderRadius: "5px",
+      }}
+    >
       {shopStock.map((item) => (
         <ImageListItem key={item.img}>
           <img
@@ -73,6 +82,9 @@ export default function StoreList() {
             alt={item.title}
             loading="lazy"
             onClick={handleBasketOptions}
+            draggable="false"
+            height="150px"
+            borderRadius="5px"
           />
           {isHidden ? (
             <>
@@ -92,11 +104,19 @@ export default function StoreList() {
                           onClick={handleRemoveBasket}
                           value={item.title}
                           aria-label={`Remove ${item.title} from basket, price £${item.price}`}
+                          onMouseEnter={() => {
+                            setIsHovered(true);
+                          }}
+                          onMouseLeave={() => {
+                            setIsHovered(false);
+                          }}
                         >
                           <RemoveShoppingCartIcon
                             sx={{
-                              color: "rgba(255, 255, 255, 0.54)",
-                              opacity: "60%",
+                              color: isHovered
+                                ? "#0d0d0d"
+                                : "rgba(209, 92, 42, 0.95)",
+                              opacity: "90%",
                             }}
                           />
                         </button>
@@ -104,11 +124,19 @@ export default function StoreList() {
                           onClick={handleAddBasket}
                           value={item.title}
                           aria-label={`Add ${item.title} to basket for £${item.price}`}
+                          onMouseEnter={() => {
+                            setIsHovered(true);
+                          }}
+                          onMouseLeave={() => {
+                            setIsHovered(false);
+                          }}
                         >
                           <AddShoppingCartIcon
                             sx={{
-                              color: "rgba(255, 255, 255, 0.54)",
-                              opacity: "95%",
+                              color: isHovered
+                                ? "#0d0d0d"
+                                : "rgba(209, 92, 42, 0.95)",
+                              opacity: "90%",
                             }}
                           />
                         </button>
@@ -123,11 +151,21 @@ export default function StoreList() {
                       onClick={handleAddBasket}
                       value={item.title}
                       aria-label={`Add ${item.title} to basket for £${item.price}`}
+                      onMouseEnter={() => {
+                        setIsHovered(true);
+                      }}
+                      onMouseLeave={() => {
+                        setIsHovered(false);
+                      }}
                     >
                       <AddShoppingCartIcon
                         sx={{
-                          color: "rgba(255, 255, 255, 0.54)",
+                          color: isHovered
+                            ? "#0d0d0d"
+                            : "rgba(209, 92, 42, 0.8)",
+                          borderColor: "transparent",
                           opacity: "95%",
+                          width: "100%",
                         }}
                       />
                     </button>

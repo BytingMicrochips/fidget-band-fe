@@ -602,7 +602,7 @@ border-radius: 0.5em;
   border-radius: 0.4em;
 }
 
-.albumSelect{
+/* .albumSelect{
   width: 96%;
   height: 20%;
   margin: auto;
@@ -625,11 +625,26 @@ border-radius: 0.5em;
   height: 75px;
   border-radius: 0.4em;
   
-}
+} */
 
 .MuiImageListItemBar-titleWrap{
   margin-top: -10px;
   margin-bottom: -5px;
+  border-radius: 5px;
+}
+
+.css-1lizpae-MuiImageListItemBar-titleWrap{
+  font-family: "AveriaSansLibre-Bold";
+  color: antiquewhite;
+}
+
+.css-20xlnq-MuiImageList-root button:hover{
+border-color:transparent;
+background-color: rgba(209, 92, 42, 0.8);
+}
+
+.MuiImageListItem-img{
+  border-radius: 5px;
 }
 
 .reviewCheckout{
