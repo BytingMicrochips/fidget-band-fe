@@ -97,7 +97,7 @@ const Main = () => {
           )}
         </div>
         <div className="carousel">
-        <ImageCarousel/>
+          <ImageCarousel />
         </div>
         <div className="blerb">
           <h2>
@@ -108,29 +108,31 @@ const Main = () => {
           </h2>
         </div>
         <div className="reviews">
-          <h3>
-            "A playful assault of bouncy ska-punk, straight from Bristol's murky
-            musical swamp" <br /> <em>Nibley Festival</em>
-          </h3>
-          <h3>
-            "Relentlessly engaging and mischievous" <br />
-            <em>The Ringmaster Review</em>
-          </h3>
-          <h3>
-            "...it's a unique sound that has a bit of everything!"
-            <br />
-            <em>Rude Rebel</em>
-          </h3>
-          <h3>
-            "Fun in a sinister kinda way" <br />
-            <em>That's Good Enough For Me</em>
-          </h3>
-          <h3>
-            "There is a captivating energy to the band, the music screams of
-            danceability, it was pure party vibes..."
-            <br />
-            <em>Rockfreaks</em>
-          </h3>
+          <div id="reviewsAllText">
+            <h3>
+              "A playful assault of bouncy ska-punk, straight from Bristol's
+              murky musical swamp" <br /> <em>Nibley Festival</em>
+            </h3>
+            <h3>
+              "Relentlessly engaging and mischievous" <br />
+              <em>The Ringmaster Review</em>
+            </h3>
+            <h3>
+              "...it's a unique sound that has a bit of everything!"
+              <br />
+              <em>Rude Rebel</em>
+            </h3>
+            <h3>
+              "Fun in a sinister kinda way" <br />
+              <em>That's Good Enough For Me</em>
+            </h3>
+            <h3>
+              "There is a captivating energy to the band, the music screams of
+              danceability, it was pure party vibes..."
+              <br />
+              <em>Rockfreaks</em>
+            </h3>
+          </div>
         </div>
       </div>
       <div className="socialFeeds">
