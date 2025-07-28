@@ -102,10 +102,12 @@ const GigsGig_id = () => {
               )}
               <h3 id="thisGig-desc-text"> {thisGig.description}</h3>
 
-              <div className="gigs_idlinks">
+                <div className="gigs_idlinks">
+                  {new Date(thisGig.date) > new Date() ? (
                 <a href={thisGig.ticketLink} draggable="false">
                   Buy tickets
                 </a>
+                  ): (<></>)}
                 <a
                   onClick={() => {
                     navigate("/gigs");
