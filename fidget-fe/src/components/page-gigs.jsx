@@ -76,7 +76,7 @@ const axiosBase = axios.create({
                   {isList ? (
                     <Fragment key={`ListItem${gig._id}`}>
                       <div className="gigListItem">
-                        <button 
+                        <button
                           onClick={() => {
                             navigate(`/gigs/${gig._id}`);
                           }}
@@ -132,14 +132,21 @@ const axiosBase = axios.create({
                           </div>
                           <h3>{gig.title}</h3>
                         </button>
-                          {gig.flier.length === 0 ? (
-                            <div className="flierWrapper">
-                              <img src={pressShot} draggable="false" backgroundColor="#0d0d0d"/>
-                            </div>
-                          ) : (
-                            <div className="flierWrapper">
-                                <img src={gig.flier} width="98%" draggable="false" />
-                            </div>
+                        {gig.flier.length === 0 ? (
+                            <img
+                              src={pressShot}
+                              width="100%"
+                              minHeight="100%"
+                              draggable="false"
+                              backgroundColor="#0d0d0d"
+                            />
+                        ) : (
+                            <img
+                              src={gig.flier}
+                              width="100%"
+                              minHeight="100%"
+                              draggable="false"
+                            />
                         )}
                       </div>
                     </Fragment>
@@ -182,7 +189,6 @@ const axiosBase = axios.create({
                               backgroundColor: "rgba(250, 235, 215, 0.15)",
                               fontFamily: "AveriaSansLibre-Bold",
                               "&:hover": { backgroundColor: "#d15c2a" },
-                              
                             }}
                           >
                             TICKETS
@@ -202,14 +208,11 @@ const axiosBase = axios.create({
                         >
                           <div id="gigTileDateLocation">
                             <h3>
-                              {`${gigDate
-                                .getDate()
-                                .toString()
-                                .padStart(2, "0")}
+                              {`${gigDate.getDate().toString().padStart(2, "0")}
                                 -${gigDate
-                                .getMonth()
-                                .toString()
-                                .padStart(2, "0")}
+                                  .getMonth()
+                                  .toString()
+                                  .padStart(2, "0")}
                                 -${gigDate.getFullYear()}`}
                             </h3>
                             <h3>{gig.location}</h3>
@@ -217,13 +220,20 @@ const axiosBase = axios.create({
                           <h3>{gig.title}</h3>
                         </button>
                           {gig.flier.length === 0 ? (
-                            <div className="flierWrapper">
-                              <img src={pressShot} width="98%" draggable="false" />
-                            </div>
-                          ) : (
-                            <div className="flierWrapper">
-                                <img src={gig.flier} width="98%" draggable="false" />
-                            </div>
+                              <img
+                                src={pressShot}
+                                width="100%"
+                                minHeight="100%"
+                                draggable="false"
+                              />
+                        ) : (
+                            <img
+                              src={gig.flier}
+                              width="100%"
+                              height="100%"
+                                  draggable="false"
+                            />
+                    
                         )}
                       </div>
                     </Fragment>
