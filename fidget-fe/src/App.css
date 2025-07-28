@@ -126,8 +126,15 @@ display: block;
 
 .contactInfo{
   margin-top: 0px;
-  padding-top: 5px;
-  padding-bottom: 10px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.contactImg{
+  height: 350px;
+  margin: auto;
+  border-radius: 5px;
 }
 
 .blerb h2, .contactInfo h2{
@@ -146,6 +153,8 @@ display: block;
 
 #epkTech {
 margin-top: 15px;
+padding-top: 15px;
+padding-bottom: 15px;
 }
 
 .page-main h2 {
