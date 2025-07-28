@@ -132,10 +132,14 @@ const axiosBase = axios.create({
                           </div>
                           <h3>{gig.title}</h3>
                         </button>
-                        {gig.flier.length === 0 ? (
-                          <img src={pressShot} width="98%" draggable="false" />
-                        ) : (
-                          <img src={gig.flier} width="98%" draggable="false" />
+                          {gig.flier.length === 0 ? (
+                            <div className="flierWrapper">
+                              <img src={pressShot} draggable="false" backgroundColor="#0d0d0d"/>
+                            </div>
+                          ) : (
+                            <div className="flierWrapper">
+                                <img src={gig.flier} width="98%" draggable="false" />
+                            </div>
                         )}
                       </div>
                     </Fragment>
@@ -168,7 +172,7 @@ const axiosBase = axios.create({
                             -${gigDate.getFullYear()}`}</h3>
                           <h3>{gig.location}</h3>
                           <Button
-                            id="ticketLink"
+                            id="ticketLinkPast"
                             draggable="false"
                             href={gig.ticketLink}
                             target="_blank"
@@ -178,6 +182,7 @@ const axiosBase = axios.create({
                               backgroundColor: "rgba(250, 235, 215, 0.15)",
                               fontFamily: "AveriaSansLibre-Bold",
                               "&:hover": { backgroundColor: "#d15c2a" },
+                              
                             }}
                           >
                             TICKETS
@@ -211,10 +216,14 @@ const axiosBase = axios.create({
                           </div>
                           <h3>{gig.title}</h3>
                         </button>
-                        {gig.flier.length === 0 ? (
-                          <img src={pressShot} width="98%" draggable="false" />
-                        ) : (
-                          <img src={gig.flier} width="98%" draggable="false" />
+                          {gig.flier.length === 0 ? (
+                            <div className="flierWrapper">
+                              <img src={pressShot} width="98%" draggable="false" />
+                            </div>
+                          ) : (
+                            <div className="flierWrapper">
+                                <img src={gig.flier} width="98%" draggable="false" />
+                            </div>
                         )}
                       </div>
                     </Fragment>

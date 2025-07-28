@@ -226,6 +226,14 @@ margin-top: 15px;
   margin-right: 0.5em;
 }
 
+.flierWrapper {
+width: 98%;
+min-height: 345px;
+background-color: #0d0d0d;
+margin: auto;
+border-radius: 5px;
+}
+
 .buttonFlier{
   position: relative;
   width: 98%;
@@ -351,7 +359,7 @@ text-decoration: none;
 font-family: 'AveriaSansLibre-Italic';  
 } */
 
-#ticketLink{
+#ticketLink, #ticketLinkPast{
   border-width: 1px;
   border-color: rgba(250,235,215, 0.7);
   border-style:groove; 
@@ -359,6 +367,10 @@ font-family: 'AveriaSansLibre-Italic';
   height: 49px;
   position: relative;
   right: 2px;
+}
+
+#ticketLinkPast{
+  visibility: hidden;
 }
 
 .pageGradientWrapper, .gradientGigsId{
