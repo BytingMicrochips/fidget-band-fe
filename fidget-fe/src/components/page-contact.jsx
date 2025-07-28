@@ -23,7 +23,7 @@ const Contact = () => {
             <br />
             <br />
             If you are interested in collaborations or remixes we would love to
-            hear from you too
+            hear from you too!
           </h2>
           <div className="contactButtons">
             <Button
