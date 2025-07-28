@@ -7,6 +7,7 @@ import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { useContext, useState, useEffect } from "react";
 import { BasketContext, ShoppingListContext } from "../App";
 import axios from "axios";
+import SizeSelector from "./sizeSelector";
 
 
 const axiosBase = axios.create({
@@ -86,6 +87,7 @@ export default function StoreList() {
             height="150px"
             borderRadius="5px"
           />
+          {/* IS THE ITEM HIDDEN ?*/}
           {isHidden ? (
             <>
               <ImageListItemBar
@@ -95,6 +97,7 @@ export default function StoreList() {
             </>
           ) : (
             <>
+              {/* IS THE ITEM ALREADY IN BASKET ? */}
               {shoppingList.includes(item.title) ? (
                 <ImageListItemBar
                   actionIcon={
@@ -144,33 +147,41 @@ export default function StoreList() {
                     </>
                   }
                 />
+              ) : // ITEM IS NOT ALREADY IN BASKET
+              item.hasSizes && item.stockAmount != 0 ? (
+                <>
+                  <ImageListItemBar/>
+                      <SizeSelector shopStock={shopStock.filter((item)=> item.hasSizes)} />
+                </>
               ) : (
-                <ImageListItemBar
-                  actionIcon={
-                    <button
-                      onClick={handleAddBasket}
-                      value={item.title}
-                      aria-label={`Add ${item.title} to basket for £${item.price}`}
-                      onMouseEnter={() => {
-                        setIsHovered(true);
-                      }}
-                      onMouseLeave={() => {
-                        setIsHovered(false);
-                      }}
-                    >
-                      <AddShoppingCartIcon
-                        sx={{
-                          color: isHovered
-                            ? "#0d0d0d"
-                            : "rgba(209, 92, 42, 0.8)",
-                          borderColor: "transparent",
-                          opacity: "95%",
-                          width: "100%",
+                <>
+                  <ImageListItemBar
+                    actionIcon={
+                      <button
+                        onClick={handleAddBasket}
+                        value={item.title}
+                        aria-label={`Add ${item.title} to basket for £${item.price}`}
+                        onMouseEnter={() => {
+                          setIsHovered(true);
                         }}
-                      />
-                    </button>
-                  }
-                />
+                        onMouseLeave={() => {
+                          setIsHovered(false);
+                        }}
+                      >
+                        <AddShoppingCartIcon
+                          sx={{
+                            color: isHovered
+                              ? "#0d0d0d"
+                              : "rgba(209, 92, 42, 0.8)",
+                            borderColor: "transparent",
+                            opacity: "95%",
+                            width: "100%",
+                          }}
+                        />
+                      </button>
+                    }
+                  />
+                </>
               )}
             </>
           )}
