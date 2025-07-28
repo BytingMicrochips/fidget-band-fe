@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function SizeSelector(shopStock) {
+export default function SizeSelector({shopStock, item}) {
     const [size, setSize] = React.useState("");
     
     const handleChange = (event) => {
@@ -13,7 +13,7 @@ export default function SizeSelector(shopStock) {
     };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 80 }}>
       <FormControl fullWidth>
         <InputLabel id="sizeSelectorInput">Size</InputLabel>
         <Select
@@ -23,16 +23,19 @@ export default function SizeSelector(shopStock) {
           label="Size"
           onChange={handleChange}
         >
-                  {Object.keys(shopStock.shopStock[0].availableSizes).map((size) => {
-                      if (shopStock.shopStock[0].availableSizes[size] != 0) {
+                {Object.keys(item.availableSizes).map((size) => {
+                      if (item.availableSizes[size] != 0) {
                           return (
                               <MenuItem value={size}>{size}</MenuItem>
                           )
                       }
-              
-          })}
+                  })
+                }
         </Select>
       </FormControl>
     </Box>
   );
 }
+
+// Needs to check if amount in stock - current basket = 0, then disallow selct options if true
+// Essential to prevent adding to basket amounts greater than items in stock

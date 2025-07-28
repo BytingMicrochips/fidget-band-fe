@@ -151,7 +151,7 @@ export default function StoreList() {
               item.hasSizes && item.stockAmount != 0 ? (
                 <>
                   <ImageListItemBar/>
-                      <SizeSelector shopStock={shopStock.filter((item)=> item.hasSizes)} />
+                      <SizeSelector shopStock={shopStock.filter((item) => item.hasSizes)} item={item} />
                 </>
               ) : (
                 <>
