@@ -104,7 +104,10 @@ const GigsGig_id = () => {
 
                 <div className="gigs_idlinks">
                   {new Date(thisGig.date) > new Date() ? (
-                <a href={thisGig.ticketLink} draggable="false">
+                    <a
+                      href={thisGig.ticketLink}
+                      draggable="false"
+                    target="_blank">
                   Buy tickets
                 </a>
                   ): (<></>)}
