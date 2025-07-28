@@ -226,18 +226,12 @@ margin-top: 15px;
   margin-right: 0.5em;
 }
 
-.flierWrapper {
-width: 98%;
-min-height: 345px;
-background-color: #0d0d0d;
-margin: auto;
-border-radius: 5px;
-}
-
 .buttonFlier{
   position: relative;
   width: 98%;
+  margin: auto;
   margin-bottom: 1vh;
+border-radius: 5px;
 }
 
 .buttonFlier img{
@@ -348,17 +342,6 @@ margin-top: 1px;
   font-family: "CabinSketch-Bold";
 }
 
-/* .gigListItem a, .pastGigListItem a,{
-background-color: rgba(250, 235, 215, 0.15);
-padding-top: 1.25em;
-padding-left: 4px;
-padding-right: 4px;
-color: antiquewhite;
-border-radius: 4px;
-text-decoration: none;
-font-family: 'AveriaSansLibre-Italic';  
-} */
-
 #ticketLink, #ticketLinkPast{
   border-width: 1px;
   border-color: rgba(250,235,215, 0.7);
@@ -443,7 +426,7 @@ font-family: 'AveriaSansLibre-Italic';
   background-color: rgba(26, 26, 26, 0.55);
   width: 96%;
   max-height: fit-content;
-  min-height: 86%;
+  min-height: 86vh;
   margin: auto;
   border-radius: 0.5em;
   
