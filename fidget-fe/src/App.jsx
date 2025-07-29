@@ -10,7 +10,7 @@ import Store from "./components/page-store.jsx";
 import StoreBasket from "./components/page-store-basket.jsx";
 import Checkout from "./components/page-store-checkout.jsx";
 import Contact from "./components/page-contact.jsx";
-import shopStock from "../data/store-data.json";
+import basketDTO from "../data/basket-DTO.json";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 export const BasketContext = createContext();
 export const ShoppingListContext = createContext();
@@ -22,14 +22,15 @@ function App() {
   const [gigsData, setGigsData] = useState([]);
 
     useEffect(() => {
-      const merchOrder = [];
-      shopStock.map((eachItem) => {
-        const merchItem = {};
-        merchItem[eachItem.title] = 0;
-        merchItem.price = eachItem.price;
-        merchOrder.push(merchItem);
-      });
-      setBasket(merchOrder);
+      // const merchOrder = [];
+      // shopStock.map((eachItem) => {
+      //   const merchItem = {};
+      //   merchItem[eachItem.title] = 0;
+      //   merchItem.price = eachItem.price;
+      //   merchOrder.push(merchItem);
+      // });
+      // setBasket(merchOrder);
+      setBasket(basketDTO)
     }, []);
     
   return (

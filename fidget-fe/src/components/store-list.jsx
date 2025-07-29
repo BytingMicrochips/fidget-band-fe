@@ -9,7 +9,7 @@ import { BasketContext, ShoppingListContext } from "../App";
 import axios from "axios";
 import SizeSelector from "./sizeSelector";
 import Box from "@mui/material/Box";
-
+import { Fragment } from "react";
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
@@ -36,18 +36,32 @@ export default function StoreList() {
   }, [])
 
   const handleAddBasket = (e) => {
-    // set name of purchase item to variable "selected"
-    const selected = e.currentTarget.value;
+    // parse json object passed as value
+    const newItem = JSON.parse(e.currentTarget.value);     
+
     // copy current basket into new updatedBasket variable
-    const updatedBasket = [...basket]
-    // add selected purchase item to updatedShoppingList
-    const updatedShoppingList = [e.currentTarget.value, ...shoppingList];
+    const updatedBasket = [...basket];
+
+    // add new purchase item to updatedShoppingList
+    const updatedShoppingList = [newItem, ...shoppingList];
+
     // update shoppingList state
-    setShoppingList(updatedShoppingList)
-    const index = updatedBasket.findIndex((stockItem) => typeof stockItem[selected] === "number");
-    updatedBasket[index][selected]++
-    setBasket(updatedBasket)
+    setShoppingList(updatedShoppingList);
+
+    // // set name of new purchase item to variable "selected"
+    // const selected = newItem.title;
+
+    // find new purchase item in basketDTO and increment order
+    const indexToUpdate = updatedBasket.findIndex((item) => item.title === newItem.title)
+    updatedBasket[indexToUpdate].amountOrdered++
+
+    // if hasSized then push fromSelector to requestedSizes array
+    newItem.hasSizes && updatedBasket[indexToUpdate].requestedSizes.push(newItem.requestedSize);
+
+    // set states for basket and to return store to default view
+    setBasket(updatedBasket);
     setIsViewing("")
+    setFromSelector("")
   }
 
   const handleRemoveBasket = (e) => {
@@ -75,9 +89,7 @@ export default function StoreList() {
   }
 
   const handleFromSelector = (data) => {
-    console.log("🚀 ~ handleFromSelector ~ data:", data)
     setFromSelector(data);
-
   }
 
   return (
@@ -116,13 +128,20 @@ export default function StoreList() {
             <>
               {/* IS THE ITEM ALREADY IN BASKET ? */}
               {shoppingList.includes(item.title) ? (
+                // Basket handling bar with buttons
                 <ImageListItemBar
                   actionIcon={
                     <>
                       <div className="addRemoveBasket">
                         <button
                           onClick={handleRemoveBasket}
-                          value={item.title}
+                          // value={item.title}
+                          value={JSON.stringify({
+                            title: item.title,
+                            hasSizes: false,
+                            requestedSize: "",
+                            price: item.price,
+                          })}
                           aria-label={`Remove ${item.title} from basket, price £${item.price}`}
                           onMouseEnter={() => {
                             setIsHovered(true);
@@ -150,7 +169,13 @@ export default function StoreList() {
                         </button>
                         <button
                           onClick={handleAddBasket}
-                          value={item.title}
+                          // value={item.title}
+                          value={JSON.stringify({
+                            title: item.title,
+                            hasSizes: false,
+                            requestedSize: "",
+                            price: item.price,
+                          })}
                           aria-label={`Add ${item.title} to basket for £${item.price}`}
                           onMouseEnter={() => {
                             setIsHovered(true);
@@ -185,23 +210,106 @@ export default function StoreList() {
                       position: "top",
                     }}
                   >
-                    <div>
-                      <ImageListItemBar
-                        title={item.title}
-                        subtitle={`£${item.price}`}
-                        sx={{
-                          borderRadius: "5px",
-                          height: "50px",
-                          backgroundColor: "rgba(13,13,13,0.65)",
-                        }}
-                      />
-                      <SizeSelector
-                        item={item}
-                        className="sizeAndPrice"
-                        sx={{ zIndex: 1000 }}
-                        sendToStore={handleFromSelector}
-                      />
-                    </div>
+                    {fromSelector.length != 0 ? (
+                      <>
+                        {/* Basket handling bar with buttons */}
+                        <ImageListItemBar
+                          actionIcon={
+                            <>
+                              <div className="addRemoveBasket">
+                                <button
+                                  onClick={handleRemoveBasket}
+                                  // value={item.title}
+                                  value={JSON.stringify({
+                                    title: item.title,
+                                    hasSizes: false,
+                                    requestedSize: "",
+                                    price: item.price,
+                                  })}
+                                  aria-label={`Remove ${item.title} from basket, price £${item.price}`}
+                                  onMouseEnter={() => {
+                                    setIsHovered(true);
+                                  }}
+                                  onMouseLeave={() => {
+                                    setIsHovered(false);
+                                  }}
+                                  sx={{
+                                    color: isHovered,
+                                    borderRadius: "5px"
+                                      ? "#0d0d0d"
+                                      : "rgba(209, 92, 42, 0.95)",
+                                    height: "50px",
+                                    opacity: "90%",
+                                  }}
+                                >
+                                  <RemoveShoppingCartIcon
+                                    sx={{
+                                      color: isHovered
+                                        ? "#0d0d0d"
+                                        : "rgba(209, 92, 42, 0.95)",
+                                      opacity: "90%",
+                                    }}
+                                  />
+                                </button>
+                                <button
+                                  onClick={handleAddBasket}
+                                  // value={item.title}
+                                  value={JSON.stringify({
+                                    title: item.title,
+                                    hasSizes: true,
+                                    requestedSize: fromSelector,
+                                    price: item.price,
+                                  })}
+                                  aria-label={`Add ${fromSelector} ${item.title} to basket for £${item.price}`}
+                                  onMouseEnter={() => {
+                                    setIsHovered(true);
+                                  }}
+                                  onMouseLeave={() => {
+                                    setIsHovered(false);
+                                  }}
+                                >
+                                  <AddShoppingCartIcon
+                                    sx={{
+                                      color: isHovered
+                                        ? "#0d0d0d"
+                                        : "rgba(209, 92, 42, 0.95)",
+                                      borderColor: isHovered
+                                        ? "#0d0d0d"
+                                        : "transparent",
+                                      opacity: "90%",
+                                    }}
+                                  />
+                                </button>
+                              </div>
+                            </>
+                          }
+                        />
+                        <SizeSelector
+                          item={item}
+                          className="sizeAndPrice"
+                          sx={{ zIndex: 1000 }}
+                          sendToStore={handleFromSelector}
+                        />
+                      </>
+                    ) : (
+                      <Fragment>
+                        <ImageListItemBar
+                          title={item.title}
+                          subtitle={`£${item.price}`}
+                          sx={{
+                            borderRadius: "5px",
+                            height: "50px",
+                            backgroundColor: "rgba(13,13,13,0.65)",
+                          }}
+                        />
+                        <SizeSelector
+                          item={item}
+                          className="sizeAndPrice"
+                          sx={{ zIndex: 1000 }}
+                          sendToStore={handleFromSelector}
+                        />
+                      </Fragment>
+                    )}
                   </Box>
                 </>
               ) : (
@@ -210,7 +318,13 @@ export default function StoreList() {
                     actionIcon={
                       <button
                         onClick={handleAddBasket}
-                        value={item.title}
+                        // value={item.title}
+                        value={JSON.stringify({
+                          title: item.title,
+                          hasSizes: false,
+                          requestedSize: "",
+                          price: item.price,
+                        })}
                         aria-label={`Add ${item.title} to basket for £${item.price}`}
                         onMouseEnter={() => {
                           setIsHovered(true);
