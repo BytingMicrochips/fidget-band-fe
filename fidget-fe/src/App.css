@@ -669,6 +669,10 @@ background-color: rgba(209, 92, 42, 0.8);
   margin-bottom: 0.5em;
 }
 
+.reviewCheckout:hover{
+  background-color: rgba(209, 92, 42, 0.85);
+}
+
 .basketContains{
   margin: auto;
   margin-bottom: 0.2em;
