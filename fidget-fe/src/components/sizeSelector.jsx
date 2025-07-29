@@ -6,13 +6,14 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
 
-export default function SizeSelector({item}) {
+export default function SizeSelector({item, sendToStore}) {
     const [pickedSize, setPickedSize] = useState("");
-    
+
     const handleChange = (event) => {
         const selected = event.target.value;
         if (selected.length != 0) {
             setPickedSize(selected)
+            sendToStore(selected)
         }    
     };
 

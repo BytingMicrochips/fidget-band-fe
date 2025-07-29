@@ -22,6 +22,7 @@ export default function StoreList() {
   const [shopStock, setShopStock] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
+  const [fromSelector, setFromSelector] = useState("")
 
   useEffect ((
   ) => {
@@ -71,6 +72,12 @@ export default function StoreList() {
   const handleBasketOptions = (e) => {
     const selected = e.target.getAttribute("product");
     isViewing === selected ? setIsViewing("") : setIsViewing(selected);
+  }
+
+  const handleFromSelector = (data) => {
+    console.log("🚀 ~ handleFromSelector ~ data:", data)
+    setFromSelector(data);
+
   }
 
   return (
@@ -192,6 +199,7 @@ export default function StoreList() {
                         item={item}
                         className="sizeAndPrice"
                         sx={{ zIndex: 1000 }}
+                        sendToStore={handleFromSelector}
                       />
                     </div>
                   </Box>
