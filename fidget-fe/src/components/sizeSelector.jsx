@@ -22,7 +22,7 @@ export default function SizeSelector({item}) {
         minWidth: "100%",
         position: "absolute",
         bottom: "-30px",
-        right: -7,
+        right: -8,
         zIndex: 2,
         m: 1,
       }}
@@ -32,7 +32,7 @@ export default function SizeSelector({item}) {
         sx={{
           display: "-ms-inline-flexbox",
           bottom: "80px",
-          backgroundColor: "rgba(13,13,13,0.45)",
+          backgroundColor: "rgba(13,13,13,0.65)",
           borderRadius: "5px",
           borderColor: "transparent",
           color: "rgba(255,255,255,0.98)",
@@ -53,7 +53,7 @@ export default function SizeSelector({item}) {
             },
           }}
         >
-          Size
+          Select size
         </InputLabel>
         <Select
           labelId="Size Selector"
@@ -61,6 +61,15 @@ export default function SizeSelector({item}) {
           label="Size"
           value={pickedSize}
           onChange={handleChange}
+          sx={{
+            fontFamily: "AveriaSansLibre-Regular",
+            fontSize: "19px",
+            color: "rgb(250,235,215)",
+            height: "50px",
+            ".MuiSvgIcon-root ": {
+              fill: "rgb(255,255,255) !important",
+            },
+          }}
           inputProps={{
             MenuProps: {
               PaperProps: {
@@ -78,8 +87,8 @@ export default function SizeSelector({item}) {
                   key={`menuItem${size}`}
                   value={size}
                   sx={{
-                      fontFamily: "AveriaSansLibre-Regular",
-                      color: "rgb(13,13,13)"
+                    fontFamily: "AveriaSansLibre-Regular",
+                    color: "rgb(13,13,13)",
                   }}
                 >
                   {size}

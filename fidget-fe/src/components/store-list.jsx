@@ -71,126 +71,72 @@ export default function StoreList() {
 
   return (
     <ImageList
-    sx={{
-      width: "96%",
-      height: "80vh",
-      margin: "auto",
-    }}
+      sx={{
+        width: "96%",
+        height: "80vh",
+        margin: "auto",
+      }}
     >
       {shopStock.map((item) => (
         <ImageListItem key={item.img} className="shopItemCard">
-            <img
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              alt={item.title}
-              loading="lazy"
-              onClick={handleBasketOptions}
-              product={item._id}
-              draggable="false"
-            />
-            {/* IS THE ITEM NOT isViewing?*/}
-            {isViewing != item._id ? (
-              <>
+          <img
+            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            src={`${item.img}?w=248&fit=crop&auto=format`}
+            alt={item.title}
+            loading="lazy"
+            onClick={handleBasketOptions}
+            product={item._id}
+            draggable="false"
+          />
+          {/* IS THE ITEM NOT isViewing?*/}
+          {isViewing != item._id ? (
+            <>
+              <ImageListItemBar
+                title={item.title}
+                subtitle={`£${item.price}`}
+                sx={{
+                  borderRadius: "5px",
+                  height: "50px",
+                  backgroundColor: "rgba(13,13,13,0.65)",
+                }}
+              />
+            </>
+          ) : (
+            <>
+              {/* IS THE ITEM ALREADY IN BASKET ? */}
+              {shoppingList.includes(item.title) ? (
                 <ImageListItemBar
-                  title={item.title}
-                  subtitle={`£${item.price}`}
-                  sx={{ borderRadius: "5px", height: "50px" }}
-                />
-              </>
-            ) : (
-              <>
-                {/* IS THE ITEM ALREADY IN BASKET ? */}
-                {shoppingList.includes(item.title) ? (
-                  <ImageListItemBar
-                    actionIcon={
-                      <>
-                        <div className="addRemoveBasket">
-                          <button
-                            onClick={handleRemoveBasket}
-                            value={item.title}
-                            aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-                            onMouseEnter={() => {
-                              setIsHovered(true);
-                            }}
-                            onMouseLeave={() => {
-                              setIsHovered(false);
-                            }}
+                  actionIcon={
+                    <>
+                      <div className="addRemoveBasket">
+                        <button
+                          onClick={handleRemoveBasket}
+                          value={item.title}
+                          aria-label={`Remove ${item.title} from basket, price £${item.price}`}
+                          onMouseEnter={() => {
+                            setIsHovered(true);
+                          }}
+                          onMouseLeave={() => {
+                            setIsHovered(false);
+                          }}
+                          sx={{
+                            color: isHovered,
+                            borderRadius: "5px"
+                              ? "#0d0d0d"
+                              : "rgba(209, 92, 42, 0.95)",
+                            height: "50px",
+                            opacity: "90%",
+                          }}
+                        >
+                          <RemoveShoppingCartIcon
                             sx={{
-                              color: isHovered,
-                              borderRadius: "5px"
+                              color: isHovered
                                 ? "#0d0d0d"
                                 : "rgba(209, 92, 42, 0.95)",
-                              height: "50px",
                               opacity: "90%",
                             }}
-                          >
-                            <RemoveShoppingCartIcon
-                              sx={{
-                                color: isHovered
-                                  ? "#0d0d0d"
-                                  : "rgba(209, 92, 42, 0.95)",
-                                opacity: "90%",
-                              }}
-                            />
-                          </button>
-                          <button
-                            onClick={handleAddBasket}
-                            value={item.title}
-                            aria-label={`Add ${item.title} to basket for £${item.price}`}
-                            onMouseEnter={() => {
-                              setIsHovered(true);
-                            }}
-                            onMouseLeave={() => {
-                              setIsHovered(false);
-                            }}
-                          >
-                            <AddShoppingCartIcon
-                              sx={{
-                                color: isHovered
-                                  ? "#0d0d0d"
-                                  : "rgba(209, 92, 42, 0.95)",
-                                borderColor: isHovered
-                                  ? "#0d0d0d"
-                                  : "transparent",
-                                opacity: "90%",
-                              }}
-                            />
-                          </button>
-                        </div>
-                      </>
-                    }
-                  />
-                ) : // ITEM IS NOT ALREADY IN BASKET && HAS SIZES
-                item.hasSizes && item.stockAmount != 0 ? (
-                  <>
-                    <Box
-                      sx={{
-                        maxHeight: 170,
-                        overflowY: "visible",
-                        position: "top",
-                      }}
-                    >
-                      <div>
-                        <ImageListItemBar
-                          title={item.title}
-                          subtitle={`£${item.price}`}
-                          sx={{
-                            borderRadius: "5px",
-                            height: "50px",
-                          }}
-                        />
-                        <SizeSelector
-                          item={item}
-                          className="sizeAndPrice"
-                          sx={{ zIndex: 1000 }}
-                        />
-                      </div>
-                    </Box>
-                  </>
-                ) : (
-                  <>
-                    <ImageListItemBar
-                      actionIcon={
+                          />
+                        </button>
                         <button
                           onClick={handleAddBasket}
                           value={item.title}
@@ -206,19 +152,82 @@ export default function StoreList() {
                             sx={{
                               color: isHovered
                                 ? "#0d0d0d"
-                                : "rgba(209, 92, 42, 0.8)",
+                                : "rgba(209, 92, 42, 0.95)",
+                              borderColor: isHovered
+                                ? "#0d0d0d"
+                                : "transparent",
                               opacity: "90%",
-                              width: "100%",
                             }}
                           />
                         </button>
-                      }
-                      sx={{ borderRadius: "5px", height: "50px" }}
-                    />
-                  </>
-                )}
-              </>
-            )}
+                      </div>
+                    </>
+                  }
+                />
+              ) : // ITEM IS NOT ALREADY IN BASKET && HAS SIZES
+              item.hasSizes && item.stockAmount != 0 ? (
+                <>
+                  <Box
+                    sx={{
+                      maxHeight: 170,
+                      overflowY: "visible",
+                      position: "top",
+                    }}
+                  >
+                    <div>
+                      <ImageListItemBar
+                        title={item.title}
+                        subtitle={`£${item.price}`}
+                        sx={{
+                          borderRadius: "5px",
+                          height: "50px",
+                          backgroundColor: "rgba(13,13,13,0.65)",
+                        }}
+                      />
+                      <SizeSelector
+                        item={item}
+                        className="sizeAndPrice"
+                        sx={{ zIndex: 1000 }}
+                      />
+                    </div>
+                  </Box>
+                </>
+              ) : (
+                <>
+                  <ImageListItemBar
+                    actionIcon={
+                      <button
+                        onClick={handleAddBasket}
+                        value={item.title}
+                        aria-label={`Add ${item.title} to basket for £${item.price}`}
+                        onMouseEnter={() => {
+                          setIsHovered(true);
+                        }}
+                        onMouseLeave={() => {
+                          setIsHovered(false);
+                        }}
+                      >
+                        <AddShoppingCartIcon
+                          sx={{
+                            color: isHovered
+                              ? "#0d0d0d"
+                              : "rgba(209, 92, 42, 0.8)",
+                            opacity: "90%",
+                            width: "100%",
+                          }}
+                        />
+                      </button>
+                    }
+                    sx={{
+                      borderRadius: "5px",
+                      height: "50px",
+                      backgroundColor: "rgba(13,13,13,0.65)",
+                    }}
+                  />
+                </>
+              )}
+            </>
+          )}
         </ImageListItem>
       ))}
     </ImageList>
