@@ -4,65 +4,92 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Fragment } from "react";
+import { useState } from "react";
 
-export default function SizeSelector({shopStock, item}) {
-    const [size, setSize] = React.useState("");
+export default function SizeSelector({item}) {
+    const [pickedSize, setPickedSize] = useState("");
     
-    const handleChange = (size) => {
-      setSize(size);
+    const handleChange = (event) => {
+        const selected = event.target.value;
+        if (selected.length != 0) {
+            setPickedSize(selected)
+        }    
     };
 
   return (
-      <Box sx={{
-          minWidth: "100%",
-          position: "absolute",
-          bottom: "-30px",
-          right: -7,
-          zIndex: 2,
-          m: 1
-      }}>
-    <FormControl
-      fullWidth
+    <Box
       sx={{
-        display:"-ms-inline-flexbox",
-        bottom: "80px",
-        backgroundColor: "rgba(13,13,13,0.45)",
-          borderRadius: "5px",
-          borderColor: "transparent",
+        minWidth: "100%",
+        position: "absolute",
+        bottom: "-30px",
+        right: -7,
+        zIndex: 2,
+        m: 1,
       }}
     >
-      <InputLabel
-        id="sizeSelectorInput"
+      <FormControl
+        fullWidth
         sx={{
-            color: "rgba(255,255,255,0.98)",
-          borderColor: "transparent",
+          display: "-ms-inline-flexbox",
+          bottom: "80px",
+          backgroundColor: "rgba(13,13,13,0.45)",
           borderRadius: "5px",
-            fontFamily: "AveriaSansLibre-Regular",
-          fontSize: "16px"
+          borderColor: "transparent",
+          color: "rgba(255,255,255,0.98)",
         }}
       >
-        Size
-      </InputLabel>
-      <Select
-        labelId="Size Selector"
-        id="sizeSelectorSelect"
-        size={size}
-        label="Size"
-        onChange={handleChange}
-      >
-        {Object.keys(item.availableSizes).map((size) => {
-          if (item.availableSizes[size] != 0) {
-            return (
-              <Fragment key={`menuItem${size}`}>
-                <MenuItem value={size}>{size}</MenuItem>
-              </Fragment>
-            );
-          }
-        })}
-      </Select>
-    </FormControl>
-   </Box>
+        <InputLabel
+          id="sizeSelectorInput"
+          sx={{
+            color: "rgb(250,235,215)",
+            borderColor: "transparent",
+            borderRadius: "5px",
+            fontFamily: "AveriaSansLibre-Regular",
+            fontSize: "19px",
+            "&.Mui-focused": {
+              borderColor: "transparent",
+              fontSize: "19px",
+              color: "rgba(209, 92, 42, 0.95)",
+            },
+          }}
+        >
+          Size
+        </InputLabel>
+        <Select
+          labelId="Size Selector"
+          id="sizeSelectorSelect"
+          label="Size"
+          value={pickedSize}
+          onChange={handleChange}
+          inputProps={{
+            MenuProps: {
+              PaperProps: {
+                sx: {
+                  backgroundColor: "rgb(250,250,250)",
+                },
+              },
+            },
+          }}
+        >
+          {Object.keys(item.availableSizes).map((size) => {
+            if (item.availableSizes[size] != 0) {
+              return (
+                <MenuItem
+                  key={`menuItem${size}`}
+                  value={size}
+                  sx={{
+                      fontFamily: "AveriaSansLibre-Regular",
+                      color: "rgb(13,13,13)"
+                  }}
+                >
+                  {size}
+                </MenuItem>
+              );
+            }
+          })}
+        </Select>
+      </FormControl>
+    </Box>
   );
 }
 

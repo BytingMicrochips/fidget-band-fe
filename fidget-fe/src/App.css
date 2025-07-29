@@ -28,6 +28,7 @@
   border-color: transparent ;
   background-color: rgba(209, 92, 42, 0.8);
 }
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -652,14 +653,16 @@ background-color: rgba(209, 92, 42, 0.8);
     font-family: "AveriaSansLibre-Regular";
 }
 
-/* .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
-  /* background-color: #0d0d0d; */
-  /* color: antiquewhite; */
+#sizeSelectorSelect {
+  color: rgba(255,255,255,0.9);
+  font-family: "AveriaSansLibre-Regular";
+}
 
 .MuiImageListItem-img{
   border-radius: 5px;
-  
 }
+
+
 
 .reviewCheckout{
   width: 96%;

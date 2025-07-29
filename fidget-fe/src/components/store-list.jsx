@@ -180,7 +180,6 @@ export default function StoreList() {
                           }}
                         />
                         <SizeSelector
-                          shopStock={shopStock.filter((item) => item.hasSizes)}
                           item={item}
                           className="sizeAndPrice"
                           sx={{ zIndex: 1000 }}
