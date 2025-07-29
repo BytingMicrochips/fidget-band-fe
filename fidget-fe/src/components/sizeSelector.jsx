@@ -44,16 +44,24 @@ export default function SizeSelector({item}) {
             color: "rgb(250,235,215)",
             borderColor: "transparent",
             borderRadius: "5px",
-            fontFamily: "AveriaSansLibre-Regular",
+            fontFamily: "AveriaSansLibre-Bold",
             fontSize: "19px",
+            width: "100%",
+            textAlign: "center",
+            position: "absolute",
+            left: "-2px",
             "&.Mui-focused": {
               borderColor: "transparent",
               fontSize: "19px",
               color: "rgba(209, 92, 42, 0.95)",
+              position: "absolute",
+              top: "-1px",
+              left: "3px",
+              textAlign: "left",
             },
           }}
         >
-          Select size
+          size
         </InputLabel>
         <Select
           labelId="Size Selector"
