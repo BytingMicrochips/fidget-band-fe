@@ -74,14 +74,14 @@ export default function SizeSelector({item}) {
             color: "rgb(250,235,215)",
             height: "50px",
             ".MuiSvgIcon-root ": {
-              fill: "rgb(255,255,255) !important",
+              fill: "rgb(245, 245, 245) !important",
             },
           }}
           inputProps={{
             MenuProps: {
               PaperProps: {
                 sx: {
-                  backgroundColor: "rgb(250,250,250)",
+                  backgroundColor: "rgb(238, 238, 238)",
                 },
               },
             },
