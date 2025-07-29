@@ -24,6 +24,10 @@
   src: url("../src/assets/fonts/AveriaSansLibre-Bold.ttf");
 }
 
+:root button:hover {
+  border-color: transparent ;
+  background-color: rgba(209, 92, 42, 0.8);
+}
 #root {
   margin: 0 auto;
   text-align: center;
@@ -638,13 +642,23 @@ border-radius: 0.5em;
   color: antiquewhite;
 }
 
-.css-20xlnq-MuiImageList-root button:hover{
+/* .css-20xlnq-MuiImageList-root button:hover{
 border-color:transparent;
 background-color: rgba(209, 92, 42, 0.8);
+} */
+.css-1lizpae-MuiImageListItemBar-titleWrap button:hover{
+  border-color: transparent;
+    background-color: rgba(209, 92, 42, 0.8);
+    font-family: "AveriaSansLibre-Regular";
 }
+
+/* .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+  /* background-color: #0d0d0d; */
+  /* color: antiquewhite; */
 
 .MuiImageListItem-img{
   border-radius: 5px;
+  
 }
 
 .reviewCheckout{
