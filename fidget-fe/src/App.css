@@ -24,6 +24,11 @@
   src: url("../src/assets/fonts/AveriaSansLibre-Bold.ttf");
 }
 
+:root button:hover {
+  border-color: transparent ;
+  background-color: rgba(209, 92, 42, 0.8);
+}
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -602,7 +607,7 @@ border-radius: 0.5em;
   border-radius: 0.4em;
 }
 
-.albumSelect{
+/* .albumSelect{
   width: 96%;
   height: 20%;
   margin: auto;
@@ -625,16 +630,47 @@ border-radius: 0.5em;
   height: 75px;
   border-radius: 0.4em;
   
-}
+} */
 
 .MuiImageListItemBar-titleWrap{
   margin-top: -10px;
   margin-bottom: -5px;
+  border-radius: 5px;
 }
+
+.css-1lizpae-MuiImageListItemBar-titleWrap{
+  font-family: "AveriaSansLibre-Bold";
+  color: antiquewhite;
+}
+
+/* .css-20xlnq-MuiImageList-root button:hover{
+border-color:transparent;
+background-color: rgba(209, 92, 42, 0.8);
+} */
+.css-1lizpae-MuiImageListItemBar-titleWrap button:hover{
+  border-color: transparent;
+    background-color: rgba(209, 92, 42, 0.8);
+    font-family: "AveriaSansLibre-Regular";
+}
+
+/* #sizeSelectorSelect {
+  color: rgba(255,255,255,0.9);
+  font-family: "AveriaSansLibre-Regular";
+} */
+
+.MuiImageListItem-img{
+  border-radius: 5px;
+}
+
+
 
 .reviewCheckout{
   width: 96%;
   margin-bottom: 0.5em;
+}
+
+.reviewCheckout:hover{
+  background-color: rgba(209, 92, 42, 0.85);
 }
 
 .basketContains{
@@ -642,15 +678,22 @@ border-radius: 0.5em;
   margin-bottom: 0.2em;
   margin-top: 0.2em;
   width: 96%;
-  background-color: teal;
+  background-color: rgba(13,13,13, 0.75);
+  border-radius: 5px;
 }
 
 .merchText{
-  background-color: blueviolet;
+  background-image: url("./assets/paper1-nolines.png");
+  background-position: 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-size: medium;
   width: 96%;
+  padding: 15px 80px 15px 80px;
   margin: auto;
-  margin-bottom: 0.2em;
+  margin-bottom: 15px;
+  color: #0d0d0d;
+  font-family: AveriaSansLibre-Bold;
 }
 
 .basketWrapper{

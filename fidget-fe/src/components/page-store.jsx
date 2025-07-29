@@ -32,9 +32,11 @@ const Store = () => {
           </div>
         </div>
         <h3 className="merchText">
-          All clothing items are lovingly hand printed by the band and our
-          manager Emily! We are committed to using recycled and sweatshop-free
-          materials wherever possible.
+          All clothing items are lovingly hand printed by the band or our good
+          friend Bug of 'Hotdogs and Molotovs'. <br />
+          We are committed to using recycled and sweatshop-free materials
+          wherever possible. <br />
+          One-off upcycled designs are also available exclusively at our shows.
         </h3>
         <StoreList />
         <h3 className="basketContains">
