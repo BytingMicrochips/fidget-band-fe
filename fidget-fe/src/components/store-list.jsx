@@ -17,14 +17,18 @@ const axiosBase = axios.create({
 
 export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
+  console.log("🚀 ~ StoreList ~ basket:", basket)
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
+  console.log("🚀 ~ StoreList ~ shoppingList:", shoppingList)
   const [shopStock, setShopStock] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
 
   useEffect ((
   ) => {
+    //remove later
+    // setBasket([])
         axiosBase.get("store")
         .then(( allStock ) => {
         setShopStock(allStock.data);
@@ -35,14 +39,18 @@ export default function StoreList() {
   }, [])
 
   const handleAddBasket = (e) => {
+    // set name of purchase item to variable "selected"
     const selected = e.currentTarget.value;
+    // copy current basket into new updatedBasket variable
     const updatedBasket = [...basket]
+    // add selected purchase item to updatedShoppingList
     const updatedShoppingList = [e.currentTarget.value, ...shoppingList];
+    // update shoppingList state
     setShoppingList(updatedShoppingList)
     const index = updatedBasket.findIndex((stockItem) => typeof stockItem[selected] === "number");
     updatedBasket[index][selected]++
     setBasket(updatedBasket)
-    setIsHidden(true);
+    // setIsHidden(true);
   }
 
   const handleRemoveBasket = (e) => {

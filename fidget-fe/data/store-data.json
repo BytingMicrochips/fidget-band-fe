@@ -1,62 +1,44 @@
 [
   {
-    "img": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    "title": "Breakfast",
-    "price": 10
+    "img": "https://upload.wikimedia.org/wikipedia/commons/b/b6/12in-Vinyl-LP-Record-Angle.jpg",
+    "title": "Vinyl",
+    "price": 10,
+    "hasSizes": false,
+    "requestedSizes": []
   },
   {
-    "img": "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    "title": "Burger",
-    "price": 5
+    "img": "https://www.grindstore.com/cdn/shop/files/163689-front.jpg?v=1691666218&width=493",
+    "title": "Hoodie",
+    "price": 40,
+    "hasSizes": true,
+    "requestedSizes": []
   },
   {
-    "img": "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    "title": "Camera",
-    "price": 20
+    "img": "https://hatstore.imgix.net/301723_1.jpg?auto=compress%2Cformat&w=375&h=300&fit=crop&q=80",
+    "title": "Snapback",
+    "price": 15,
+    "hasSizes": false,
+    "requestedSizes": []
   },
   {
-    "img": "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    "title": "Coffee",
-    "price": 15
+    "img": "https://content.instructables.com/FTJ/8CPH/L6C6YEAR/FTJ8CPHL6C6YEAR.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=MjAyMi0wOC0wMiAxMToxMzo1OC4w",
+    "title": "Patch",
+    "price": 5,
+    "hasSizes": false,
+    "requestedSizes": []
   },
   {
-    "img": "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-    "title": "Hats",
-    "price": 10
+    "img": "https://cdn-cahdg.nitrocdn.com/qibYFaeYzHTHZvJqjkkfoDkalZtVaNMR/assets/images/optimized/rev-a38360a/www.unifiedmanufacturing.com/blog/wp-content/uploads/2019/11/CD1S_FCLR__72776__57216__69793.1425973573.600.600_BG.jpg",
+    "title": "CD",
+    "price": 10,
+    "hasSizes": false,
+    "requestedSizes": []
   },
   {
-    "img": "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-    "title": "Honey",
-    "price": 10
-  },
-  {
-    "img": "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-    "title": "Basketball",
-    "price": 20
-  },
-  {
-    "img": "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-    "title": "Fern",
-    "price": 15
-  },
-  {
-    "img": "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-    "title": "Mushrooms",
-    "price": 5
-  },
-  {
-    "img": "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-    "title": "Tomato basil",
-    "price": 10
-  },
-  {
-    "img": "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-    "title": "Sea star",
-    "price": 10
-  },
-  {
-    "img": "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-    "title": "Bike",
-    "price": 15
+    "img": "https://i.ebayimg.com/images/g/UMkAAOSwTvZkT~n9/s-l960.jpg",
+    "title": "T Shirt",
+    "price": 20,
+    "hasSizes": true,
+    "requestedSizes": []
   }
 ]

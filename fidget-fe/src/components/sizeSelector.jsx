@@ -49,7 +49,7 @@ export default function SizeSelector({item}) {
             width: "100%",
             textAlign: "center",
             position: "absolute",
-            left: "-2px",
+            // left: "-2px",
             "&.Mui-focused": {
               borderColor: "transparent",
               fontSize: "19px",
