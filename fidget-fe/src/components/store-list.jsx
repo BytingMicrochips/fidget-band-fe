@@ -17,18 +17,14 @@ const axiosBase = axios.create({
 
 export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
-  console.log("🚀 ~ StoreList ~ basket:", basket)
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
-  console.log("🚀 ~ StoreList ~ shoppingList:", shoppingList)
   const [shopStock, setShopStock] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
 
   useEffect ((
   ) => {
-    //remove later
-    // setBasket([])
         axiosBase.get("store")
         .then(( allStock ) => {
         setShopStock(allStock.data);
@@ -50,7 +46,7 @@ export default function StoreList() {
     const index = updatedBasket.findIndex((stockItem) => typeof stockItem[selected] === "number");
     updatedBasket[index][selected]++
     setBasket(updatedBasket)
-    // setIsHidden(true);
+    setIsViewing("")
   }
 
   const handleRemoveBasket = (e) => {
