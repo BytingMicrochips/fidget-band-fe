@@ -10,6 +10,7 @@ import axios from "axios";
 import SizeSelector from "./sizeSelector";
 import Box from "@mui/material/Box";
 import { Fragment } from "react";
+import StorePriceCard from "./StorePriceCard";
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
@@ -113,17 +114,18 @@ export default function StoreList() {
           />
           {/* IS THE ITEM NOT isViewing?*/}
           {isViewing != item._id ? (
-            <>
-              <ImageListItemBar
-                title={item.title}
-                subtitle={`£${item.price}`}
-                sx={{
-                  borderRadius: "5px",
-                  height: "50px",
-                  backgroundColor: "rgba(13,13,13,0.65)",
-                }}
-              />
-            </>
+            // <>
+            //   <ImageListItemBar
+            //     title={item.title}
+            //     subtitle={`£${item.price}`}
+            //     sx={{
+            //       borderRadius: "5px",
+            //       height: "50px",
+            //       backgroundColor: "rgba(13,13,13,0.65)",
+            //     }}
+            //   />
+            // </>
+            <StorePriceCard title={item.title} price={item.price} />
           ) : (
             <>
               {/* IS THE ITEM ALREADY IN BASKET ? */}
@@ -171,7 +173,6 @@ export default function StoreList() {
                         </button>
                         <button
                           onClick={handleAddBasket}
-                          // value={item.title}
                           value={JSON.stringify({
                             title: item.title,
                             hasSizes: false,
@@ -220,13 +221,13 @@ export default function StoreList() {
                           actionIcon={
                             <>
                               <div className="addRemoveBasket">
-                                                    {/* ITEM SIZE IS IN SHOPPING LIST */}
+                                                    {/* ITEM SIZE IS IN SHOPPING LIST
                                 {shoppingList.find(
                                   (listItem) =>
                                     listItem.title === item.title
                                     &&
                                     listItem.requestedSize === fromSelector
-                                ) ? (
+                                ) ? ( */}
                                   <button
                                     onClick={handleRemoveBasket}
                                     value={JSON.stringify({
@@ -260,14 +261,13 @@ export default function StoreList() {
                                       }}
                                     />
                                   </button>
-                                    ) : (
+                                    {/* ) : (
                                                          // SIZE SELECTION IS NOT IN SHOPPING LIST
                                   <></>
-                                )}
+                                )} */}
 
                                 <button
                                   onClick={handleAddBasket}
-                                  // value={item.title}
                                   value={JSON.stringify({
                                     title: item.title,
                                     hasSizes: true,
@@ -306,17 +306,9 @@ export default function StoreList() {
                         />
                       </>
                         ) : (
-                                      // SIZE SELECTION IS MADE
+                                      // SIZE SELECTION IS NOT MADE
                       <Fragment>
-                        <ImageListItemBar
-                          title={item.title}
-                          subtitle={`£${item.price}`}
-                          sx={{
-                            borderRadius: "5px",
-                            height: "50px",
-                            backgroundColor: "rgba(13,13,13,0.65)",
-                          }}
-                        />
+                        <StorePriceCard title={item.title} price={item.price}/> 
                         <SizeSelector
                           item={item}
                           className="sizeAndPrice"
