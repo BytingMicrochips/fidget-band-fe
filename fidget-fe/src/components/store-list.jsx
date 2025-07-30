@@ -23,6 +23,7 @@ export default function StoreList() {
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
   const [shopStock, setShopStock] = useState([]);
+  console.log("🚀 ~ StoreList ~ shopStock:", shopStock)
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
   const [fromSelector, setFromSelector] = useState("")
@@ -118,24 +119,24 @@ export default function StoreList() {
           {isViewing != item._id ? (
             <StorePriceCard title={item.title} price={item.price} />
           ) : (
-              <>
-                
-                {/* ITEM IS NOT VIEWING & */}
-                {/* IS THE ITEM ALREADY ON SHOPPINGLIST ? */}
-                
+            <>
+              {/* ITEM IS NOT VIEWING & */}
+              {/* IS THE ITEM ALREADY ON SHOPPINGLIST ? */}
+
               {shoppingList.find(
                 (listItem) => listItem.title === item.title
-                ) ? (
+              ) ? (
                 // ITEM IS ON SHOPPING LIST
                 <BasketHandler
                   item={item}
                   handleRemoveBasket={handleRemoveBasket}
                   handleAddBasket={handleAddBasket}
                   isHovered={isHovered}
+                  basket={basket}
+                  shopStock={shopStock}
                 />
-                ) :
-                // ITEM IS NOT ON SHOPPING LIST
-                  
+              ) : // ITEM IS NOT ON SHOPPING LIST
+
               // <ImageListItemBar
               //   actionIcon={
               //     <>
@@ -204,8 +205,7 @@ export default function StoreList() {
               //       </div>
               //     </>
               //   }
-                  // />
-                  
+              // />
 
               // ITEM HAS SIZES && IS IN STOCK
               item.hasSizes && item.stockAmount != 0 ? (
@@ -326,11 +326,10 @@ export default function StoreList() {
               ) : (
                 // NOT ITEM HAS SIZES && IS IN STOCK
                 <>
-                  <ImageListItemBar
+                  {/* <ImageListItemBar
                     actionIcon={
                       <button
                         onClick={handleAddBasket}
-                        // value={item.title}
                         value={JSON.stringify({
                           title: item.title,
                           hasSizes: false,
@@ -361,6 +360,14 @@ export default function StoreList() {
                       height: "50px",
                       backgroundColor: "rgba(13,13,13,0.65)",
                     }}
+                  /> */}
+                  <BasketHandler
+                    item={item}
+                    handleRemoveBasket={handleRemoveBasket}
+                    handleAddBasket={handleAddBasket}
+                    isHovered={isHovered}
+                    basket={basket}
+                    shopStock={shopStock}
                   />
                 </>
               )}
