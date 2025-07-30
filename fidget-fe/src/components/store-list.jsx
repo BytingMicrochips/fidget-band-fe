@@ -19,6 +19,7 @@ export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
+  console.log("🚀 ~ StoreList ~ shoppingList:", shoppingList)
   const [shopStock, setShopStock] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
@@ -48,7 +49,7 @@ export default function StoreList() {
     // update shoppingList state
     setShoppingList(updatedShoppingList);
 
-    // // set name of new purchase item to variable "selected"
+    // set name of new purchase item to variable "selected"
     // const selected = newItem.title;
 
     // find new purchase item in basketDTO and increment order
@@ -127,7 +128,7 @@ export default function StoreList() {
           ) : (
             <>
               {/* IS THE ITEM ALREADY IN BASKET ? */}
-              {shoppingList.includes(item.title) ? (
+                {shoppingList.find((listItem)=> listItem.title === item.title) ? (
                 // Basket handling bar with buttons
                 <ImageListItemBar
                   actionIcon={
