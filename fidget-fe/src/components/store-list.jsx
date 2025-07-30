@@ -2,8 +2,6 @@ import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { useContext, useState, useEffect } from "react";
 import { BasketContext, ShoppingListContext } from "../App";
 import axios from "axios";
@@ -19,15 +17,17 @@ const axiosBase = axios.create({
 
 export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
-  console.log("🚀 ~ StoreList ~ basket:", basket)
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
   const [shopStock, setShopStock] = useState([]);
-  console.log("🚀 ~ StoreList ~ shopStock:", shopStock)
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
-  const [fromSelector, setFromSelector] = useState("")
-
+  const [selected, setSelected] = useState("")
+  // console.log("🚀 ~ StoreList ~ isHovered:", isHovered)
+  // console.log("🚀 ~ StoreList ~ isViewing:", isViewing)
+  console.log("🚀 ~ StoreList ~ selected:", selected)
+  // console.log("🚀 ~ StoreList ~ shoppingList:", shoppingList)
+  // console.log("🚀 ~ StoreList ~ basket:", basket)
   useEffect ((
   ) => {
         axiosBase.get("store")
@@ -41,7 +41,9 @@ export default function StoreList() {
 
   const handleAddBasket = (e) => {
     // parse json object passed as value
-    const newItem = JSON.parse(e.currentTarget.value);     
+    let newItem = JSON.parse(e.currentTarget.value);
+
+    console.log("🚀 ~ handleAddBasket ~ newItem:", newItem);
 
     // copy current basket into new updatedBasket variable
     const updatedBasket = [...basket];
@@ -56,16 +58,19 @@ export default function StoreList() {
     // const selected = newItem.title;
 
     // find new purchase item in basketDTO and increment order
-    const indexToUpdate = updatedBasket.findIndex((item) => item.title === newItem.title)
-    updatedBasket[indexToUpdate].amountOrdered++
+    const indexToUpdate = updatedBasket.findIndex(
+      (item) => item.title === newItem.title
+    );
+    updatedBasket[indexToUpdate].amountOrdered++;
 
     // if hasSized then push fromSelector to requestedSizes array
-    newItem.hasSizes && updatedBasket[indexToUpdate].requestedSizes.push(newItem.requestedSize);
+    newItem.hasSizes &&
+      updatedBasket[indexToUpdate].requestedSizes.push(newItem.requestedSize);
 
     // set states for basket and to return store to default view
     setBasket(updatedBasket);
-    setIsViewing("")
-    setFromSelector("")
+    setIsViewing("");
+    setSelected("");
   }
 
   const handleRemoveBasket = (e) => {
@@ -89,11 +94,7 @@ export default function StoreList() {
 
   const handleBasketOptions = (e) => {
     const selected = e.target.getAttribute("product");
-    isViewing === selected ? setIsViewing("") : setIsViewing(selected);
-  }
-
-  const handleFromSelector = (data) => {
-    setFromSelector(data);
+    isViewing === selected ? setIsViewing("") : setIsViewing(selected), setSelected("");
   }
 
   return (
@@ -115,14 +116,12 @@ export default function StoreList() {
             product={item._id}
             draggable="false"
           />
-          {/* IS THE ITEM NOT isViewing?*/}
           {isViewing != item._id ? (
+            // ITEM NOT BEING VIEWED
             <StorePriceCard title={item.title} price={item.price} />
           ) : (
             <>
-              {/* ITEM IS NOT VIEWING & */}
-              {/* IS THE ITEM ALREADY ON SHOPPINGLIST ? */}
-
+              {/* ITEM IS BEING VIEWED */}
               {shoppingList.find(
                 (listItem) => listItem.title === item.title
               ) ? (
@@ -134,79 +133,9 @@ export default function StoreList() {
                   isHovered={isHovered}
                   basket={basket}
                   shopStock={shopStock}
+                  selected={selected}
                 />
-              ) : // ITEM IS NOT ON SHOPPING LIST
-
-              // <ImageListItemBar
-              //   actionIcon={
-              //     <>
-              //       <div className="addRemoveBasket">
-              //         <button
-              //           onClick={handleRemoveBasket}
-              //           value={JSON.stringify({
-              //             title: item.title,
-              //             hasSizes: false,
-              //             requestedSize: "",
-              //             price: item.price,
-              //           })}
-              //           aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-              //           onMouseEnter={() => {
-              //             setIsHovered(true);
-              //           }}
-              //           onMouseLeave={() => {
-              //             setIsHovered(false);
-              //           }}
-              //           sx={{
-              //             color: isHovered,
-              //             borderRadius: "5px"
-              //               ? "#0d0d0d"
-              //               : "rgba(209, 92, 42, 0.95)",
-              //             height: "50px",
-              //             opacity: "90%",
-              //           }}
-              //         >
-              //           <RemoveShoppingCartIcon
-              //             sx={{
-              //               color: isHovered
-              //                 ? "#0d0d0d"
-              //                 : "rgba(209, 92, 42, 0.95)",
-              //               opacity: "90%",
-              //             }}
-              //           />
-              //         </button>
-              //         <button
-              //           onClick={handleAddBasket}
-              //           value={JSON.stringify({
-              //             title: item.title,
-              //             hasSizes: false,
-              //             requestedSize: "",
-              //             price: item.price,
-              //           })}
-              //           aria-label={`Add ${item.title} to basket for £${item.price}`}
-              //           onMouseEnter={() => {
-              //             setIsHovered(true);
-              //           }}
-              //           onMouseLeave={() => {
-              //             setIsHovered(false);
-              //           }}
-              //         >
-              //           <AddShoppingCartIcon
-              //             sx={{
-              //               color: isHovered
-              //                 ? "#0d0d0d"
-              //                 : "rgba(209, 92, 42, 0.95)",
-              //               borderColor: isHovered
-              //                 ? "#0d0d0d"
-              //                 : "transparent",
-              //               opacity: "90%",
-              //             }}
-              //           />
-              //         </button>
-              //       </div>
-              //     </>
-              //   }
-              // />
-
+              ) : // ITEM NOT ON SHOPPING LIST
               // ITEM HAS SIZES && IS IN STOCK
               item.hasSizes && item.stockAmount != 0 ? (
                 <>
@@ -217,150 +146,72 @@ export default function StoreList() {
                       position: "top",
                     }}
                   >
-                    {/* SIZE SELECTION IS NOT MADE */}
-                    {fromSelector.length != 0 ? (
-                      <>
-                        {/* Basket handling bar with buttons */}
-                        <ImageListItemBar
-                          actionIcon={
-                            <>
-                              <div className="addRemoveBasket">
-                                {/* ITEM SIZE IS IN SHOPPING LIST
-                                {shoppingList.find(
-                                  (listItem) =>
-                                    listItem.title === item.title
-                                    &&
-                                    listItem.requestedSize === fromSelector
-                                ) ? ( */}
-                                <button
-                                  onClick={handleRemoveBasket}
-                                  value={JSON.stringify({
-                                    title: item.title,
-                                    hasSizes: false,
-                                    requestedSize: "",
-                                    price: item.price,
-                                  })}
-                                  aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-                                  onMouseEnter={() => {
-                                    setIsHovered(true);
-                                  }}
-                                  onMouseLeave={() => {
-                                    setIsHovered(false);
-                                  }}
-                                  sx={{
-                                    color: isHovered,
-                                    borderRadius: "5px"
-                                      ? "#0d0d0d"
-                                      : "rgba(209, 92, 42, 0.95)",
-                                    height: "50px",
-                                    opacity: "90%",
-                                  }}
-                                >
-                                  <RemoveShoppingCartIcon
-                                    sx={{
-                                      color: isHovered
-                                        ? "#0d0d0d"
-                                        : "rgba(209, 92, 42, 0.95)",
-                                      opacity: "90%",
-                                    }}
-                                  />
-                                </button>
-                                {/* ) : (
-                                                         // SIZE SELECTION IS NOT IN SHOPPING LIST
-                                  <></>
-                                )} */}
-
-                                <button
-                                  onClick={handleAddBasket}
-                                  value={JSON.stringify({
-                                    title: item.title,
-                                    hasSizes: true,
-                                    requestedSize: fromSelector,
-                                    price: item.price,
-                                  })}
-                                  aria-label={`Add ${fromSelector} ${item.title} to basket for £${item.price}`}
-                                  onMouseEnter={() => {
-                                    setIsHovered(true);
-                                  }}
-                                  onMouseLeave={() => {
-                                    setIsHovered(false);
-                                  }}
-                                >
-                                  <AddShoppingCartIcon
-                                    sx={{
-                                      color: isHovered
-                                        ? "#0d0d0d"
-                                        : "rgba(209, 92, 42, 0.95)",
-                                      borderColor: isHovered
-                                        ? "#0d0d0d"
-                                        : "transparent",
-                                      opacity: "90%",
-                                    }}
-                                  />
-                                </button>
-                              </div>
-                            </>
-                          }
-                        />
-                        <SizeSelector
-                          item={item}
-                          className="sizeAndPrice"
-                          sx={{ zIndex: 1000 }}
-                          sendToStore={handleFromSelector}
-                        />
-                      </>
-                    ) : (
-                      // SIZE SELECTION IS NOT MADE
-                      <Fragment>
-                        <StorePriceCard title={item.title} price={item.price} />
-                        <SizeSelector
-                          item={item}
-                          className="sizeAndPrice"
-                          sx={{ zIndex: 1000 }}
-                          sendToStore={handleFromSelector}
-                        />
-                      </Fragment>
+                    {selected.length === 0 && (
+                      <StorePriceCard title={item.title} price={item.price} />
                     )}
+                    {isViewing === item._id && (
+                      <SizeSelector
+                        item={item}
+                        className="sizeAndPrice"
+                        sx={{ zIndex: 1000 }}
+                        setSelected={setSelected}
+                      />
+                    )}
+                    {selected.length != 0 && isViewing === item._id && (
+                      <BasketHandler
+                                    item={item}
+                                    handleRemoveBasket={handleRemoveBasket}
+                                    handleAddBasket={handleAddBasket}
+                                    isHovered={isHovered}
+                                    basket={basket}
+                                    shopStock={shopStock}
+                                    selected={selected}
+                      />
+                    )}
+                    {
+                      //       selected.length != 0 ? (
+                      //   <>
+                      //     <ImageListItemBar
+                      //       actionIcon={
+                      //         <>
+                      //             <BasketHandler
+                      //               item={item}
+                      //               handleRemoveBasket={handleRemoveBasket}
+                      //               handleAddBasket={handleAddBasket}
+                      //               isHovered={isHovered}
+                      //               basket={basket}
+                      //               shopStock={shopStock}
+                      //               selected={selected}
+                      //             />
+                      //         </>
+                      //       }
+                      //     />
+                      //     {/* SIZE SELECTION NOTMADE */}
+                      //     <SizeSelector
+                      //       item={item}
+                      //       className="sizeAndPrice"
+                      //       sx={{ zIndex: 1000 }}
+                      //       setSelected={setSelected}
+                      //     />
+                      //   </>
+                      // ) : (
+                      //   // SIZE SELECTION IS NOT MADE
+                      //   <Fragment>
+                      //     <StorePriceCard title={item.title} price={item.price} />
+                      //     <SizeSelector
+                      //       item={item}
+                      //       className="sizeAndPrice"
+                      //       sx={{ zIndex: 1000 }}
+                      //       setSelected={setSelected}
+                      //     />
+                      //   </Fragment>
+                      //       )
+                    }
                   </Box>
                 </>
               ) : (
-                // NOT ITEM HAS SIZES && IS IN STOCK
+                // ITEM DOESNT HAVE SIZES && IS IN STOCK
                 <>
-                  {/* <ImageListItemBar
-                    actionIcon={
-                      <button
-                        onClick={handleAddBasket}
-                        value={JSON.stringify({
-                          title: item.title,
-                          hasSizes: false,
-                          requestedSize: "",
-                          price: item.price,
-                        })}
-                        aria-label={`Add ${item.title} to basket for £${item.price}`}
-                        onMouseEnter={() => {
-                          setIsHovered(true);
-                        }}
-                        onMouseLeave={() => {
-                          setIsHovered(false);
-                        }}
-                      >
-                        <AddShoppingCartIcon
-                          sx={{
-                            color: isHovered
-                              ? "#0d0d0d"
-                              : "rgba(209, 92, 42, 0.8)",
-                            opacity: "90%",
-                            width: "100%",
-                          }}
-                        />
-                      </button>
-                    }
-                    sx={{
-                      borderRadius: "5px",
-                      height: "50px",
-                      backgroundColor: "rgba(13,13,13,0.65)",
-                    }}
-                  /> */}
                   <BasketHandler
                     item={item}
                     handleRemoveBasket={handleRemoveBasket}
@@ -368,6 +219,7 @@ export default function StoreList() {
                     isHovered={isHovered}
                     basket={basket}
                     shopStock={shopStock}
+                    selected={selected}
                   />
                 </>
               )}
