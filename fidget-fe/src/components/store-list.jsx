@@ -10,7 +10,8 @@ import axios from "axios";
 import SizeSelector from "./sizeSelector";
 import Box from "@mui/material/Box";
 import { Fragment } from "react";
-import StorePriceCard from "./StorePriceCard";
+import StorePriceCard from "./storePriceCard";
+import BasketHandler from "./basketHandler";
 
 const axiosBase = axios.create({
   baseURL: "https://fidget-band-be.onrender.com/api/",
@@ -18,6 +19,7 @@ const axiosBase = axios.create({
 
 export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
+  console.log("🚀 ~ StoreList ~ basket:", basket)
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
   const [shopStock, setShopStock] = useState([]);
@@ -114,96 +116,98 @@ export default function StoreList() {
           />
           {/* IS THE ITEM NOT isViewing?*/}
           {isViewing != item._id ? (
-            // <>
-            //   <ImageListItemBar
-            //     title={item.title}
-            //     subtitle={`£${item.price}`}
-            //     sx={{
-            //       borderRadius: "5px",
-            //       height: "50px",
-            //       backgroundColor: "rgba(13,13,13,0.65)",
-            //     }}
-            //   />
-            // </>
             <StorePriceCard title={item.title} price={item.price} />
           ) : (
-            <>
-              {/* IS THE ITEM ALREADY IN BASKET ? */}
+              <>
+                
+                {/* ITEM IS NOT VIEWING & */}
+                {/* IS THE ITEM ALREADY ON SHOPPINGLIST ? */}
+                
               {shoppingList.find(
                 (listItem) => listItem.title === item.title
-              ) ? (
-                // Basket handling bar with buttons
-                <ImageListItemBar
-                  actionIcon={
-                    <>
-                      <div className="addRemoveBasket">
-                        <button
-                          onClick={handleRemoveBasket}
-                          // value={item.title}
-                          value={JSON.stringify({
-                            title: item.title,
-                            hasSizes: false,
-                            requestedSize: "",
-                            price: item.price,
-                          })}
-                          aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-                          onMouseEnter={() => {
-                            setIsHovered(true);
-                          }}
-                          onMouseLeave={() => {
-                            setIsHovered(false);
-                          }}
-                          sx={{
-                            color: isHovered,
-                            borderRadius: "5px"
-                              ? "#0d0d0d"
-                              : "rgba(209, 92, 42, 0.95)",
-                            height: "50px",
-                            opacity: "90%",
-                          }}
-                        >
-                          <RemoveShoppingCartIcon
-                            sx={{
-                              color: isHovered
-                                ? "#0d0d0d"
-                                : "rgba(209, 92, 42, 0.95)",
-                              opacity: "90%",
-                            }}
-                          />
-                        </button>
-                        <button
-                          onClick={handleAddBasket}
-                          value={JSON.stringify({
-                            title: item.title,
-                            hasSizes: false,
-                            requestedSize: "",
-                            price: item.price,
-                          })}
-                          aria-label={`Add ${item.title} to basket for £${item.price}`}
-                          onMouseEnter={() => {
-                            setIsHovered(true);
-                          }}
-                          onMouseLeave={() => {
-                            setIsHovered(false);
-                          }}
-                        >
-                          <AddShoppingCartIcon
-                            sx={{
-                              color: isHovered
-                                ? "#0d0d0d"
-                                : "rgba(209, 92, 42, 0.95)",
-                              borderColor: isHovered
-                                ? "#0d0d0d"
-                                : "transparent",
-                              opacity: "90%",
-                            }}
-                          />
-                        </button>
-                      </div>
-                    </>
-                  }
+                ) ? (
+                // ITEM IS ON SHOPPING LIST
+                <BasketHandler
+                  item={item}
+                  handleRemoveBasket={handleRemoveBasket}
+                  handleAddBasket={handleAddBasket}
+                  isHovered={isHovered}
                 />
-              ) : // ITEM HAS SIZES && IS IN STOCK
+                ) :
+                // ITEM IS NOT ON SHOPPING LIST
+                  
+              // <ImageListItemBar
+              //   actionIcon={
+              //     <>
+              //       <div className="addRemoveBasket">
+              //         <button
+              //           onClick={handleRemoveBasket}
+              //           value={JSON.stringify({
+              //             title: item.title,
+              //             hasSizes: false,
+              //             requestedSize: "",
+              //             price: item.price,
+              //           })}
+              //           aria-label={`Remove ${item.title} from basket, price £${item.price}`}
+              //           onMouseEnter={() => {
+              //             setIsHovered(true);
+              //           }}
+              //           onMouseLeave={() => {
+              //             setIsHovered(false);
+              //           }}
+              //           sx={{
+              //             color: isHovered,
+              //             borderRadius: "5px"
+              //               ? "#0d0d0d"
+              //               : "rgba(209, 92, 42, 0.95)",
+              //             height: "50px",
+              //             opacity: "90%",
+              //           }}
+              //         >
+              //           <RemoveShoppingCartIcon
+              //             sx={{
+              //               color: isHovered
+              //                 ? "#0d0d0d"
+              //                 : "rgba(209, 92, 42, 0.95)",
+              //               opacity: "90%",
+              //             }}
+              //           />
+              //         </button>
+              //         <button
+              //           onClick={handleAddBasket}
+              //           value={JSON.stringify({
+              //             title: item.title,
+              //             hasSizes: false,
+              //             requestedSize: "",
+              //             price: item.price,
+              //           })}
+              //           aria-label={`Add ${item.title} to basket for £${item.price}`}
+              //           onMouseEnter={() => {
+              //             setIsHovered(true);
+              //           }}
+              //           onMouseLeave={() => {
+              //             setIsHovered(false);
+              //           }}
+              //         >
+              //           <AddShoppingCartIcon
+              //             sx={{
+              //               color: isHovered
+              //                 ? "#0d0d0d"
+              //                 : "rgba(209, 92, 42, 0.95)",
+              //               borderColor: isHovered
+              //                 ? "#0d0d0d"
+              //                 : "transparent",
+              //               opacity: "90%",
+              //             }}
+              //           />
+              //         </button>
+              //       </div>
+              //     </>
+              //   }
+                  // />
+                  
+
+              // ITEM HAS SIZES && IS IN STOCK
               item.hasSizes && item.stockAmount != 0 ? (
                 <>
                   <Box
@@ -221,47 +225,47 @@ export default function StoreList() {
                           actionIcon={
                             <>
                               <div className="addRemoveBasket">
-                                                    {/* ITEM SIZE IS IN SHOPPING LIST
+                                {/* ITEM SIZE IS IN SHOPPING LIST
                                 {shoppingList.find(
                                   (listItem) =>
                                     listItem.title === item.title
                                     &&
                                     listItem.requestedSize === fromSelector
                                 ) ? ( */}
-                                  <button
-                                    onClick={handleRemoveBasket}
-                                    value={JSON.stringify({
-                                      title: item.title,
-                                      hasSizes: false,
-                                      requestedSize: "",
-                                      price: item.price,
-                                    })}
-                                    aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-                                    onMouseEnter={() => {
-                                      setIsHovered(true);
-                                    }}
-                                    onMouseLeave={() => {
-                                      setIsHovered(false);
-                                    }}
+                                <button
+                                  onClick={handleRemoveBasket}
+                                  value={JSON.stringify({
+                                    title: item.title,
+                                    hasSizes: false,
+                                    requestedSize: "",
+                                    price: item.price,
+                                  })}
+                                  aria-label={`Remove ${item.title} from basket, price £${item.price}`}
+                                  onMouseEnter={() => {
+                                    setIsHovered(true);
+                                  }}
+                                  onMouseLeave={() => {
+                                    setIsHovered(false);
+                                  }}
+                                  sx={{
+                                    color: isHovered,
+                                    borderRadius: "5px"
+                                      ? "#0d0d0d"
+                                      : "rgba(209, 92, 42, 0.95)",
+                                    height: "50px",
+                                    opacity: "90%",
+                                  }}
+                                >
+                                  <RemoveShoppingCartIcon
                                     sx={{
-                                      color: isHovered,
-                                      borderRadius: "5px"
+                                      color: isHovered
                                         ? "#0d0d0d"
                                         : "rgba(209, 92, 42, 0.95)",
-                                      height: "50px",
                                       opacity: "90%",
                                     }}
-                                  >
-                                    <RemoveShoppingCartIcon
-                                      sx={{
-                                        color: isHovered
-                                          ? "#0d0d0d"
-                                          : "rgba(209, 92, 42, 0.95)",
-                                        opacity: "90%",
-                                      }}
-                                    />
-                                  </button>
-                                    {/* ) : (
+                                  />
+                                </button>
+                                {/* ) : (
                                                          // SIZE SELECTION IS NOT IN SHOPPING LIST
                                   <></>
                                 )} */}
@@ -305,10 +309,10 @@ export default function StoreList() {
                           sendToStore={handleFromSelector}
                         />
                       </>
-                        ) : (
-                                      // SIZE SELECTION IS NOT MADE
+                    ) : (
+                      // SIZE SELECTION IS NOT MADE
                       <Fragment>
-                        <StorePriceCard title={item.title} price={item.price}/> 
+                        <StorePriceCard title={item.title} price={item.price} />
                         <SizeSelector
                           item={item}
                           className="sizeAndPrice"
@@ -319,8 +323,8 @@ export default function StoreList() {
                     )}
                   </Box>
                 </>
-                  ) : (
-                    // NOT ITEM HAS SIZES && IS IN STOCK
+              ) : (
+                // NOT ITEM HAS SIZES && IS IN STOCK
                 <>
                   <ImageListItemBar
                     actionIcon={
