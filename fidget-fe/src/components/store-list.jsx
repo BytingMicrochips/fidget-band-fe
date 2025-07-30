@@ -19,7 +19,6 @@ export default function StoreList() {
   const [basket, setBasket] = useContext(BasketContext);
   const [isHidden, setIsHidden] = useState(true)
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
-  console.log("🚀 ~ StoreList ~ shoppingList:", shoppingList)
   const [shopStock, setShopStock] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
@@ -128,7 +127,9 @@ export default function StoreList() {
           ) : (
             <>
               {/* IS THE ITEM ALREADY IN BASKET ? */}
-                {shoppingList.find((listItem)=> listItem.title === item.title) ? (
+              {shoppingList.find(
+                (listItem) => listItem.title === item.title
+              ) ? (
                 // Basket handling bar with buttons
                 <ImageListItemBar
                   actionIcon={
@@ -201,7 +202,7 @@ export default function StoreList() {
                     </>
                   }
                 />
-              ) : // ITEM IS NOT ALREADY IN BASKET && HAS SIZES
+              ) : // ITEM HAS SIZES && IS IN STOCK
               item.hasSizes && item.stockAmount != 0 ? (
                 <>
                   <Box
@@ -211,6 +212,7 @@ export default function StoreList() {
                       position: "top",
                     }}
                   >
+                    {/* SIZE SELECTION IS NOT MADE */}
                     {fromSelector.length != 0 ? (
                       <>
                         {/* Basket handling bar with buttons */}
@@ -218,40 +220,51 @@ export default function StoreList() {
                           actionIcon={
                             <>
                               <div className="addRemoveBasket">
-                                <button
-                                  onClick={handleRemoveBasket}
-                                  // value={item.title}
-                                  value={JSON.stringify({
-                                    title: item.title,
-                                    hasSizes: false,
-                                    requestedSize: "",
-                                    price: item.price,
-                                  })}
-                                  aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-                                  onMouseEnter={() => {
-                                    setIsHovered(true);
-                                  }}
-                                  onMouseLeave={() => {
-                                    setIsHovered(false);
-                                  }}
-                                  sx={{
-                                    color: isHovered,
-                                    borderRadius: "5px"
-                                      ? "#0d0d0d"
-                                      : "rgba(209, 92, 42, 0.95)",
-                                    height: "50px",
-                                    opacity: "90%",
-                                  }}
-                                >
-                                  <RemoveShoppingCartIcon
+                                                    {/* ITEM SIZE IS IN SHOPPING LIST */}
+                                {shoppingList.find(
+                                  (listItem) =>
+                                    listItem.title === item.title
+                                    &&
+                                    listItem.requestedSize === fromSelector
+                                ) ? (
+                                  <button
+                                    onClick={handleRemoveBasket}
+                                    value={JSON.stringify({
+                                      title: item.title,
+                                      hasSizes: false,
+                                      requestedSize: "",
+                                      price: item.price,
+                                    })}
+                                    aria-label={`Remove ${item.title} from basket, price £${item.price}`}
+                                    onMouseEnter={() => {
+                                      setIsHovered(true);
+                                    }}
+                                    onMouseLeave={() => {
+                                      setIsHovered(false);
+                                    }}
                                     sx={{
-                                      color: isHovered
+                                      color: isHovered,
+                                      borderRadius: "5px"
                                         ? "#0d0d0d"
                                         : "rgba(209, 92, 42, 0.95)",
+                                      height: "50px",
                                       opacity: "90%",
                                     }}
-                                  />
-                                </button>
+                                  >
+                                    <RemoveShoppingCartIcon
+                                      sx={{
+                                        color: isHovered
+                                          ? "#0d0d0d"
+                                          : "rgba(209, 92, 42, 0.95)",
+                                        opacity: "90%",
+                                      }}
+                                    />
+                                  </button>
+                                    ) : (
+                                                         // SIZE SELECTION IS NOT IN SHOPPING LIST
+                                  <></>
+                                )}
+
                                 <button
                                   onClick={handleAddBasket}
                                   // value={item.title}
@@ -292,7 +305,8 @@ export default function StoreList() {
                           sendToStore={handleFromSelector}
                         />
                       </>
-                    ) : (
+                        ) : (
+                                      // SIZE SELECTION IS MADE
                       <Fragment>
                         <ImageListItemBar
                           title={item.title}
@@ -313,7 +327,8 @@ export default function StoreList() {
                     )}
                   </Box>
                 </>
-              ) : (
+                  ) : (
+                    // NOT ITEM HAS SIZES && IS IN STOCK
                 <>
                   <ImageListItemBar
                     actionIcon={
