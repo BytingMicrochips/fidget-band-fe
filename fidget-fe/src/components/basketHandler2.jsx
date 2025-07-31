@@ -57,6 +57,7 @@ const BasketHandler = ({
               ) && (
                 <RemoveFromCartButton
                   item={item}
+                  selected={selected}
                   handleRemoveBasket={handleRemoveBasket}
                   handleHovering={handleHovering}
                   isHovered={isHovered}
@@ -65,6 +66,7 @@ const BasketHandler = ({
             {item.hasSizes === true && sizeInBasket === true && (
               <RemoveFromCartButton
                 item={item}
+                selected={selected}
                 handleRemoveBasket={handleRemoveBasket}
                 handleHovering={handleHovering}
                 isHovered={isHovered}

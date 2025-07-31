@@ -14,6 +14,7 @@ const axiosBase = axios.create({
 const StoreList2 = () => {
   const [basket, setBasket] = useContext(BasketContext);
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
+  console.log("🚀 ~ StoreList2 ~ shoppingList:", shoppingList)
   const [shopStock, setShopStock] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
@@ -33,8 +34,6 @@ const StoreList2 = () => {
   const handleAddBasket = (e) => {
     // parse json object passed as value
     let newItem = JSON.parse(e.currentTarget.value);
-
-    console.log("🚀 ~ handleAddBasket ~ newItem:", newItem);
 
     // copy current basket into new updatedBasket variable
     const updatedBasket = [...basket];
@@ -66,46 +65,74 @@ const StoreList2 = () => {
   };
 
     const handleRemoveBasket = (e) => {
-    const selected = JSON.parse(e.currentTarget.value);
-    const updatedBasket = [...basket];
-        if (selected.hasSizes === false) {
+    let selected = JSON.parse(e.currentTarget.value);
+    console.log(
+      "🚀 ~ handleRemoveBasket ~ selected.requestedSize:",
+      selected.requestedSize
+    );
 
-            // update basket
-            const indexBasket = updatedBasket.findIndex((product) => product.title === selected.title);
-            updatedBasket[indexBasket].amountOrdered >= 1
-              ? updatedBasket[indexBasket].amountOrdered--
-                : false;
-            
-            // update shopping list
-            const updatedShoppingList = [...shoppingList]
-            const indexShoppingList = updatedShoppingList.findIndex((product) => product.title === selected.title);
-            updatedShoppingList.splice([indexShoppingList], 1)
+      // copy basket
+      const updatedBasket = [...basket];
 
-            // set changes in state and return store to default view
-            setBasket(updatedBasket)
-            setShoppingList(updatedShoppingList)
-            setIsViewing("")
-            setIsHovered(false)
+      // copy shopping list
+        const updatedShoppingList = [...shoppingList];
+        
+      // find item index in basket
+      const indexBasket = updatedBasket.findIndex(
+        (product) => product.title === selected.title
+      );
 
-            
-    }
-    // const indexToRemove = shoppingList.indexOf(selected);
-    // const updatedShoppingList = [];
-    // for (let i = 0; i < shoppingList.length; i++) {
-    //   if (i !== indexToRemove) {
-    //     updatedShoppingList.push(shoppingList[i]);
-    //   }
-    // }
-    // setShoppingList(updatedShoppingList);
-    // const index = updatedBasket.findIndex(
-    //   (stockItem) => typeof stockItem[selected] === "number"
-    // );
-    // if (updatedBasket[index][selected] > 0) {
-    //   updatedBasket[index][selected]--;
-    //   setBasket(updatedBasket);
-    // }
-    // setIsHidden(true);
-  };
+      // find item index in shopping list
+      const indexShoppingList = updatedShoppingList.findIndex(
+        (product) => product.title === selected.title
+      );
+
+      // modify amountOrdered of item if item does NOT have sizes
+      if (selected.hasSizes === false) {
+        updatedBasket[indexBasket].amountOrdered >= 1
+          ? updatedBasket[indexBasket].amountOrdered--
+          : false;
+        updatedShoppingList.splice([indexShoppingList], 1);
+      } else {
+      // modify amountOrdered of item and requestedSizes if item DOES have sizes
+        const sizeIndex = updatedBasket[indexBasket].requestedSizes.findIndex(
+          (size) => size === selected.requestedSize
+        );
+        if (sizeIndex != -1) {
+          updatedBasket[indexBasket].requestedSizes.splice(sizeIndex, 1);
+          updatedBasket[indexBasket].amountOrdered--;
+
+        }
+      // remove item of specified size from shoppingList
+          const indexSizeInList = updatedShoppingList.findIndex((product) => {
+              return ( product.requestedSize === selected.requestedSize)
+          })
+        updatedShoppingList.splice([indexSizeInList], 1);
+      }
+
+      // set changes in state and return store to default view
+      setBasket(updatedBasket);
+      setShoppingList(updatedShoppingList);
+      setIsViewing("");
+      setIsHovered(false);
+
+      // const indexToRemove = shoppingList.indexOf(selected);
+      // const updatedShoppingList = [];
+      // for (let i = 0; i < shoppingList.length; i++) {
+      //   if (i !== indexToRemove) {
+      //     updatedShoppingList.push(shoppingList[i]);
+      //   }
+      // }
+      // setShoppingList(updatedShoppingList);
+      // const index = updatedBasket.findIndex(
+      //   (stockItem) => typeof stockItem[selected] === "number"
+      // );
+      // if (updatedBasket[index][selected] > 0) {
+      //   updatedBasket[index][selected]--;
+      //   setBasket(updatedBasket);
+      // }
+      // setIsHidden(true);
+    };
 
   const handleBasketOptions = (e) => {
     const selected = e.target.getAttribute("product");

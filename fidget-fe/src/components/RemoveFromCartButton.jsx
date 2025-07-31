@@ -1,6 +1,6 @@
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 
-const RemoveFromCartButton = ({ item, handleRemoveBasket, handleHovering, isHovered }) => {
+const RemoveFromCartButton = ({ item, selected, handleRemoveBasket, handleHovering, isHovered }) => {
     
     return (
       <button
@@ -8,7 +8,7 @@ const RemoveFromCartButton = ({ item, handleRemoveBasket, handleHovering, isHove
         value={JSON.stringify({
           title: item.title,
           hasSizes: item.hasSizes,
-          requestedSize: "",
+          requestedSize: selected,
           price: item.price,
         })}
         aria-label={`Remove ${item.title} from basket, price £${item.price}`}
