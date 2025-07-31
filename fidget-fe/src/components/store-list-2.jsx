@@ -63,6 +63,7 @@ const StoreList2 = () => {
     setBasket(updatedBasket);
     setIsViewing("");
     setSelected("");
+    setIsHovered(false);
   };
 
   const handleRemoveBasket = (e) => {
@@ -91,6 +92,10 @@ const StoreList2 = () => {
     isViewing === selected ? setIsViewing("") : setIsViewing(selected),
       setSelected("");
   };
+    
+  const handleHovering = (bool) => {
+    setIsHovered(bool);
+  };
 
   return (
     <ImageList
@@ -99,8 +104,7 @@ const StoreList2 = () => {
         height: "80vh",
         margin: "auto",
       }}
-      >
-          
+    >
       {shopStock.map((item) => (
         <ImageListItem key={item.img} className="shopItemCard">
           <img
@@ -120,6 +124,7 @@ const StoreList2 = () => {
               item={item}
               handleRemoveBasket={handleRemoveBasket}
               handleAddBasket={handleAddBasket}
+              handleHovering={handleHovering}
               isHovered={isHovered}
               basket={basket}
               shopStock={shopStock}
@@ -131,10 +136,11 @@ const StoreList2 = () => {
             selected.length === 0 && (
               <>
                 <SizeSelector
-                  item={item}
                   className="sizeAndPrice"
-                  sx={{ zIndex: 1000 }}
+                  item={item}
                   setSelected={setSelected}
+                  selected={selected}
+                  sx={{ zIndex: 1000 }}
                 />
                 <StorePriceCard title={item.title} price={item.price} />
               </>
@@ -144,15 +150,17 @@ const StoreList2 = () => {
             selected.length != 0 && (
               <>
                 <SizeSelector
-                  item={item}
                   className="sizeAndPrice"
-                  sx={{ zIndex: 1000 }}
+                  item={item}
                   setSelected={setSelected}
+                  selected={selected}
+                  sx={{ zIndex: 1000 }}
                 />
                 <BasketHandler
                   item={item}
                   handleRemoveBasket={handleRemoveBasket}
                   handleAddBasket={handleAddBasket}
+                  handleHovering={handleHovering}
                   isHovered={isHovered}
                   basket={basket}
                   shopStock={shopStock}

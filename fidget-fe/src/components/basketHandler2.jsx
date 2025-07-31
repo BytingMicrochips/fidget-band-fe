@@ -1,24 +1,25 @@
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { useEffect, useState } from "react";
 import AddToCartButton from "./AddToCartButton"
+import RemoveFromCartButton from "./RemoveFromCartButton";
 
 const BasketHandler = ({
   item,
   handleRemoveBasket,
   handleAddBasket,
-  sendToStore,
+  handleHovering,
   isHovered,
   basket,
   shopStock,
   selected,
 }) => {
     const [furtherStock, setFurtherStock] = useState(false);
-    const [sizeInBasket, setSizeInBasket] = useState(false);
-  const handleHovering = (bool) => {
-    sendToStore(bool);
-  };
+  const [sizeInBasket, setSizeInBasket] = useState(false);
+  
+  // const handleHovering = (bool) => {
+  //   sendToStore(bool);
+  // };
 
   useEffect(() => {
     const size = selected;
@@ -40,7 +41,7 @@ const BasketHandler = ({
           setFurtherStock(false)
         }
       // Check if selected size is already in basket
-        if (inBasket.requestedSizes.filter((size) => size === selected)) {
+      if (inBasket.requestedSizes.find((size) => size === selected)) {        
             setSizeInBasket(true)
         } else {
             setSizeInBasket(false)
@@ -59,68 +60,20 @@ const BasketHandler = ({
                 (product) =>
                   product.title === item.title && product.amountOrdered > 0
               ) && (
-                <button
-                  onClick={handleRemoveBasket}
-                  value={JSON.stringify({
-                    title: item.title,
-                    hasSizes: item.hasSizes,
-                    requestedSize: "",
-                    price: item.price,
-                  })}
-                  aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-                  onMouseEnter={() => {
-                    handleHovering(true);
-                  }}
-                  onMouseLeave={() => {
-                    handleHovering(false);
-                  }}
-                  sx={{
-                    color: isHovered,
-                    borderRadius: "5px" ? "#0d0d0d" : "rgba(209, 92, 42, 0.95)",
-                    height: "50px",
-                    opacity: "90%",
-                  }}
-                >
-                  <RemoveShoppingCartIcon
-                    sx={{
-                      color: isHovered ? "#0d0d0d" : "rgba(209, 92, 42, 0.95)",
-                      borderColor: isHovered ? "#0d0d0d" : "transparent",
-                      opacity: "90%",
-                    }}
-                  />
-                </button>
+                <RemoveFromCartButton
+                  item={item}
+                  handleRemoveBasket={handleRemoveBasket}
+                  handleHovering={handleHovering}
+                  isHovered={isHovered}
+                />
               )}
             {item.hasSizes === true && sizeInBasket === true && (
-              <button
-                onClick={handleRemoveBasket}
-                value={JSON.stringify({
-                  title: item.title,
-                  hasSizes: item.hasSizes,
-                  requestedSize: "",
-                  price: item.price,
-                })}
-                aria-label={`Remove ${item.title} from basket, price £${item.price}`}
-                onMouseEnter={() => {
-                  handleHovering(true);
-                }}
-                onMouseLeave={() => {
-                  handleHovering(false);
-                }}
-                sx={{
-                  color: isHovered,
-                  borderRadius: "5px" ? "#0d0d0d" : "rgba(209, 92, 42, 0.95)",
-                  height: "50px",
-                  opacity: "90%",
-                }}
-              >
-                <RemoveShoppingCartIcon
-                  sx={{
-                    color: isHovered ? "#0d0d0d" : "rgba(209, 92, 42, 0.95)",
-                    borderColor: isHovered ? "#0d0d0d" : "transparent",
-                    opacity: "90%",
-                  }}
-                />
-              </button>
+              <RemoveFromCartButton
+                item={item}
+                handleRemoveBasket={handleRemoveBasket}
+                handleHovering={handleHovering}
+                isHovered={isHovered}
+              />
             )}
 
             {/* Show add basket when item in stock */}
@@ -129,6 +82,8 @@ const BasketHandler = ({
                 item={item}
                 selected={selected}
                 handleAddBasket={handleAddBasket}
+                handleHovering={handleHovering}
+                isHovered={isHovered}
               />
             )}
           </div>

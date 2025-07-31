@@ -4,18 +4,13 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useState } from "react";
 
-export default function SizeSelector({
-  item,
-  setSelected }) {
-  const [pickedSize, setPickedSize] = useState("");
+export default function SizeSelector({ item, setSelected, selected}) {
 
   const handleChange = (event) => {
-    const selected = event.target.value;
-    if (selected.length != 0) {
-      setPickedSize(selected);
-      setSelected(selected);
+    const selectedSize = event.target.value;
+    if (selectedSize.length != 0) {
+      setSelected(selectedSize);
     }
   };
 
@@ -69,7 +64,7 @@ export default function SizeSelector({
           labelId="Size Selector"
           id="sizeSelectorSelect"
           label="Size"
-          value={pickedSize}
+          value={selected}
           onChange={handleChange}
           sx={{
             fontFamily: "AveriaSansLibre-Regular",

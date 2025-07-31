@@ -1,12 +1,6 @@
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { useState } from "react";
 
-const AddToCartButton = ({ item, selected, handleAddBasket }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const handleHovering = (bool) => {
-    setIsHovered(bool);
-  };
-
+const AddToCartButton = ({ item, selected, handleAddBasket, handleHovering, isHovered }) => {
   return (
     <button
       onClick={handleAddBasket}
