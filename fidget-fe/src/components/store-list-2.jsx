@@ -13,7 +13,6 @@ const axiosBase = axios.create({
 
 const StoreList2 = () => {
   const [basket, setBasket] = useContext(BasketContext);
-  const [isHidden, setIsHidden] = useState(true);
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
   const [shopStock, setShopStock] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
@@ -66,25 +65,46 @@ const StoreList2 = () => {
     setIsHovered(false);
   };
 
-  const handleRemoveBasket = (e) => {
-    const selected = e.currentTarget.value;
+    const handleRemoveBasket = (e) => {
+    const selected = JSON.parse(e.currentTarget.value);
     const updatedBasket = [...basket];
-    const indexToRemove = shoppingList.indexOf(selected);
-    const updatedShoppingList = [];
-    for (let i = 0; i < shoppingList.length; i++) {
-      if (i !== indexToRemove) {
-        updatedShoppingList.push(shoppingList[i]);
-      }
+        if (selected.hasSizes === false) {
+
+            // update basket
+            const indexBasket = updatedBasket.findIndex((product) => product.title === selected.title);
+            updatedBasket[indexBasket].amountOrdered >= 1
+              ? updatedBasket[indexBasket].amountOrdered--
+                : false;
+            
+            // update shopping list
+            const updatedShoppingList = [...shoppingList]
+            const indexShoppingList = updatedShoppingList.findIndex((product) => product.title === selected.title);
+            updatedShoppingList.splice([indexShoppingList], 1)
+
+            // set changes in state and return store to default view
+            setBasket(updatedBasket)
+            setShoppingList(updatedShoppingList)
+            setIsViewing("")
+            setIsHovered(false)
+
+            
     }
-    setShoppingList(updatedShoppingList);
-    const index = updatedBasket.findIndex(
-      (stockItem) => typeof stockItem[selected] === "number"
-    );
-    if (updatedBasket[index][selected] > 0) {
-      updatedBasket[index][selected]--;
-      setBasket(updatedBasket);
-    }
-    setIsHidden(true);
+    // const indexToRemove = shoppingList.indexOf(selected);
+    // const updatedShoppingList = [];
+    // for (let i = 0; i < shoppingList.length; i++) {
+    //   if (i !== indexToRemove) {
+    //     updatedShoppingList.push(shoppingList[i]);
+    //   }
+    // }
+    // setShoppingList(updatedShoppingList);
+    // const index = updatedBasket.findIndex(
+    //   (stockItem) => typeof stockItem[selected] === "number"
+    // );
+    // if (updatedBasket[index][selected] > 0) {
+    //   updatedBasket[index][selected]--;
+    //   setBasket(updatedBasket);
+    // }
+    // setIsHidden(true);
   };
 
   const handleBasketOptions = (e) => {

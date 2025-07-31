@@ -1,5 +1,4 @@
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { useEffect, useState } from "react";
 import AddToCartButton from "./AddToCartButton"
 import RemoveFromCartButton from "./RemoveFromCartButton";
@@ -16,10 +15,6 @@ const BasketHandler = ({
 }) => {
     const [furtherStock, setFurtherStock] = useState(false);
   const [sizeInBasket, setSizeInBasket] = useState(false);
-  
-  // const handleHovering = (bool) => {
-  //   sendToStore(bool);
-  // };
 
   useEffect(() => {
     const size = selected;
