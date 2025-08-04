@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Vinyl",
+    "price": 10,
+    "hasSizes": false,
+    "amountOrdered": 0,
+    "requestedSizes": []
+  },
+  {
+    "title": "Hoodie",
+    "price": 40,
+    "hasSizes": true,
+    "amountOrdered": 0,
+    "requestedSizes": []
+  },
+  {
+    "title": "Snapback",
+    "price": 15,
+    "hasSizes": false,
+    "amountOrdered": 0,
+    "requestedSizes": []
+  },
+  {
+    "title": "Patch",
+    "price": 5,
+    "hasSizes": false,
+    "amountOrdered": 0,
+    "requestedSizes": []
+  },
+  {
+    "title": "CD",
+    "price": 10,
+    "hasSizes": false,
+    "amountOrdered": 0,
+    "requestedSizes": []
+  },
+  {
+    "title": "T Shirt",
+    "price": 20,
+    "hasSizes": true,
+    "amountOrdered": 0,
+    "requestedSizes": []
+  }
+]

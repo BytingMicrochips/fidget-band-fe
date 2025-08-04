@@ -4,17 +4,15 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useState } from "react";
 
-export default function SizeSelector({item}) {
-    const [pickedSize, setPickedSize] = useState("");
-    
-    const handleChange = (event) => {
-        const selected = event.target.value;
-        if (selected.length != 0) {
-            setPickedSize(selected)
-        }    
-    };
+export default function SizeSelector({ item, setSelected, selected}) {
+
+  const handleChange = (event) => {
+    const selectedSize = event.target.value;
+    if (selectedSize.length != 0) {
+      setSelected(selectedSize);
+    }
+  };
 
   return (
     <Box
@@ -66,7 +64,7 @@ export default function SizeSelector({item}) {
           labelId="Size Selector"
           id="sizeSelectorSelect"
           label="Size"
-          value={pickedSize}
+          value={selected}
           onChange={handleChange}
           sx={{
             fontFamily: "AveriaSansLibre-Regular",
@@ -74,14 +72,14 @@ export default function SizeSelector({item}) {
             color: "rgb(250,235,215)",
             height: "50px",
             ".MuiSvgIcon-root ": {
-              fill: "rgb(255,255,255) !important",
+              fill: "rgb(245, 245, 245) !important",
             },
           }}
           inputProps={{
             MenuProps: {
               PaperProps: {
                 sx: {
-                  backgroundColor: "rgb(250,250,250)",
+                  backgroundColor: "rgb(238, 238, 238)",
                 },
               },
             },

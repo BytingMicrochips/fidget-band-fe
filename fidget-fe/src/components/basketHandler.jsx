@@ -1,0 +1,122 @@
+import ImageListItemBar from "@mui/material/ImageListItemBar";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import { useEffect, useState } from "react";
+
+const BasketHandler = ({
+  item,
+  handleRemoveBasket,
+  handleAddBasket,
+  sendToStore,
+  isHovered,
+  basket,
+  shopStock,
+  selected
+}) => {
+    const [furtherStock, setFurtherStock] = useState(false);    
+    const handleHovering = (bool) => {
+        sendToStore(bool);
+    };
+    
+    useEffect(() => {
+        const size = selected;
+        let itemStock = shopStock.find((product) => product.title === item.title);
+        let inBasket = basket.find((product) => product.title === item.title);
+        
+        if (item.hasSizes === false) {
+            itemStock.stockAmount > inBasket.amountOrdered
+            ? setFurtherStock(true)
+            : setFurtherStock(false);
+        } else {
+            
+            // Compare stock of selected size to number of same size already in basket
+            if (itemStock.availableSizes[selected] > inBasket.requestedSizes.filter((size) => size === selected).length) {
+                setFurtherStock(true)
+            }
+            // setFurtherStock(true)
+        }
+    }, [item, selected]);
+
+  return (
+    <ImageListItemBar
+      actionIcon={
+        <>
+          <div className="addRemoveBasket">
+            {/* ONLY RENDER REMOVE BASKET ICON IF ITEM IS IN BASKET */}
+            {/*          WHEN ITEM DOES NOT HAVE SIZES           */}
+            {!item.hasSizes && 
+              <>
+                {</div> && (
+                  <button
+                    onClick={handleRemoveBasket}
+                    value={JSON.stringify({
+                      title: item.title,
+                      hasSizes: item.hasSizes,
+                      requestedSize: "",
+                      price: item.price,
+                    })}
+                    aria-label={`Remove ${item.title} from basket, price £${item.price}`}
+                    onMouseEnter={() => {
+                      handleHovering(true);
+                    }}
+                    onMouseLeave={() => {
+                      handleHovering(false);
+                    }}
+                    sx={{
+                      color: isHovered,
+                      borderRadius: "5px"
+                        ? "#0d0d0d"
+                        : "rgba(209, 92, 42, 0.95)",
+                      height: "50px",
+                      opacity: "90%",
+                    }}
+                  >
+                    <RemoveShoppingCartIcon
+                      sx={{
+                        color: isHovered
+                          ? "#0d0d0d"
+                          : "rgba(209, 92, 42, 0.95)",
+                        opacity: "90%",
+                      }}
+                    />
+                  </button>
+                )}
+              </>
+            }
+            {/*          WHEN ITEM DOES HAVE SIZES           */}
+            
+            {/* ONLY RENDER ADD BASKET ICON IF STOCK REMAINING > AMOUNT IN BASKET */}
+            {furtherStock && (
+              <button
+                onClick={handleAddBasket}
+                value={JSON.stringify({
+                  title: item.title,
+                  hasSizes: item.hasSizes,
+                  requestedSize: selected,
+                  price: item.price,
+                })}
+                aria-label={`Add ${item.title} to basket for £${item.price}`}
+                onMouseEnter={() => {
+                  handleHovering(true);
+                }}
+                onMouseLeave={() => {
+                  handleHovering(false);
+                }}
+              >
+                <AddShoppingCartIcon
+                  sx={{
+                    color: isHovered ? "#0d0d0d" : "rgba(209, 92, 42, 0.95)",
+                    borderColor: isHovered ? "#0d0d0d" : "transparent",
+                    opacity: "90%",
+                  }}
+                />
+              </button>
+            )}
+            </div>
+        </>
+      }
+    />
+  );
+};
+
+export default BasketHandler;

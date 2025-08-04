@@ -1,6 +1,6 @@
 import DrawerNav from "./draw-nav.jsx";
 import Box from "@mui/material/Box";
-import StoreList from "./store-list.jsx";
+import StoreList from "./store-list-2.jsx";
 import {ShoppingListContext } from "../App.jsx";
 import { useContext} from "react";
 import { useNavigate } from "react-router-dom";
