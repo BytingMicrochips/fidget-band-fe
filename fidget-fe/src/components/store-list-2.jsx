@@ -14,7 +14,6 @@ const axiosBase = axios.create({
 const StoreList2 = () => {
   const [basket, setBasket] = useContext(BasketContext);
   const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
-  console.log("🚀 ~ StoreList2 ~ shoppingList:", shoppingList)
   const [shopStock, setShopStock] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const [isViewing, setIsViewing] = useState("");
@@ -66,10 +65,6 @@ const StoreList2 = () => {
 
     const handleRemoveBasket = (e) => {
     let selected = JSON.parse(e.currentTarget.value);
-    console.log(
-      "🚀 ~ handleRemoveBasket ~ selected.requestedSize:",
-      selected.requestedSize
-    );
 
       // copy basket
       const updatedBasket = [...basket];
@@ -108,30 +103,12 @@ const StoreList2 = () => {
               return ( product.requestedSize === selected.requestedSize)
           })
         updatedShoppingList.splice([indexSizeInList], 1);
-      }
-
+        }
       // set changes in state and return store to default view
       setBasket(updatedBasket);
       setShoppingList(updatedShoppingList);
       setIsViewing("");
       setIsHovered(false);
-
-      // const indexToRemove = shoppingList.indexOf(selected);
-      // const updatedShoppingList = [];
-      // for (let i = 0; i < shoppingList.length; i++) {
-      //   if (i !== indexToRemove) {
-      //     updatedShoppingList.push(shoppingList[i]);
-      //   }
-      // }
-      // setShoppingList(updatedShoppingList);
-      // const index = updatedBasket.findIndex(
-      //   (stockItem) => typeof stockItem[selected] === "number"
-      // );
-      // if (updatedBasket[index][selected] > 0) {
-      //   updatedBasket[index][selected]--;
-      //   setBasket(updatedBasket);
-      // }
-      // setIsHidden(true);
     };
 
   const handleBasketOptions = (e) => {
