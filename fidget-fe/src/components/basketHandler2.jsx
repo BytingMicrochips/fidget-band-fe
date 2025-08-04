@@ -86,6 +86,9 @@ const BasketHandler = ({
           </div>
         </>
       }
+      sx={{
+        borderRadius: "5px"
+      }}
     />
   );
 };

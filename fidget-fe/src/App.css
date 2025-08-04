@@ -29,6 +29,19 @@
   background-color: rgba(209, 92, 42, 0.8);
 }
 
+button:active {
+  outline-color: rgba(209, 92, 42, 0.8);
+  border-color: rgba(209, 92, 42, 0.8);
+}
+
+*:focus{
+  outline-style: outset   ;
+  outline-width: 2px;
+  outline-color: rgba(209, 92, 42, 0.8);
+  border-radius: 5px;
+}
+
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -722,8 +735,10 @@ margin: 0;
   display: flex;
   justify-content: space-between;
   margin: 0;
-  padding: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
+
 
 .MuiImageListItemBar-actionIcon{
   padding-left: 0.2em;

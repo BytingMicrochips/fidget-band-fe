@@ -8,7 +8,7 @@ const StorePriceCard = ( {title, price} ) => {
         subtitle={`£${price}`}
         sx={{
           borderRadius: "5px",
-          height: "50px",
+          height: "54px",
           backgroundColor: "rgba(13,13,13,0.65)",
         }}
       />

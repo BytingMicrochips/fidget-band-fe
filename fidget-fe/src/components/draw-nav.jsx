@@ -12,7 +12,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { pink } from "@mui/material/colors";
 
 
 function DrawerNav(props) {
@@ -135,7 +134,14 @@ function DrawerNav(props) {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box sx={{ display: "flex" }}>
+      <Box
+        sx={{
+          display: "flex",
+          "&:active": {
+            outline: "none"
+          }
+        }}
+      >
         <CssBaseline />
         <IconButton
           aria-label="open drawer"
@@ -145,7 +151,11 @@ function DrawerNav(props) {
             color: "#FAEBD7",
             "&:hover": {
               color: "#D15C2A",
-              bgcolor: "#0d0d0d"
+              bgcolor: "#0d0d0d",
+            },
+            "&:active": {
+              outline: "none",
+              borderColor: "#0d0d0d",
             },
             display: { sm: "none" },
             margin: 0,
