@@ -680,6 +680,7 @@ background-color: rgba(209, 92, 42, 0.8);
 .reviewCheckout{
   width: 96%;
   margin-bottom: 0.5em;
+  margin-top: 10px;
 }
 
 .reviewCheckout:hover{
