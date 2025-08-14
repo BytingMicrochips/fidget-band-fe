@@ -29,6 +29,42 @@
   background-color: rgba(209, 92, 42, 0.8);
 }
 
+button:active {
+  outline-color: rgba(209, 92, 42, 0.8);
+  border-color: rgba(209, 92, 42, 0.8);
+}
+
+*:not(.drawNav):focus{
+  outline-style: outset   ;
+  outline-width: 2px;
+  outline-color: rgba(209, 92, 42, 0.8);
+  border-radius: 5px;
+}
+
+.MuiDrawer-paper:focus, #drawItem:focus, #sizeSelectorSelect:focus, .css-wlcb4v-MuiImageList-root:focus{
+  outline-style: none;
+}
+
+#hamburger:hover{
+background-color: #0d0d0d;
+}
+
+#hamburger:focus {
+  outline-style: none;
+  border-radius: 0px;
+}
+
+#drawer:focus, #drawer:active {
+  border-style: none;
+  border-width: 5px;
+  border-color: rgb(0,255,0);
+}
+
+.MuiDraw-Paper:focus{
+  border-color: rgb(0, 255, 0);
+  border: none;
+}
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -667,6 +703,7 @@ background-color: rgba(209, 92, 42, 0.8);
 .reviewCheckout{
   width: 96%;
   margin-bottom: 0.5em;
+  margin-top: 10px;
 }
 
 .reviewCheckout:hover{
@@ -722,8 +759,10 @@ margin: 0;
   display: flex;
   justify-content: space-between;
   margin: 0;
-  padding: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
+
 
 .MuiImageListItemBar-actionIcon{
   padding-left: 0.2em;

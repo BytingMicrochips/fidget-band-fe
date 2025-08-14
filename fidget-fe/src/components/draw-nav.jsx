@@ -12,8 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { pink } from "@mui/material/colors";
-
+import { Fragment } from "react";
 
 function DrawerNav(props) {
   const drawerWidth = 150;
@@ -45,7 +44,11 @@ function DrawerNav(props) {
             navigate("/home");
           }}
         >
-          <ListItemButton defaultValue="Home" aria-label="Navigate to home">
+          <ListItemButton
+            id="drawItem"
+            defaultValue="Home"
+            aria-label="Navigate to home"
+          >
             <ListItemText primary="Home" />
           </ListItemButton>
         </ListItem>
@@ -58,7 +61,11 @@ function DrawerNav(props) {
             navigate("/gigs");
           }}
         >
-          <ListItemButton defaultValue="Gigs" aria-label="Navigate to gigs">
+          <ListItemButton
+            id="drawItem"
+            defaultValue="Gigs"
+            aria-label="Navigate to gigs"
+          >
             <ListItemText primary="Gigs" />
           </ListItemButton>
         </ListItem>
@@ -70,16 +77,19 @@ function DrawerNav(props) {
           }}
         >
           <ListItemButton
+            id="drawItem"
             defaultValue="Music & Gallery"
             aria-label="Navigate to music and gallery"
           >
-            <ListItemText primary={
+            <ListItemText
+              primary={
                 <div>
                   Music &
                   <br />
                   Gallery
                 </div>
-              } />
+              }
+            />
           </ListItemButton>
         </ListItem>
 
@@ -90,7 +100,11 @@ function DrawerNav(props) {
             navigate("/store");
           }}
         >
-          <ListItemButton defaultValue="Store" aria-label="Navigate to store">
+          <ListItemButton
+            id="drawItem"
+            defaultValue="Store"
+            aria-label="Navigate to store"
+          >
             <ListItemText primary="Store" />
           </ListItemButton>
         </ListItem>
@@ -101,7 +115,11 @@ function DrawerNav(props) {
             navigate("/store/basket");
           }}
         >
-          <ListItemButton defaultValue="Basket" aria-label="Navigate to basket">
+          <ListItemButton
+            id="drawItem"
+            defaultValue="Basket"
+            aria-label="Navigate to basket"
+          >
             <ListItemText primary="Basket" />
           </ListItemButton>
         </ListItem>
@@ -115,6 +133,7 @@ function DrawerNav(props) {
           }}
         >
           <ListItemButton
+            id="drawItem"
             defaultValue="EPK & Contact Us"
             aria-label="Navigate to EPK & Contact Us"
           >
@@ -134,70 +153,80 @@ function DrawerNav(props) {
   );
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <IconButton
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleDrawerToggle}
+      <ThemeProvider theme={darkTheme}>
+      <Box
           sx={{
-            color: "#FAEBD7",
-            "&:hover": {
-              color: "#D15C2A",
-              bgcolor: "#0d0d0d"
-            },
-            display: { sm: "none" },
-            margin: 0,
-            borderRadius: 0,
-            backgroundColor: "#0d0d0d",
+            display: "flex",
           }}
         >
-          <MenuIcon />
-        </IconButton>
+          <CssBaseline />
+          <IconButton
+            id="hamburger"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{
+              color: "#FAEBD7",
+              "&:hover": {
+                color: "#D15C2A",
+                bgcolor: "#0d0d0d",
+              },
+              "&:focus  ": {
+                outlineColor: "#0d0d0d",
+              },
+              display: { sm: "none" },
+              margin: 0,
+              borderRadius: 0,
+              backgroundColor: "#0d0d0d",
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
 
-        <Box
-          component="nav"
-          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-          aria-label="Site navigation"
-        >
-          <Drawer
-            variant="temporary"
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-            sx={{
-              display: { xs: "block", sm: "none" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-                // backgroundColor: "#7F00FF",
-                background:
-                  "linear-gradient(90deg, rgba(13,13,13,1) 40%, rgba(13,13,13,0.25) 100%)",
-              },
-            }}
+          <Box
+            component="nav"
+            sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+            aria-label="Site navigation"
           >
-            {drawer}
-          </Drawer>
-          <Drawer
-            variant="permanent"
-            sx={{
-              display: { xs: "none", sm: "block" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-              },
-            }}
-            open
-          >
-            {drawer}
-          </Drawer>
+            <Drawer
+              variant="temporary"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+              }}
+              sx={{
+                display: { xs: "block", sm: "none" },
+                "& .MuiDrawer-paper": {
+                  boxSizing: "border-box",
+                  width: drawerWidth,
+                  background:
+                    "linear-gradient(90deg, rgba(13,13,13,1) 40%, rgba(13,13,13,0.25) 100%)",
+                  "&:focused": {
+                  outlineColor:"rgb(0,255,0)"
+                }
+                }
+              }}
+            >
+              {drawer}
+            </Drawer>
+            <Drawer
+              variant="permanent"
+              sx={{
+                display: { xs: "none", sm: "block" },
+                "& .MuiDrawer-paper": {
+                  boxSizing: "border-box",
+                  width: drawerWidth,
+                },
+              }}
+              open
+            >
+              {drawer}
+            </Drawer>
+          </Box>
+          <Header />
         </Box>
-        <Header />
-      </Box>
-    </ThemeProvider>
+      </ThemeProvider>
   );
 }
 

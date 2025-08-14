@@ -76,8 +76,8 @@ const Main = () => {
   }, [nextGig]);
   return (
     <>
-      <div className="page-main">
-        <DrawerNav />
+      <div className="page-main" id="drawer">
+        <DrawerNav className="drawerNav"/>
         <div className="bannerWrapper">
           {Object.keys(nextGig).length !== 0 ? (
             <>
