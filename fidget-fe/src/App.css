@@ -41,11 +41,6 @@ button:active {
   border-radius: 5px;
 }
 
-/* .drawNav{
-color: greenyellow;
-background-color: aqua;
-} */
-
 .MuiDrawer-paper:focus, #drawItem:focus, #sizeSelectorSelect:focus, .css-wlcb4v-MuiImageList-root:focus{
   outline-style: none;
 }
