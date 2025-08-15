@@ -679,26 +679,15 @@ border-radius: 0.5em;
   color: antiquewhite;
 }
 
-/* .css-20xlnq-MuiImageList-root button:hover{
-border-color:transparent;
-background-color: rgba(209, 92, 42, 0.8);
-} */
 .css-1lizpae-MuiImageListItemBar-titleWrap button:hover{
   border-color: transparent;
     background-color: rgba(209, 92, 42, 0.8);
     font-family: "AveriaSansLibre-Regular";
 }
 
-/* #sizeSelectorSelect {
-  color: rgba(255,255,255,0.9);
-  font-family: "AveriaSansLibre-Regular";
-} */
-
 .MuiImageListItem-img{
   border-radius: 5px;
 }
-
-
 
 .reviewCheckout{
   width: 96%;
@@ -734,20 +723,25 @@ background-color: rgba(209, 92, 42, 0.8);
 }
 
 .basketWrapper{
-  background-color: orange;
+  background-color: rgba(26, 26, 26, 0.6);
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  width: 96%;
+  margin: auto;
+  border-radius: 5px;
 }
 
 .basketItem{
   width: 96%;
-  background-color: violet;
+  background-color: rgba(209, 92, 42, 0.4);
+  background-color: rgba(250,235,215, 0.35);
   margin: auto;
-  padding-top: 0em, 0.3em, 0em, 0,3em ;
+  padding: 1px 15px 1px 15px ;
   margin-bottom: 0.2em;
   display: flex;
   justify-content: space-between;
   font-size: smaller;
+  border-radius: 5px;
 }
 
 .basketItem h2{
@@ -773,12 +767,39 @@ margin: 0;
   margin: 0 0.2em 0 0.2em;
 }
 
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+background-color: rgba(209, 92, 42, 0.85);
+color: antiquewhite;
+font-family: "AveriaSansLibre-Bold";
+font-size: medium;
+}
+
+
+/* basket review page papal button styling */
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+color: rgb(209,92,42);
+border-color: rgba(209,92,42, 0.5);
+background-color: rgba(250, 235, 215, 0.35);
+/* border-width: 2px; */
+font-family: "AveriaSansLibre-Bold";
+font-size: medium;
+}
+
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root:hover{
+color: rgba(13,13,13, 0.75);
+}
+
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root:focus{
+border-color: rgba(209, 92, 42, 0.8);
+}
+
 .basketQuantity{
   display: flex;
   justify-content: space-between;
   margin-top: 0.2em;
   margin-bottom: 0.2em;
-  width: 65%;
+  /* width: 65%; */
+  margin-right: 20px;
 }
 
 .basketQuantity h2{
@@ -790,20 +811,27 @@ margin: 0;
   display: flex;
   padding: 0;
   margin: auto;
+  background-color: rgba(13,13 ,13, 0.45);
+}
+
+.basketQuantity button:focus{
+  background-color: rgba(209, 92, 42, 0.8); 
+  border-color: transparent;
 }
 
 .quantityAndPrice{
   display: flex;
   justify-content: space-between;
-  width: 48%;
 }
 
 .totalWrapper{
-  background-color: mediumaquamarine;
+  background-color: rgba(209, 92, 42, 0.6);
+  border-radius: 5px;
   width: 96%;
   margin: auto;
   font-size: smaller;
   text-align: end;
+  padding-right: 10px;
 }
 
 .totalWrapper h2{
@@ -818,15 +846,23 @@ margin: 0;
 }
 
 .basketText{
-  background-color: skyblue;
+  background-image: url("../src/assets/paper1-nolines.png");
+  background-position: 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: auto;
-  padding: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 90px;
+  padding-right: 70px;
+  color:#0d0d0d;
+  font-family: "AveriaSansLibre-Bold";
+  margin-bottom: 10px;
 }
 
 .basketText h3{
-  background-color: mediumslateblue;
-  margin: 0 0 0.2em 0;
   font-size: medium;
+
 }
 
 .mailChimpBasket{

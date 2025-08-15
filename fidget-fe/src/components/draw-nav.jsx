@@ -202,9 +202,6 @@ function DrawerNav(props) {
                   width: drawerWidth,
                   background:
                     "linear-gradient(90deg, rgba(13,13,13,1) 40%, rgba(13,13,13,0.25) 100%)",
-                  "&:focused": {
-                  outlineColor:"rgb(0,255,0)"
-                }
                 }
               }}
             >

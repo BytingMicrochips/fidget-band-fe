@@ -83,13 +83,13 @@ const StoreBasket = () => {
             </div>
           </div>
           <div className="basketText">
-            <h3>Thank you for supporting Fidget & the Twitchers!</h3>
             <h3>
-              All orders will be posted soon as we are able - your patience is
-              appreciated during summer festival season.
+              Thank you for supporting Fidget & the Twitchers! <br/>All orders are handled by the band and will
+              be posted soon as we are able - your patience is appreciated
+              during summer festival season. <br/> See you in the dance!
             </h3>
-            <h3> See you in the dance!</h3>
           </div>
+
           <div className="basketWrapper">
             {order.length === 0 ? (
               <>
@@ -112,7 +112,12 @@ const StoreBasket = () => {
                               value={Object.keys(eachItem)[0]}
                             >
                               <IndeterminateCheckBoxIcon
-                                sx={{ width: 30, height: 30 }}
+                                className=""
+                                sx={{
+                                  width: 30,
+                                  height: 30,
+                                  fill: "rgba(250, 235, 215, 0.95)",
+                                }}
                               />
                             </button>
                             <h2
@@ -129,7 +134,13 @@ const StoreBasket = () => {
                               onClick={handleAddBasket}
                               value={Object.keys(eachItem)[0]}
                             >
-                              <AddBoxIcon sx={{ width: 30, height: 30 }} />
+                              <AddBoxIcon
+                                sx={{
+                                  width: 30,
+                                  height: 30,
+                                  fill: "rgba(250, 235, 215, 0.95)",
+                                }}
+                              />
                             </button>
                           </div>
                           <h2 className="itemCost">
