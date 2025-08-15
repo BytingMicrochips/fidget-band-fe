@@ -350,14 +350,13 @@ margin-top: 1px;
   display:flex;
   justify-content: center;
   height: fit-content;
-  border-radius: 1em;
+  border-radius: 5px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
-  width: 100%;
   color: antiquewhite;
-  width: 98vw;
+  width: 96%;
   font-family: CabinSketch-Regular;
 }
 
@@ -724,8 +723,8 @@ border-radius: 0.5em;
 
 .basketWrapper{
   background-color: rgba(26, 26, 26, 0.6);
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  padding-top: 15px;
+  padding-bottom: 20px;
   width: 96%;
   margin: auto;
   border-radius: 5px;
@@ -866,7 +865,7 @@ border-color: rgba(209, 92, 42, 0.8);
 }
 
 .mailChimpBasket{
-  margin-top: 3em;
+  margin-top: 10px;
 }
 
 @media only screen and (min-width: 600px) {

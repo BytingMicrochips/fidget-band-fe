@@ -8,61 +8,78 @@ import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import MailChimp from "./mailChimp.jsx";
+import { Fragment } from "react";
 
 const StoreBasket = () => {
     const drawerWidth = 150;
     const Navigate = useNavigate();
     const [basket, setBasket] = useContext(BasketContext);
+    console.log("🚀 ~ StoreBasket ~ basket:", basket)
     const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
     const [order, setOrder] = useState([])
     const [totalPrice, setTotalPrice] = useState(0);
     
+// Handle total price calculation
     useEffect(() => {
         let updatedCost = 0
         order.map((eachItem) => {
-            updatedCost = updatedCost + Object.values(eachItem)[0] * Object.values(eachItem)[1];
+          updatedCost = updatedCost + (eachItem.amountOrdered * eachItem.price)
         })
         setTotalPrice(updatedCost);
     },[order])
 
-
+// Convert basketDTO into order
     useEffect(() => {
-        const toOrder = basket.filter((merchItem) => (Object.values(merchItem)[0] !== 0))
+        const toOrder = basket.filter((product) => (product.amountOrdered !== 0))
         setOrder(toOrder)
     },[basket])
     
+// Handle adding more of specific item to basket
   const handleAddBasket = (e) => {
-    const selected = e.currentTarget.value;
+    const selected = JSON.parse(e.currentTarget.value);
     const updatedBasket = [...basket];
-    const updatedShoppingList = [e.currentTarget.value, ...shoppingList];
-    setShoppingList(updatedShoppingList);
-    const index = updatedBasket.findIndex(
-      (stockItem) => typeof stockItem[selected] === "number"
-    );
-    updatedBasket[index][selected]++;
+
+  if (!selected.hasSizes) {
+    // Update shoppingList
+    const newItem = { ...selected }
+    newItem.requestedSize = "";
+    delete newItem.requestedSizes
+    const updatedShoppingList = [ ...shoppingList, newItem];
+    setShoppingList(updatedShoppingList)
+
+    // Update basket
+    const matchedIndex = updatedBasket.findIndex(item => item.title === selected.title)
+    updatedBasket[matchedIndex].amountOrdered++;
     setBasket(updatedBasket);
-    setIsHidden(true);
+    } else {
+      console.log(selected, "hasSizes === true");
+    }
+    // setShoppingList(updatedShoppingList);
+    // const index = updatedBasket.findIndex(
+    //   (stockItem) => typeof stockItem[selected] === "number"
+    // );
+    // updatedBasket[index][selected]++;
+    // setBasket(updatedBasket);
+    // setIsHidden(true);
   };
 
-    const handleRemoveBasket = (e) => {
-    const selected = e.currentTarget.value;
+  const handleRemoveBasket = (e) => {
+    const selected = JSON.parse(e.currentTarget.value);
     const updatedBasket = [...basket];
-    const indexToRemove = shoppingList.indexOf(selected);
-    const updatedShoppingList = [];
-    for (let i = 0; i < shoppingList.length; i++) {
-      if (i !== indexToRemove) {
-        updatedShoppingList.push(shoppingList[i]);
-      }
-    }
-    setShoppingList(updatedShoppingList);
-    const index = updatedBasket.findIndex(
-      (stockItem) => typeof stockItem[selected] === "number"
-    );
-    if (updatedBasket[index][selected] > 0) {
-      updatedBasket[index][selected]--;
+    const updatedShoppingList = [...shoppingList];
+  
+    // Handle removing item when hasSizes === false
+      // Update ShoppingList
+    if (!selected.hasSizes) {
+      const indexList = updatedShoppingList.findIndex(item => item.title === selected.title);
+      updatedShoppingList.splice(indexList, 1);
+      setShoppingList(updatedShoppingList);
+      // Update Basket
+      const indexBasket = updatedBasket.findIndex(item => item.title === selected.title);
+      updatedBasket[indexBasket].amountOrdered--;
       setBasket(updatedBasket);
-    }
-    setIsHidden(true);
+  }
+
   };
 
     return (
@@ -99,17 +116,15 @@ const StoreBasket = () => {
               <>
                 {order.map((eachItem) => {
                   return (
-                    <>
+                    <Fragment key={eachItem.title}>
                       <div className="basketItem">
-                        <h2>{Object.keys(eachItem)[0]}</h2>
+                        <h2>{eachItem.title}</h2>
                         <div className="quantityAndPrice">
                           <div className="basketQuantity">
                             <button
-                              aria-label={`Remove one ${
-                                Object.keys(eachItem)[0]
-                              } from basket`}
+                              aria-label={`Remove one ${eachItem.title} from basket`}
                               onClick={handleRemoveBasket}
-                              value={Object.keys(eachItem)[0]}
+                              value={JSON.stringify(eachItem)}
                             >
                               <IndeterminateCheckBoxIcon
                                 className=""
@@ -121,18 +136,14 @@ const StoreBasket = () => {
                               />
                             </button>
                             <h2
-                              aria-label={`Quantity of ${
-                                Object.keys(eachItem)[0]
-                              } in basket`}
+                              aria-label={`Quantity of ${eachItem.title} in basket`}
                             >
-                              {Object.values(eachItem)[0]}
+                              {eachItem.amountOrdered}
                             </h2>
                             <button
-                              aria-label={`Add another ${
-                                Object.keys(eachItem)[0]
-                              } to basket`}
+                              aria-label={`Add another ${eachItem.title} to basket`}
                               onClick={handleAddBasket}
-                              value={Object.keys(eachItem)[0]}
+                              value={JSON.stringify(eachItem)}
                             >
                               <AddBoxIcon
                                 sx={{
@@ -144,13 +155,11 @@ const StoreBasket = () => {
                             </button>
                           </div>
                           <h2 className="itemCost">
-                            £
-                            {Object.values(eachItem)[0] *
-                              Object.values(eachItem)[1]}
+                            £{eachItem.amountOrdered * eachItem.price}
                           </h2>
                         </div>
                       </div>
-                    </>
+                    </Fragment>
                   );
                 })}
               </>
