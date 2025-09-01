@@ -16,7 +16,6 @@ const StoreBasket = () => {
     const drawerWidth = 150;
     const Navigate = useNavigate();
     const [basket, setBasket] = useContext(BasketContext);
-    console.log("🚀 ~ StoreBasket ~ basket:", basket)
     const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
     const [order, setOrder] = useState([])
     const [totalPrice, setTotalPrice] = useState(0);
@@ -44,10 +43,12 @@ const StoreBasket = () => {
     if (!selected.hasSizes) {
       newItem.requestedSize = "";
     } else {
-      newItem.requestedSize = newItem.requestedSizes[0];
+      // newItem.requestedSize = newItem.requestedSizes[0];
+      newItem.requestedSize = selected.size
     }
     // Format newItem data for shopping list
     delete newItem.requestedSizes;
+    delete newItem.size;
     const updatedShoppingList = [...shoppingList, newItem];
 
     // Update shoppingList
@@ -66,7 +67,6 @@ const StoreBasket = () => {
 
   const handleRemoveBasket = (e) => {
     const selected = JSON.parse(e.currentTarget.value);
-    console.log("🚀 ~ handleRemoveBasket ~ selected:", selected)
     const updatedBasket = [...basket];
     const updatedShoppingList = [...shoppingList];
   
@@ -74,7 +74,6 @@ const StoreBasket = () => {
       // Update ShoppingList
     if (!selected.hasSizes) {
       const indexList = updatedShoppingList.findIndex(item => item.title === selected.title);
-      console.log(updatedShoppingList[indexList])
       updatedShoppingList.splice(indexList, 1);
       setShoppingList(updatedShoppingList);
       // Update Basket

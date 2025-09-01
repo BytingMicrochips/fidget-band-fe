@@ -2,6 +2,7 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 
 const BasketItemHasSizes = ({ eachItem, handleRemoveBasket, handleAddBasket, size }) => {
+    eachItem.size = size
   return (
     <div className="basketItem">
       <h2>
