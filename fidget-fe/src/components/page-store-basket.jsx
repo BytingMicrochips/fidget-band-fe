@@ -9,12 +9,14 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import MailChimp from "./mailChimp.jsx";
 import { Fragment } from "react";
-import { listItemAvatarClasses } from "@mui/material";
+import BasketItem from "./basketItem.jsx";
+import BasketItemHasSizes from "./basketItemHasSizes.jsx";
 
 const StoreBasket = () => {
     const drawerWidth = 150;
     const Navigate = useNavigate();
     const [basket, setBasket] = useContext(BasketContext);
+    console.log("🚀 ~ StoreBasket ~ basket:", basket)
     const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
     const [order, setOrder] = useState([])
     const [totalPrice, setTotalPrice] = useState(0);
@@ -118,53 +120,32 @@ const StoreBasket = () => {
               </>
             ) : (
               <>
-                {order.map((eachItem) => {
-                  return (
+                  {order.map((eachItem) => {
+                    console.log("🚀 ~ eachItem:", eachItem)
+                    if (eachItem.hasSizes === false) {
+                      return (
                     <Fragment key={eachItem.title}>
-                      <div className="basketItem">
-                        <h2>{eachItem.title}</h2>
-                        <div className="quantityAndPrice">
-                          <div className="basketQuantity">
-                            <button
-                              aria-label={`Remove one ${eachItem.title} from basket`}
-                              onClick={handleRemoveBasket}
-                              value={JSON.stringify(eachItem)}
-                            >
-                              <IndeterminateCheckBoxIcon
-                                className=""
-                                sx={{
-                                  width: 30,
-                                  height: 30,
-                                  fill: "rgba(250, 235, 215, 0.95)",
-                                }}
-                              />
-                            </button>
-                            <h2
-                              aria-label={`Quantity of ${eachItem.title} in basket`}
-                            >
-                              {eachItem.amountOrdered}
-                            </h2>
-                            <button
-                              aria-label={`Add another ${eachItem.title} to basket`}
-                              onClick={handleAddBasket}
-                              value={JSON.stringify(eachItem)}
-                            >
-                              <AddBoxIcon
-                                sx={{
-                                  width: 30,
-                                  height: 30,
-                                  fill: "rgba(250, 235, 215, 0.95)",
-                                }}
-                              />
-                            </button>
-                          </div>
-                          <h2 className="itemCost">
-                            £{eachItem.amountOrdered * eachItem.price}
-                          </h2>
-                        </div>
-                      </div>
+                      <BasketItem eachItem={eachItem} handleRemoveBasket={handleRemoveBasket} handleAddBasket={handleAddBasket}/>
                     </Fragment>
-                  );
+                      )
+                    } else {
+                      const uniques = [...new Set(eachItem.requestedSizes)]
+                      return (uniques.map((size) => {
+                        return (
+                          <Fragment key={`${eachItem.title}.${size}`}>
+                            <BasketItemHasSizes
+                              eachItem={eachItem}
+                              handleRemoveBasket={handleRemoveBasket}
+                              handleAddBasket={handleAddBasket}
+                              size={size}
+                            />
+                          </Fragment>
+                        );
+                      }) )
+                    }
+                    
+                  
+
                 })}
               </>
             )}
