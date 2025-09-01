@@ -9,12 +9,12 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import MailChimp from "./mailChimp.jsx";
 import { Fragment } from "react";
+import { listItemAvatarClasses } from "@mui/material";
 
 const StoreBasket = () => {
     const drawerWidth = 150;
     const Navigate = useNavigate();
     const [basket, setBasket] = useContext(BasketContext);
-    console.log("🚀 ~ StoreBasket ~ basket:", basket)
     const [shoppingList, setShoppingList] = useContext(ShoppingListContext);
     const [order, setOrder] = useState([])
     const [totalPrice, setTotalPrice] = useState(0);
@@ -38,33 +38,33 @@ const StoreBasket = () => {
   const handleAddBasket = (e) => {
     const selected = JSON.parse(e.currentTarget.value);
     const updatedBasket = [...basket];
+    const newItem = { ...selected };
+    if (!selected.hasSizes) {
+      newItem.requestedSize = "";
+    } else {
+      newItem.requestedSize = newItem.requestedSizes[0];
+    }
+    // Format newItem data for shopping list
+    delete newItem.requestedSizes;
+    const updatedShoppingList = [...shoppingList, newItem];
 
-  if (!selected.hasSizes) {
     // Update shoppingList
-    const newItem = { ...selected }
-    newItem.requestedSize = "";
-    delete newItem.requestedSizes
-    const updatedShoppingList = [ ...shoppingList, newItem];
-    setShoppingList(updatedShoppingList)
+    setShoppingList(updatedShoppingList);
 
     // Update basket
-    const matchedIndex = updatedBasket.findIndex(item => item.title === selected.title)
+    const matchedIndex = updatedBasket.findIndex(
+      (item) => item.title === selected.title
+    );
     updatedBasket[matchedIndex].amountOrdered++;
-    setBasket(updatedBasket);
-    } else {
-      console.log(selected, "hasSizes === true");
+    if (newItem.hasSizes === true) {
+      updatedBasket[matchedIndex].requestedSizes.push(newItem.requestedSize);
     }
-    // setShoppingList(updatedShoppingList);
-    // const index = updatedBasket.findIndex(
-    //   (stockItem) => typeof stockItem[selected] === "number"
-    // );
-    // updatedBasket[index][selected]++;
-    // setBasket(updatedBasket);
-    // setIsHidden(true);
+    setBasket(updatedBasket);
   };
 
   const handleRemoveBasket = (e) => {
     const selected = JSON.parse(e.currentTarget.value);
+    console.log("🚀 ~ handleRemoveBasket ~ selected:", selected)
     const updatedBasket = [...basket];
     const updatedShoppingList = [...shoppingList];
   
@@ -72,13 +72,17 @@ const StoreBasket = () => {
       // Update ShoppingList
     if (!selected.hasSizes) {
       const indexList = updatedShoppingList.findIndex(item => item.title === selected.title);
+      console.log(updatedShoppingList[indexList])
       updatedShoppingList.splice(indexList, 1);
       setShoppingList(updatedShoppingList);
       // Update Basket
       const indexBasket = updatedBasket.findIndex(item => item.title === selected.title);
       updatedBasket[indexBasket].amountOrdered--;
       setBasket(updatedBasket);
-  }
+    } else {
+      // Handle removing item when hasSizes === true
+
+    }
 
   };
 
